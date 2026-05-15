@@ -11,9 +11,10 @@ import { useCartStore } from "@/lib/store";
 
 interface CategoryPageClientProps {
   category: Category;
+  categories?: Category[];
 }
 
-export default function CategoryPageClient({ category }: CategoryPageClientProps) {
+export default function CategoryPageClient({ category, categories = [] }: CategoryPageClientProps) {
   const addItem = useCartStore((s) => s.addItem);
   const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
   const [showNotification, setShowNotification] = useState(false);
@@ -53,7 +54,7 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
 
   return (
     <div className="min-h-screen bg-navy flex flex-col">
-      <Header />
+      <Header categories={categories} />
 
       <main className="flex-grow pb-24 md:pb-12">
         {/* ===== HERO BACKGROUND SECTION ===== */}

@@ -1,3 +1,5 @@
+import Papa from 'papaparse';
+
 export interface Denomination {
   value: string;
   label: string;
@@ -23,7 +25,7 @@ export interface Category {
   subCategories: SubCategory[];
 }
 
-export const categories: Category[] = [
+export const defaultCategories: Category[] = [
   {
     id: "xbox",
     name: "اكس بوكس",
@@ -359,6 +361,76 @@ export const categories: Category[] = [
   },
 ];
 
-export function getCategoryById(id: string): Category | undefined {
-  return categories.find((c) => c.id === id);
+export async function getCategories(): Promise<Category[]> {
+  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxE69AiErnJ9BXDn-O2QVUaXcjWSql9_vFf0H5j9pwreA-HY1pI6xBwIip8F_0CIcnIHUg1Z4ikg7o/pub?output=csv";
+  
+  try {
+    const res = await fetch(SHEET_CSV_URL, { next: { revalidate: 60 } }); // Revalidate every minute
+    if (!res.ok) throw new Error("Failed to fetch CSV");
+    
+    const csvText = await res.text();
+    const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
+    
+    if (parsed.data.length === 0) {
+      return defaultCategories; // Fallback to defaults if sheet is empty
+    }
+
+    // Clone default categories to keep images and gradients
+    const categoriesMap = new Map<string, Category>();
+    
+    defaultCategories.forEach(cat => {
+      categoriesMap.set(cat.id, { ...cat, subCategories: [] }); // Reset subcategories
+    });
+
+    const data = parsed.data as Record<string, string>[];
+    data.forEach((row) => {
+      const categoryId = row.CategoryEn?.toLowerCase().replace(/\s+/g, '-') || row.Category?.toLowerCase() || 'unknown';
+      
+      if (!categoriesMap.has(categoryId)) {
+        // Create new category if it doesn't exist in defaults
+        categoriesMap.set(categoryId, {
+          id: categoryId,
+          name: row.Category || 'Unknown',
+          nameEn: row.CategoryEn || 'UNKNOWN',
+          gradient: "from-navy-light via-navy to-navy-dark",
+          icon: "🌟",
+          logoUrl: "/logo.png",
+          productImageUrl: "",
+          bgUrl: "",
+          subCategories: []
+        });
+      }
+
+      const cat = categoriesMap.get(categoryId)!;
+      const subId = `${categoryId}-${row.Region}`.replace(/\s+/g, '-').toLowerCase();
+      
+      let subCat = cat.subCategories.find(s => s.region === row.Region);
+      if (!subCat) {
+        subCat = {
+          id: subId,
+          region: row.Region,
+          currency: row.Currency,
+          denominations: []
+        };
+        cat.subCategories.push(subCat);
+      }
+
+      if (row.ProductName && row.ProductValue) {
+        subCat.denominations.push({
+          label: row.ProductName,
+          value: row.ProductValue
+        });
+      }
+    });
+
+    return Array.from(categoriesMap.values()).filter(c => c.subCategories.length > 0);
+  } catch (error) {
+    console.error("Error fetching categories from Google Sheets:", error);
+    return defaultCategories;
+  }
+}
+
+export async function getCategoryById(id: string): Promise<Category | undefined> {
+  const cats = await getCategories();
+  return cats.find((c) => c.id === id);
 }

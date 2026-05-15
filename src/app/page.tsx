@@ -1,15 +1,16 @@
-"use client";
-
 import Header from "@/components/Header";
 import HeroCarousel from "@/components/HeroCarousel";
 import ProductGrid from "@/components/ProductGrid";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
+import { getCategories } from "@/lib/products";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await getCategories();
+
   return (
     <div className="min-h-screen bg-navy">
-      <Header />
+      <Header categories={categories} />
 
       <main className="pb-20 md:pb-0">
         {/* Hero Carousel */}
@@ -24,7 +25,7 @@ export default function Home() {
 
         {/* Product Grid */}
         <section className="container mx-auto px-4">
-          <ProductGrid />
+          <ProductGrid categories={categories} />
         </section>
       </main>
 

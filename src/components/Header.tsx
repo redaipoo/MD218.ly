@@ -5,9 +5,9 @@ import Link from "next/link";
 import { Search, ShoppingCart, X, ArrowLeft } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import CartDrawer from "./CartDrawer";
-import { categories } from "@/lib/products";
+import type { Category } from "@/lib/products";
 
-export default function Header() {
+export default function Header({ categories = [] }: { categories?: Category[] }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showCart, setShowCart] = useState(false);

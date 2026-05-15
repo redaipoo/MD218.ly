@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { categories, getCategoryById } from "@/lib/products";
+import { getCategories, getCategoryById } from "@/lib/products";
 import CategoryPageClient from "./CategoryPageClient";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
-// Pre-generate all 10 category pages at build time
-export function generateStaticParams() {
-  return categories.map((category) => ({
+// Pre-generate pages at build time
+export async function generateStaticParams() {
+  const cats = await getCategories();
+  return cats.map((category) => ({
     id: category.id,
   }));
 }
@@ -19,7 +20,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const category = getCategoryById(id);
+  const category = await getCategoryById(id);
 
   if (!category) {
     return {
@@ -50,12 +51,13 @@ export default async function CategoryPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const category = getCategoryById(id);
+  const category = await getCategoryById(id);
+  const categories = await getCategories();
 
   if (!category) {
     return (
       <div className="min-h-screen bg-navy flex flex-col">
-        <Header />
+        <Header categories={categories} />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
             <p className="text-6xl mb-4">😕</p>
@@ -70,5 +72,5 @@ export default async function CategoryPage({
     );
   }
 
-  return <CategoryPageClient category={category} />;
+  return <CategoryPageClient category={category} categories={categories} />;
 }

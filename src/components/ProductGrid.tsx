@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { categories } from "@/lib/products";
+import type { Category } from "@/lib/products";
 
-export default function ProductGrid() {
+export default function ProductGrid({ categories = [] }: { categories: Category[] }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
       {categories.map((category, index) => {
