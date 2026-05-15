@@ -130,19 +130,27 @@ export default function Header() {
                   )}
                 </button>
 
-                {/* Cart Toast Notification - Fixed at bottom on mobile, absolute on desktop */}
+                {/* Cart Toast Notification - More prominent and urgent */}
                 {cartToast && (
-                  <div className="fixed md:absolute bottom-24 md:bottom-auto md:top-full left-1/2 -translate-x-1/2 md:mt-3 whitespace-nowrap z-[80] animate-toast-in">
+                  <div className="fixed md:absolute bottom-24 md:bottom-auto md:top-full left-1/2 -translate-x-1/2 md:mt-4 whitespace-nowrap z-[100] animate-toast-in">
                     <button
                       onClick={() => { setCartToast(false); setShowCart(true); }}
-                      className="flex items-center gap-2 bg-gradient-to-r from-crimson to-red-600 text-white px-5 py-3 rounded-2xl shadow-2xl shadow-crimson/40 text-sm font-bold hover:scale-105 transition-transform"
+                      className="group flex flex-col items-center bg-gradient-to-br from-crimson via-red-600 to-crimson-dark text-white p-1 rounded-2xl shadow-[0_0_40px_rgba(220,38,38,0.5)] transition-all duration-300 hover:scale-105 active:scale-95"
                     >
-                      <span className="animate-pulse">🛒</span>
-                      <span>تم الإضافة! اطلب الآن</span>
-                      <ArrowLeft className="w-4 h-4" />
+                      <div className="flex items-center gap-3 px-6 py-3.5 bg-navy-dark/10 rounded-xl w-full">
+                        <div className="relative">
+                          <ShoppingCart className="w-6 h-6 animate-bounce" />
+                          <span className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full animate-ping" />
+                        </div>
+                        <div className="flex flex-col items-start">
+                          <span className="text-sm font-black tracking-wide">تمت الإضافة بنجاح! 🛍️</span>
+                          <span className="text-[11px] font-bold text-white/80 opacity-90">انقر هنا لإتمام الطلب الآن</span>
+                        </div>
+                        <ArrowLeft className="w-5 h-5 mr-1 group-hover:-translate-x-1 transition-transform" />
+                      </div>
                     </button>
-                    {/* Triangle pointer - desktop only */}
-                    <div className="hidden md:block absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-crimson rotate-45 rounded-sm" />
+                    {/* Pulsing ring around toast */}
+                    <div className="absolute inset-0 -z-10 bg-crimson/30 rounded-2xl blur-xl animate-pulse" />
                   </div>
                 )}
               </div>
