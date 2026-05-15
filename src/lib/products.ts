@@ -394,11 +394,21 @@ export async function getCategories(): Promise<Category[]> {
           nameEn: row.CategoryEn || 'UNKNOWN',
           gradient: "from-navy-light via-navy to-navy-dark",
           icon: "🌟",
-          logoUrl: "/logo.png",
-          productImageUrl: "",
-          bgUrl: "",
+          logoUrl: row.ImageUrl || "/logo.png",
+          productImageUrl: row.ImageUrl || "",
+          bgUrl: row.BgUrl || "",
           subCategories: []
         });
+      } else {
+        // If it exists but user provided a custom image in the sheet, override it
+        const existingCat = categoriesMap.get(categoryId)!;
+        if (row.ImageUrl) {
+          existingCat.logoUrl = row.ImageUrl;
+          existingCat.productImageUrl = row.ImageUrl;
+        }
+        if (row.BgUrl) {
+          existingCat.bgUrl = row.BgUrl;
+        }
       }
 
       const cat = categoriesMap.get(categoryId)!;
