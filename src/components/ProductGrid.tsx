@@ -3,14 +3,30 @@
 import Link from "next/link";
 import type { Category } from "@/lib/products";
 
+// Map category IDs to brand accent colors
+const brandAccents: Record<string, string> = {
+  xbox: "#107C10",
+  playstation: "#003087",
+  apple: "#A2AAAD",
+  steam: "#1b2838",
+  pubg: "#F2A900",
+  gamepass: "#107C10",
+  shahid: "#3DB548",
+  razer: "#44D62C",
+  netflix: "#E50914",
+  shein: "#000000",
+};
+
 export default function ProductGrid({ categories = [] }: { categories: Category[] }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 pb-8">
       {categories.map((category, index) => {
         const totalDenominations = category.subCategories.reduce(
           (sum, sub) => sum + sub.denominations.length,
           0
         );
+        const accentColor = brandAccents[category.id] || "#cc0000";
+
         return (
           <Link
             key={category.id}
@@ -18,7 +34,13 @@ export default function ProductGrid({ categories = [] }: { categories: Category[
             className="group animate-fade-in"
             style={{ animationDelay: `${index * 60}ms` }}
           >
-            <div className="relative bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-crimson/60 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-crimson/10">
+            <div
+              className="relative bg-card overflow-hidden border border-border/50 hover:border-crimson/60 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-crimson/10"
+              style={{
+                borderRadius: "18px",
+                borderTop: `3px solid ${accentColor}`,
+              }}
+            >
               {/* Product Image - Large & Eye-catching */}
               <div className="relative aspect-[3/4] overflow-hidden">
                 {/* Actual product image as full background */}
