@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Home, ShoppingCart } from "lucide-react";
+import { Home, ShoppingCart, Gamepad2 } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import { usePathname } from "next/navigation";
 
@@ -32,15 +32,24 @@ export default function MobileNav() {
           {isHome && <div className="w-1 h-1 rounded-full bg-crimson-light mt-0.5" />}
         </Link>
 
-        {/* Center Logo Button */}
-        <Link
-          href="/"
-          className="relative -mt-4 group"
+        {/* Xbox Button */}
+        <button
+          onClick={() => {
+            // Check if we are on the homepage
+            if (window.location.pathname === "/") {
+              const el = document.getElementById("xbox-section");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            } else {
+              window.location.href = "/#xbox-section";
+            }
+          }}
+          className={`flex flex-col items-center gap-0.5 py-2 px-4 rounded-2xl transition-all duration-300 text-white/50 active:text-white hover:text-white`}
         >
-          <div className="relative w-14 h-14 rounded-full overflow-hidden border-[3px] border-navy-dark shadow-xl ring-2 ring-crimson/20 group-active:scale-95 transition-transform">
-            <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
+          <div className="relative p-2 rounded-xl transition-all duration-300 bg-[#107C10]/10 border border-[#107C10]/20 shadow-[0_0_10px_rgba(16,124,16,0.2)]">
+            <Gamepad2 className="w-5 h-5 text-[#00ff00]" />
           </div>
-        </Link>
+          <span className="text-[10px] font-bold text-white/80">إكس بوكس</span>
+        </button>
 
         {/* Cart */}
         <button
