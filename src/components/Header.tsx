@@ -93,12 +93,16 @@ export default function Header({ categories = [] }: { categories?: Category[] })
             <div className="flex items-center justify-between h-20 md:h-[72px] gap-3">
             {/* Right Side: Logo - Bigger & More Prominent */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-              <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-2xl overflow-hidden shadow-lg shadow-crimson/30 group-hover:shadow-crimson/50 transition-all duration-300 group-hover:scale-105 ring-2 ring-crimson/20 group-hover:ring-crimson/40 flex-shrink-0">
-                <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
+              <div className="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
+                <div className="absolute inset-0 bg-white/20 rounded-2xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity duration-300" />
+                <img src="/logo.png" alt="MD218.LY" className="relative w-full h-full object-cover rounded-2xl shadow-lg border border-white/5" />
               </div>
-              <div className="flex flex-col">
-                <span className="text-white font-black text-xl md:text-2xl leading-tight tracking-wider">MD218</span>
-                <span className="text-crimson-light text-[10px] md:text-xs font-bold -mt-0.5 tracking-[0.3em]">.LY</span>
+              <div className="flex flex-col justify-center -mt-1">
+                <span className="font-black text-2xl md:text-[28px] leading-none tracking-tight" style={{ fontFamily: "Arial, sans-serif" }}>
+                  <span className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">MD</span>
+                  <span className="text-crimson drop-shadow-[0_0_8px_rgba(220,38,38,0.4)]">218</span>
+                </span>
+                <span className="text-white/40 text-[10px] md:text-[11px] font-bold tracking-[0.4em] uppercase -mt-0.5 ml-1">.LY</span>
               </div>
             </Link>
 

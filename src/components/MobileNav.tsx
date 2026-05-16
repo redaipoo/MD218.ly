@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Home, ShoppingCart } from "lucide-react";
+import { Home, ShoppingCart, LayoutGrid } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import { usePathname } from "next/navigation";
 
@@ -32,15 +32,24 @@ export default function MobileNav() {
           {isHome && <div className="w-1 h-1 rounded-full bg-crimson-light mt-0.5" />}
         </Link>
 
-        {/* Center Logo Button */}
-        <Link
-          href="/"
-          className="relative -mt-4 group"
+        {/* Center Category Button - Triggers Bottom Sheet */}
+        <button
+          className="relative -mt-6 group"
+          onClick={() => {
+            // Vibrate if supported
+            if (typeof navigator !== "undefined" && navigator.vibrate) {
+              navigator.vibrate(10);
+            }
+            const event = new CustomEvent("open-categories");
+            window.dispatchEvent(event);
+          }}
+          aria-label="فتح الأقسام"
         >
-          <div className="relative w-14 h-14 rounded-full overflow-hidden border-[3px] border-navy-dark shadow-xl ring-2 ring-crimson/20 group-active:scale-95 transition-transform">
-            <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-white/20 rounded-full blur-md opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
+          <div className="relative w-12 h-12 bg-gradient-to-br from-[#1c1c1c] to-[#0a0a0a] rounded-full flex items-center justify-center border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)] group-active:scale-95 transition-all">
+            <LayoutGrid className="w-5 h-5 text-white/80 group-hover:text-white transition-colors" />
           </div>
-        </Link>
+        </button>
 
         {/* Cart */}
         <button
