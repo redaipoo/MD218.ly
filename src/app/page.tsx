@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import HeroCarousel from "@/components/HeroCarousel";
-import XboxSection from "@/components/XboxSection";
-import ProductGrid from "@/components/ProductGrid";
+import HomeTabs from "@/components/HomeTabs";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
 import { getCategories } from "@/lib/products";
@@ -27,15 +26,8 @@ export default async function Home() {
           </h2>
         </section>
 
-        {/* Product Grid */}
-        <section className="container mx-auto px-4">
-          <ProductGrid categories={categories} />
-        </section>
-
-        {/* Xbox Games & Accounts Section Moved to Bottom */}
-        <div className="container mx-auto px-4 mt-12 mb-8">
-          <XboxSection />
-        </div>
+        {/* Unified Tabbed Interface for Cards, Accounts, and Games */}
+        <HomeTabs categories={categories} />
       </main>
 
       <Footer />
