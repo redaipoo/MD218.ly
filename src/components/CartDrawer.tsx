@@ -11,8 +11,14 @@ interface CartDrawerProps {
 const WHATSAPP_NUMBER = "218920397465";
 
 export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
-  const { items, removeItem, updateQuantity, clearCart } = useCartStore();
+  const { items, paymentMethod, removeItem, updateQuantity, clearCart } = useCartStore();
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
+
+  const currencyLabel = paymentMethod === 'lyd' ? 'د.ل' : 'رصيد ليبيانا';
+  const totalPrice = items.reduce((sum, item) => {
+    const itemPrice = paymentMethod === 'lyd' ? item.priceLYD : item.priceLibyana;
+    return sum + (itemPrice * item.quantity);
+  }, 0);
 
   const sendToWhatsApp = () => {
     if (items.length === 0) return;
@@ -21,14 +27,18 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     message += "━━━━━━━━━━━━━━━━━━\n\n";
 
     items.forEach((item, index) => {
+      const itemPrice = paymentMethod === 'lyd' ? item.priceLYD : item.priceLibyana;
       message += `${index + 1}. *${item.name}*`;
       if (item.region) message += ` - ${item.region}`;
-      message += `\n   💰 القيمة: ${item.value}`;
-      message += `\n   📦 الكمية: ${item.quantity}\n\n`;
+      message += `\n   📦 المنتج: ${item.value}`;
+      message += `\n   🔢 الكمية: ${item.quantity}`;
+      message += `\n   💰 السعر للإجمالي: ${itemPrice * item.quantity} ${currencyLabel}\n\n`;
     });
 
     message += "━━━━━━━━━━━━━━━━━━\n";
     message += `📊 إجمالي العناصر: ${totalItems}\n`;
+    message += `💳 طريقة الدفع المختارة: ${paymentMethod === 'lyd' ? 'دينار ليبي 💵' : 'رصيد ليبيانا 📱'}\n`;
+    message += `🧾 الإجمالي المطلوب: *${totalPrice} ${currencyLabel}*\n`;
     message += "\nشكراً لاختياركم MD.LY! ✨";
 
     const encodedMessage = encodeURIComponent(message);
@@ -85,6 +95,9 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                       <p className="text-white/50 text-xs mt-0.5">{item.region}</p>
                     )}
                     <p className="text-crimson-light font-bold text-sm mt-1">{item.value}</p>
+                    <p className="text-gold-light font-bold text-xs mt-1">
+                      السعر: {paymentMethod === 'lyd' ? item.priceLYD : item.priceLibyana} {currencyLabel}
+                    </p>
                   </div>
                   <button
                     onClick={() => removeItem(item.id, item.value)}
@@ -123,7 +136,11 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="p-4 border-t border-border/50 space-y-3">
+          <div className="p-4 border-t border-border/50 space-y-3 bg-navy-dark">
+            <div className="flex justify-between items-center mb-2 px-1">
+              <span className="text-white/70 font-medium">الإجمالي:</span>
+              <span className="text-gold-light font-black text-xl">{totalPrice} {currencyLabel}</span>
+            </div>
             <button
               onClick={clearCart}
               className="w-full py-2 text-sm text-red-400 hover:text-red-300 transition-colors"

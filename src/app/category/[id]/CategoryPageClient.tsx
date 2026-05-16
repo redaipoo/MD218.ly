@@ -16,6 +16,7 @@ interface CategoryPageClientProps {
 
 export default function CategoryPageClient({ category, categories = [] }: CategoryPageClientProps) {
   const addItem = useCartStore((s) => s.addItem);
+  const paymentMethod = useCartStore((s) => s.paymentMethod);
   const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
   const [showNotification, setShowNotification] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -24,7 +25,14 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
     setLoaded(true);
   }, []);
 
-  const handleAddToCart = (subId: string, denomLabel: string, denomValue: string, region: string) => {
+  const handleAddToCart = (
+    subId: string,
+    denomLabel: string,
+    denomValue: string,
+    region: string,
+    priceLYD: number,
+    priceLibyana: number
+  ) => {
     const uniqueKey = `${subId}-${denomValue}`;
     addItem({
       id: subId,
@@ -32,6 +40,8 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
       region: region,
       value: denomLabel,
       quantity: 1,
+      priceLYD,
+      priceLibyana
     });
 
     setAddedItems((prev) => new Set(prev).add(uniqueKey));
@@ -171,10 +181,17 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                               className="w-full h-full object-cover"
                             />
                           </div>
-                          <div className="relative text-center">
+                          <div className="relative text-center flex flex-col items-center justify-center gap-2">
                             <p className="text-white font-black text-2xl drop-shadow-lg">
                               {denom.label}
                             </p>
+                            <div className="bg-navy-dark/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 mt-1">
+                              <p className="text-gold-light font-bold text-sm">
+                                {paymentMethod === 'lyd' 
+                                  ? `${denom.priceLYD} د.ل` 
+                                  : `${denom.priceLibyana} رصيد ليبيانا`}
+                              </p>
+                            </div>
                           </div>
                         </div>
 
@@ -182,7 +199,14 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                         <div className="p-3">
                           <button
                             onClick={() =>
-                              handleAddToCart(sub.id, denom.label, denom.value, `${category.name} - ${sub.region}`)
+                              handleAddToCart(
+                                sub.id,
+                                denom.label,
+                                denom.value,
+                                `${category.name} - ${sub.region}`,
+                                denom.priceLYD || 0,
+                                denom.priceLibyana || 0
+                              )
                             }
                             disabled={isAdded}
                             className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-lg font-bold text-sm transition-all duration-300 ${

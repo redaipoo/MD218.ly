@@ -14,6 +14,8 @@ export default function Header({ categories = [] }: { categories?: Category[] })
   const [cartToast, setCartToast] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const items = useCartStore((s) => s.items);
+  const paymentMethod = useCartStore((s) => s.paymentMethod);
+  const setPaymentMethod = useCartStore((s) => s.setPaymentMethod);
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
   const prevTotalRef = useRef(totalItems);
 
@@ -56,6 +58,35 @@ export default function Header({ categories = [] }: { categories?: Category[] })
 
   return (
     <>
+      {/* Top Bar for Currency Selection */}
+      <div className="bg-navy-dark/95 border-b border-white/5 py-1.5 md:py-2">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <span className="text-[10px] md:text-xs text-white/60 font-medium">الأسعار معروضة بـ:</span>
+          <div className="flex bg-navy rounded-lg p-0.5 border border-white/5">
+            <button
+              onClick={() => setPaymentMethod('lyd')}
+              className={`px-3 md:px-4 py-1 text-[10px] md:text-xs font-bold rounded-md transition-all ${
+                paymentMethod === 'lyd'
+                  ? 'bg-crimson text-white shadow-md'
+                  : 'text-white/50 hover:text-white'
+              }`}
+            >
+              دينار ليبي 💵
+            </button>
+            <button
+              onClick={() => setPaymentMethod('libyana')}
+              className={`px-3 md:px-4 py-1 text-[10px] md:text-xs font-bold rounded-md transition-all ${
+                paymentMethod === 'libyana'
+                  ? 'bg-crimson text-white shadow-md'
+                  : 'text-white/50 hover:text-white'
+              }`}
+            >
+              رصيد ليبيانا 📱
+            </button>
+          </div>
+        </div>
+      </div>
+
       <header className="sticky top-0 z-50 w-full bg-navy-dark/95 backdrop-blur-xl border-b border-border/40 overflow-x-clip">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20 md:h-[72px] gap-3">

@@ -6,10 +6,16 @@ export interface CartItem {
   region?: string;
   value: string;
   quantity: number;
+  priceLYD: number;
+  priceLibyana: number;
 }
+
+export type PaymentMethod = 'lyd' | 'libyana';
 
 interface CartStore {
   items: CartItem[];
+  paymentMethod: PaymentMethod;
+  setPaymentMethod: (method: PaymentMethod) => void;
   addItem: (item: CartItem) => void;
   removeItem: (id: string, value: string) => void;
   updateQuantity: (id: string, value: string, quantity: number) => void;
@@ -18,6 +24,8 @@ interface CartStore {
 
 export const useCartStore = create<CartStore>((set) => ({
   items: [],
+  paymentMethod: 'lyd',
+  setPaymentMethod: (method) => set({ paymentMethod: method }),
   addItem: (item) =>
     set((state) => {
       const existingItem = state.items.find((i) => i.id === item.id && i.value === item.value);

@@ -3,6 +3,8 @@ import Papa from 'papaparse';
 export interface Denomination {
   value: string;
   label: string;
+  priceLYD?: number;
+  priceLibyana?: number;
 }
 
 export interface SubCategory {
@@ -41,10 +43,10 @@ export const defaultCategories: Category[] = [
         region: "تركي",
         currency: "TRY",
         denominations: [
-          { value: "25", label: "25 TRY" },
-          { value: "50", label: "50 TRY" },
-          { value: "100", label: "100 TRY" },
-          { value: "300", label: "300 TRY" },
+          { value: "25", label: "25 TRY", priceLYD: 175, priceLibyana: 225 },
+          { value: "50", label: "50 TRY", priceLYD: 350, priceLibyana: 450 },
+          { value: "100", label: "100 TRY", priceLYD: 700, priceLibyana: 900 },
+          { value: "300", label: "300 TRY", priceLYD: 2100, priceLibyana: 2700 },
         ],
       },
       {
@@ -52,10 +54,10 @@ export const defaultCategories: Category[] = [
         region: "سعودي",
         currency: "SAR",
         denominations: [
-          { value: "50", label: "50 SAR" },
-          { value: "100", label: "100 SAR" },
-          { value: "200", label: "200 SAR" },
-          { value: "300", label: "300 SAR" },
+          { value: "50", label: "50 SAR", priceLYD: 350, priceLibyana: 450 },
+          { value: "100", label: "100 SAR", priceLYD: 700, priceLibyana: 900 },
+          { value: "200", label: "200 SAR", priceLYD: 1400, priceLibyana: 1800 },
+          { value: "300", label: "300 SAR", priceLYD: 2100, priceLibyana: 2700 },
         ],
       },
       {
@@ -63,12 +65,12 @@ export const defaultCategories: Category[] = [
         region: "أمريكي",
         currency: "USD",
         denominations: [
-          { value: "5", label: "5 USD" },
-          { value: "10", label: "10 USD" },
-          { value: "15", label: "15 USD" },
-          { value: "20", label: "20 USD" },
-          { value: "25", label: "25 USD" },
-          { value: "50", label: "50 USD" },
+          { value: "5", label: "5 USD", priceLYD: 35, priceLibyana: 45 },
+          { value: "10", label: "10 USD", priceLYD: 70, priceLibyana: 90 },
+          { value: "15", label: "15 USD", priceLYD: 105, priceLibyana: 135 },
+          { value: "20", label: "20 USD", priceLYD: 140, priceLibyana: 180 },
+          { value: "25", label: "25 USD", priceLYD: 175, priceLibyana: 225 },
+          { value: "50", label: "50 USD", priceLYD: 350, priceLibyana: 450 },
         ],
       },
       {
@@ -76,9 +78,9 @@ export const defaultCategories: Category[] = [
         region: "إماراتي",
         currency: "AED",
         denominations: [
-          { value: "59", label: "59 AED" },
-          { value: "99", label: "99 AED" },
-          { value: "199", label: "199 AED" },
+          { value: "59", label: "59 AED", priceLYD: 413, priceLibyana: 531 },
+          { value: "99", label: "99 AED", priceLYD: 693, priceLibyana: 891 },
+          { value: "199", label: "199 AED", priceLYD: 1393, priceLibyana: 1791 },
         ],
       },
     ],
@@ -98,18 +100,18 @@ export const defaultCategories: Category[] = [
         region: "أمريكي",
         currency: "USD",
         denominations: [
-          { value: "1", label: "1 USD" },
-          { value: "2", label: "2 USD" },
-          { value: "3", label: "3 USD" },
-          { value: "4", label: "4 USD" },
-          { value: "5", label: "5 USD" },
-          { value: "10", label: "10 USD" },
-          { value: "15", label: "15 USD" },
-          { value: "20", label: "20 USD" },
-          { value: "25", label: "25 USD" },
-          { value: "35", label: "35 USD" },
-          { value: "45", label: "45 USD" },
-          { value: "50", label: "50 USD" },
+          { value: "1", label: "1 USD", priceLYD: 7, priceLibyana: 9 },
+          { value: "2", label: "2 USD", priceLYD: 14, priceLibyana: 18 },
+          { value: "3", label: "3 USD", priceLYD: 21, priceLibyana: 27 },
+          { value: "4", label: "4 USD", priceLYD: 28, priceLibyana: 36 },
+          { value: "5", label: "5 USD", priceLYD: 35, priceLibyana: 45 },
+          { value: "10", label: "10 USD", priceLYD: 70, priceLibyana: 90 },
+          { value: "15", label: "15 USD", priceLYD: 105, priceLibyana: 135 },
+          { value: "20", label: "20 USD", priceLYD: 140, priceLibyana: 180 },
+          { value: "25", label: "25 USD", priceLYD: 175, priceLibyana: 225 },
+          { value: "35", label: "35 USD", priceLYD: 245, priceLibyana: 315 },
+          { value: "45", label: "45 USD", priceLYD: 315, priceLibyana: 405 },
+          { value: "50", label: "50 USD", priceLYD: 350, priceLibyana: 450 },
         ],
       },
       {
@@ -117,10 +119,10 @@ export const defaultCategories: Category[] = [
         region: "تركي",
         currency: "TRY",
         denominations: [
-          { value: "250", label: "250 TRY" },
-          { value: "500", label: "500 TRY" },
-          { value: "750", label: "750 TRY" },
-          { value: "1000", label: "1000 TRY" },
+          { value: "250", label: "250 TRY", priceLYD: 1750, priceLibyana: 2250 },
+          { value: "500", label: "500 TRY", priceLYD: 3500, priceLibyana: 4500 },
+          { value: "750", label: "750 TRY", priceLYD: 5250, priceLibyana: 6750 },
+          { value: "1000", label: "1000 TRY", priceLYD: 7000, priceLibyana: 9000 },
         ],
       },
       {
@@ -128,10 +130,10 @@ export const defaultCategories: Category[] = [
         region: "سعودي",
         currency: "SAR",
         denominations: [
-          { value: "10", label: "10 SAR" },
-          { value: "20", label: "20 SAR" },
-          { value: "30", label: "30 SAR" },
-          { value: "50", label: "50 SAR" },
+          { value: "10", label: "10 SAR", priceLYD: 70, priceLibyana: 90 },
+          { value: "20", label: "20 SAR", priceLYD: 140, priceLibyana: 180 },
+          { value: "30", label: "30 SAR", priceLYD: 210, priceLibyana: 270 },
+          { value: "50", label: "50 SAR", priceLYD: 350, priceLibyana: 450 },
         ],
       },
       {
@@ -139,12 +141,12 @@ export const defaultCategories: Category[] = [
         region: "إماراتي",
         currency: "AED",
         denominations: [
-          { value: "10", label: "10 AED" },
-          { value: "15", label: "15 AED" },
-          { value: "20", label: "20 AED" },
-          { value: "25", label: "25 AED" },
-          { value: "30", label: "30 AED" },
-          { value: "50", label: "50 AED" },
+          { value: "10", label: "10 AED", priceLYD: 70, priceLibyana: 90 },
+          { value: "15", label: "15 AED", priceLYD: 105, priceLibyana: 135 },
+          { value: "20", label: "20 AED", priceLYD: 140, priceLibyana: 180 },
+          { value: "25", label: "25 AED", priceLYD: 175, priceLibyana: 225 },
+          { value: "30", label: "30 AED", priceLYD: 210, priceLibyana: 270 },
+          { value: "50", label: "50 AED", priceLYD: 350, priceLibyana: 450 },
         ],
       },
     ],
@@ -164,7 +166,7 @@ export const defaultCategories: Category[] = [
         region: "أمريكي",
         currency: "USD",
         denominations: [
-          { value: "50", label: "50 USD" },
+          { value: "50", label: "50 USD", priceLYD: 350, priceLibyana: 450 },
         ],
       },
       {
@@ -172,15 +174,15 @@ export const defaultCategories: Category[] = [
         region: "تركي",
         currency: "TRY",
         denominations: [
-          { value: "10", label: "10 TRY" },
-          { value: "25", label: "25 TRY" },
-          { value: "50", label: "50 TRY" },
-          { value: "100", label: "100 TRY" },
-          { value: "250", label: "250 TRY" },
-          { value: "500", label: "500 TRY" },
-          { value: "750", label: "750 TRY" },
-          { value: "1000", label: "1000 TRY" },
-          { value: "1500", label: "1500 TRY" },
+          { value: "10", label: "10 TRY", priceLYD: 70, priceLibyana: 90 },
+          { value: "25", label: "25 TRY", priceLYD: 175, priceLibyana: 225 },
+          { value: "50", label: "50 TRY", priceLYD: 350, priceLibyana: 450 },
+          { value: "100", label: "100 TRY", priceLYD: 700, priceLibyana: 900 },
+          { value: "250", label: "250 TRY", priceLYD: 1750, priceLibyana: 2250 },
+          { value: "500", label: "500 TRY", priceLYD: 3500, priceLibyana: 4500 },
+          { value: "750", label: "750 TRY", priceLYD: 5250, priceLibyana: 6750 },
+          { value: "1000", label: "1000 TRY", priceLYD: 7000, priceLibyana: 9000 },
+          { value: "1500", label: "1500 TRY", priceLYD: 10500, priceLibyana: 13500 },
         ],
       },
       {
@@ -188,8 +190,8 @@ export const defaultCategories: Category[] = [
         region: "سعودي",
         currency: "SAR",
         denominations: [
-          { value: "50", label: "50 SAR" },
-          { value: "100", label: "100 SAR" },
+          { value: "50", label: "50 SAR", priceLYD: 350, priceLibyana: 450 },
+          { value: "100", label: "100 SAR", priceLYD: 700, priceLibyana: 900 },
         ],
       },
       {
@@ -197,8 +199,8 @@ export const defaultCategories: Category[] = [
         region: "إماراتي",
         currency: "AED",
         denominations: [
-          { value: "50", label: "50 AED" },
-          { value: "100", label: "100 AED" },
+          { value: "50", label: "50 AED", priceLYD: 350, priceLibyana: 450 },
+          { value: "100", label: "100 AED", priceLYD: 700, priceLibyana: 900 },
         ],
       },
     ],
@@ -218,13 +220,13 @@ export const defaultCategories: Category[] = [
         region: "أمريكي",
         currency: "USD",
         denominations: [
-          { value: "5", label: "5 USD" },
-          { value: "10", label: "10 USD" },
-          { value: "15", label: "15 USD" },
-          { value: "20", label: "20 USD" },
-          { value: "25", label: "25 USD" },
-          { value: "30", label: "30 USD" },
-          { value: "50", label: "50 USD" },
+          { value: "5", label: "5 USD", priceLYD: 35, priceLibyana: 45 },
+          { value: "10", label: "10 USD", priceLYD: 70, priceLibyana: 90 },
+          { value: "15", label: "15 USD", priceLYD: 105, priceLibyana: 135 },
+          { value: "20", label: "20 USD", priceLYD: 140, priceLibyana: 180 },
+          { value: "25", label: "25 USD", priceLYD: 175, priceLibyana: 225 },
+          { value: "30", label: "30 USD", priceLYD: 210, priceLibyana: 270 },
+          { value: "50", label: "50 USD", priceLYD: 350, priceLibyana: 450 },
         ],
       },
     ],
@@ -244,10 +246,10 @@ export const defaultCategories: Category[] = [
         region: "شدات",
         currency: "UC",
         denominations: [
-          { value: "60", label: "60 UC" },
-          { value: "325", label: "325 UC" },
-          { value: "660", label: "660 UC" },
-          { value: "1800", label: "1800 UC" },
+          { value: "60", label: "60 UC", priceLYD: 420, priceLibyana: 540 },
+          { value: "325", label: "325 UC", priceLYD: 2275, priceLibyana: 2925 },
+          { value: "660", label: "660 UC", priceLYD: 4620, priceLibyana: 5940 },
+          { value: "1800", label: "1800 UC", priceLYD: 12600, priceLibyana: 16200 },
         ],
       },
     ],
@@ -267,7 +269,7 @@ export const defaultCategories: Category[] = [
         region: "التمت",
         currency: "",
         denominations: [
-          { value: "2-months", label: "شهرين التمت - حساب كامل" },
+          { value: "2-months", label: "شهرين التمت - حساب كامل", priceLYD: 14, priceLibyana: 18 },
         ],
       },
     ],
@@ -287,7 +289,7 @@ export const defaultCategories: Category[] = [
         region: "اشتراك",
         currency: "",
         denominations: [
-          { value: "3-months", label: "اشتراك 3 أشهر" },
+          { value: "3-months", label: "اشتراك 3 أشهر", priceLYD: 21, priceLibyana: 27 },
         ],
       },
     ],
@@ -307,12 +309,12 @@ export const defaultCategories: Category[] = [
         region: "أمريكي",
         currency: "USD",
         denominations: [
-          { value: "1", label: "1 USD" },
-          { value: "2", label: "2 USD" },
-          { value: "3", label: "3 USD" },
-          { value: "4", label: "4 USD" },
-          { value: "5", label: "5 USD" },
-          { value: "10", label: "10 USD" },
+          { value: "1", label: "1 USD", priceLYD: 7, priceLibyana: 9 },
+          { value: "2", label: "2 USD", priceLYD: 14, priceLibyana: 18 },
+          { value: "3", label: "3 USD", priceLYD: 21, priceLibyana: 27 },
+          { value: "4", label: "4 USD", priceLYD: 28, priceLibyana: 36 },
+          { value: "5", label: "5 USD", priceLYD: 35, priceLibyana: 45 },
+          { value: "10", label: "10 USD", priceLYD: 70, priceLibyana: 90 },
         ],
       },
     ],
@@ -332,7 +334,7 @@ export const defaultCategories: Category[] = [
         region: "4K",
         currency: "",
         denominations: [
-          { value: "4k", label: "اشتراك نتفلكس 4K" },
+          { value: "4k", label: "اشتراك نتفلكس 4K", priceLYD: 28, priceLibyana: 36 },
         ],
       },
     ],
@@ -352,9 +354,9 @@ export const defaultCategories: Category[] = [
         region: "سعودي",
         currency: "SAR",
         denominations: [
-          { value: "200", label: "200 SAR" },
-          { value: "300", label: "300 SAR" },
-          { value: "400", label: "400 SAR" },
+          { value: "200", label: "200 SAR", priceLYD: 1400, priceLibyana: 1800 },
+          { value: "300", label: "300 SAR", priceLYD: 2100, priceLibyana: 2700 },
+          { value: "400", label: "400 SAR", priceLYD: 2800, priceLibyana: 3600 },
         ],
       },
     ],
@@ -426,9 +428,12 @@ export async function getCategories(): Promise<Category[]> {
       }
 
       if (row.ProductName && row.ProductValue) {
+        const numericVal = parseFloat(row.ProductValue) || 10;
         subCat.denominations.push({
           label: row.ProductName,
-          value: row.ProductValue
+          value: row.ProductValue,
+          priceLYD: parseFloat(row.PriceLYD) || (numericVal * 7),
+          priceLibyana: parseFloat(row.PriceLibyana) || (numericVal * 9)
         });
       }
     });
