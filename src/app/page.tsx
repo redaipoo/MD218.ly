@@ -1,9 +1,9 @@
 import Header from "@/components/Header";
 import HeroCarousel from "@/components/HeroCarousel";
 import XboxSection from "@/components/XboxSection";
+import ProductGrid from "@/components/ProductGrid";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
-import CategorySheet from "@/components/CategorySheet";
 import { getCategories } from "@/lib/products";
 
 export default async function Home() {
@@ -20,22 +20,28 @@ export default async function Home() {
         {/* Hero Carousel */}
         <HeroCarousel />
 
-        {/* Xbox Games & Accounts Section */}
-        <div className="container mx-auto px-4 mt-6">
+        {/* NEW: Xbox Games & Accounts Section */}
+        <div className="container mx-auto px-4">
           <XboxSection />
         </div>
-        
-        {/* Placeholder spacer since we removed the grid */}
-        <div className="h-12"></div>
+
+        {/* Section Title */}
+        <section className="container mx-auto px-4 mt-8 mb-6">
+          <h2 className="text-gold-gradient text-2xl md:text-3xl font-extrabold text-center md:text-right">
+            اختر البطاقة التي تناسبك
+          </h2>
+        </section>
+
+        {/* Product Grid */}
+        <section className="container mx-auto px-4">
+          <ProductGrid categories={categories} />
+        </section>
       </main>
 
       <Footer />
 
       {/* Mobile Navigation */}
       <MobileNav />
-      
-      {/* Category Bottom Sheet */}
-      <CategorySheet categories={categories} />
     </div>
   );
 }

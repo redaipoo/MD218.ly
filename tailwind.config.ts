@@ -18,9 +18,9 @@ export default {
           dark: '#cccccc',
         },
         navy: {
-          DEFAULT: '#0a0a0a',
-          light: '#141414',
-          dark: '#050505',
+          DEFAULT: '#1a0808',
+          light: '#2d1212',
+          dark: '#0f0505',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
