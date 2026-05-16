@@ -185,11 +185,11 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                             <p className="text-white font-black text-2xl drop-shadow-lg">
                               {denom.label}
                             </p>
-                            <div className="bg-navy-dark/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 mt-1">
-                              <p className="text-gold-light font-bold text-sm">
+                            <div className="bg-navy-dark/95 backdrop-blur-md px-4 py-2 rounded-xl border border-gold-light/30 mt-2 shadow-[0_0_15px_rgba(250,204,21,0.15)] transform transition-transform group-hover:scale-105">
+                              <p className="text-gold-light font-black text-lg md:text-xl tracking-wide">
                                 {paymentMethod === 'lyd' 
                                   ? `${denom.priceLYD} د.ل` 
-                                  : `${denom.priceLibyana} رصيد ليبيانا`}
+                                  : `${denom.priceLibyana} رصيد`}
                               </p>
                             </div>
                           </div>

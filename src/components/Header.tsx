@@ -58,38 +58,39 @@ export default function Header({ categories = [] }: { categories?: Category[] })
 
   return (
     <>
-      {/* Top Bar for Currency Selection */}
-      <div className="bg-navy-dark/95 border-b border-white/5 py-1.5 md:py-2">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <span className="text-[10px] md:text-xs text-white/60 font-medium">الأسعار معروضة بـ:</span>
-          <div className="flex bg-navy rounded-lg p-0.5 border border-white/5">
-            <button
-              onClick={() => setPaymentMethod('lyd')}
-              className={`px-3 md:px-4 py-1 text-[10px] md:text-xs font-bold rounded-md transition-all ${
-                paymentMethod === 'lyd'
-                  ? 'bg-crimson text-white shadow-md'
-                  : 'text-white/50 hover:text-white'
-              }`}
-            >
-              دينار ليبي 💵
-            </button>
-            <button
-              onClick={() => setPaymentMethod('libyana')}
-              className={`px-3 md:px-4 py-1 text-[10px] md:text-xs font-bold rounded-md transition-all ${
-                paymentMethod === 'libyana'
-                  ? 'bg-crimson text-white shadow-md'
-                  : 'text-white/50 hover:text-white'
-              }`}
-            >
-              رصيد ليبيانا 📱
-            </button>
+      <div className="sticky top-0 z-50 w-full flex flex-col shadow-2xl shadow-black/20">
+        {/* Top Bar for Currency Selection */}
+        <div className="bg-navy-dark border-b border-white/5 py-2">
+          <div className="container mx-auto px-4 flex justify-between items-center">
+            <span className="text-[11px] md:text-sm text-white/70 font-bold">عرض الأسعار بـ:</span>
+            <div className="flex bg-navy rounded-lg p-1 border border-white/10 shadow-inner">
+              <button
+                onClick={() => setPaymentMethod('lyd')}
+                className={`px-3 md:px-5 py-1.5 text-[11px] md:text-xs font-black rounded-md transition-all ${
+                  paymentMethod === 'lyd'
+                    ? 'bg-crimson text-white shadow-lg shadow-crimson/30'
+                    : 'text-white/50 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                دينار ليبي 💵
+              </button>
+              <button
+                onClick={() => setPaymentMethod('libyana')}
+                className={`px-3 md:px-5 py-1.5 text-[11px] md:text-xs font-black rounded-md transition-all ${
+                  paymentMethod === 'libyana'
+                    ? 'bg-crimson text-white shadow-lg shadow-crimson/30'
+                    : 'text-white/50 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                رصيد ليبيانا 📱
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <header className="sticky top-0 z-50 w-full bg-navy-dark/95 backdrop-blur-xl border-b border-border/40 overflow-x-clip">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20 md:h-[72px] gap-3">
+        <header className="w-full bg-navy-dark/95 backdrop-blur-xl border-b border-border/40 overflow-x-clip">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between h-20 md:h-[72px] gap-3">
             {/* Right Side: Logo - Bigger & More Prominent */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
               <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-2xl overflow-hidden shadow-lg shadow-crimson/30 group-hover:shadow-crimson/50 transition-all duration-300 group-hover:scale-105 ring-2 ring-crimson/20 group-hover:ring-crimson/40 flex-shrink-0">
@@ -189,6 +190,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
           </div>
         </div>
       </header>
+      </div>
 
       {/* Cart Drawer */}
       <CartDrawer isOpen={showCart} onClose={() => setShowCart(false)} />
