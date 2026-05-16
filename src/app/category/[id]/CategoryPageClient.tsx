@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Plus, Check, ShoppingCart } from "lucide-react";
+import { ArrowRight, Plus, Check } from "lucide-react";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -18,7 +18,6 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
   const addItem = useCartStore((s) => s.addItem);
   const paymentMethod = useCartStore((s) => s.paymentMethod);
   const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
-  const [showNotification, setShowNotification] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -45,7 +44,6 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
     });
 
     setAddedItems((prev) => new Set(prev).add(uniqueKey));
-    setShowNotification(true);
     
     setTimeout(() => {
       setAddedItems((prev) => {
@@ -54,10 +52,6 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
         return next;
       });
     }, 1500);
-
-    setTimeout(() => {
-      setShowNotification(false);
-    }, 4000);
   };
 
   const hasBgImage = category.bgUrl && category.bgUrl.length > 0;
@@ -241,36 +235,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
       <Footer />
       <MobileNav />
 
-      {/* Floating Global Notification */}
-      {showNotification && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-md animate-toast-in">
-          <div className="bg-gradient-to-r from-navy-dark via-navy-light to-navy-dark border-2 border-crimson/50 rounded-2xl shadow-[0_0_50px_rgba(220,38,38,0.3)] overflow-hidden">
-            <div className="p-4 flex items-center gap-4">
-              <div className="w-12 h-12 bg-crimson rounded-xl flex items-center justify-center shadow-lg shadow-crimson/20 flex-shrink-0 animate-bounce">
-                <ShoppingCart className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-white font-black text-sm">تمت الإضافة للسلة! 🛍️</h4>
-                <p className="text-white/60 text-xs font-medium">يرجى إتمام طلبك الآن من السلة بالأسفل.</p>
-              </div>
-              <button 
-                onClick={() => setShowNotification(false)}
-                className="text-white/40 hover:text-white"
-              >
-                <Plus className="w-5 h-5 rotate-45" />
-              </button>
-            </div>
-            <div className="bg-crimson/10 px-4 py-2 flex justify-between items-center border-t border-crimson/20">
-              <span className="text-[10px] text-crimson-light font-bold uppercase tracking-wider animate-pulse">تنبيه: لا تنسَ إتمام الطلب</span>
-              <div className="flex gap-1">
-                <div className="w-1 h-1 rounded-full bg-crimson animate-ping" />
-                <div className="w-1 h-1 rounded-full bg-crimson animate-ping" style={{ animationDelay: '0.2s' }} />
-                <div className="w-1 h-1 rounded-full bg-crimson animate-ping" style={{ animationDelay: '0.4s' }} />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+
     </div>
   );
 }
