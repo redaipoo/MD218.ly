@@ -43,30 +43,32 @@ export default function XboxSection() {
           {/* Card 1 - Xbox Digital Games */}
           <Link href="/xbox-games" className="block group">
             <div
-              className="relative overflow-hidden cursor-pointer transition-all duration-300 ease-out group-hover:scale-[1.04] group-hover:shadow-[0_0_30px_rgba(16,124,16,0.5)]"
+              className="relative overflow-hidden cursor-pointer transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:shadow-[0_0_25px_rgba(16,124,16,0.2)] bg-[#050505]"
               style={{
-                background: "linear-gradient(135deg, #107C10, #0a5a0a)",
                 borderRadius: "16px",
-                padding: "24px 16px",
-                border: "1px solid rgba(16,124,16,0.6)",
+                padding: "24px",
+                border: "1px solid rgba(16,124,16,0.3)",
               }}
             >
+              {/* Green accent line */}
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#107C10] to-[#00ff00]/50" />
+
               {/* Shine effect on hover */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
               <div className="relative flex flex-col items-center text-center gap-3">
                 {/* Xbox Icon */}
-                <div className="w-[60px] h-[60px] flex items-center justify-center mb-1">
-                  <Gamepad2 className="w-14 h-14 text-white" />
+                <div className="w-[50px] h-[50px] flex items-center justify-center bg-[#107C10]/10 rounded-full border border-[#107C10]/20 mb-1 group-hover:bg-[#107C10]/20 transition-colors">
+                  <Gamepad2 className="w-8 h-8 text-[#00ff00]" />
                 </div>
 
-                <h3 className="text-white font-bold text-lg">ألعاب Xbox الرقمية</h3>
-                <p className="text-green-300/80 text-[13px]">مفاتيح رقمية - تفعيل فوري</p>
+                <h3 className="text-white font-bold text-xl">ألعاب Xbox الرقمية</h3>
+                <p className="text-white/60 text-[14px] max-w-[250px]">مفاتيح رقمية بتفعيل فوري لأحدث ألعاب الإكس بوكس</p>
 
-                {/* Badge */}
-                <span className="mt-2 px-4 py-1.5 bg-[#0a3a0a] text-white text-xs font-bold rounded-full border border-green-500/30">
-                  متوفر الآن ✅
-                </span>
+                {/* Call to Action Button */}
+                <div className="mt-3 w-full py-2.5 bg-[#107C10]/20 text-[#00ff00] text-sm font-bold rounded-xl border border-[#107C10]/40 group-hover:bg-[#107C10] group-hover:text-white transition-all">
+                  تصفح الألعاب ←
+                </div>
               </div>
             </div>
           </Link>
@@ -74,30 +76,32 @@ export default function XboxSection() {
           {/* Card 2 - Xbox Shared Accounts */}
           <Link href="/shared-accounts" className="block group">
             <div
-              className="relative overflow-hidden cursor-pointer transition-all duration-300 ease-out group-hover:scale-[1.04] group-hover:shadow-[0_0_30px_rgba(16,124,16,0.5)]"
+              className="relative overflow-hidden cursor-pointer transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:shadow-[0_0_25px_rgba(16,124,16,0.2)] bg-[#050505]"
               style={{
-                background: "linear-gradient(135deg, #1a3a1a, #0f2b0f)",
                 borderRadius: "16px",
-                padding: "24px 16px",
-                border: "1px solid rgba(16,124,16,0.6)",
+                padding: "24px",
+                border: "1px solid rgba(16,124,16,0.3)",
               }}
             >
+              {/* Green accent line */}
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#107C10] to-[#00ff00]/50" />
+
               {/* Shine effect on hover */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
               <div className="relative flex flex-col items-center text-center gap-3">
                 {/* Users Icon */}
-                <div className="w-[60px] h-[60px] flex items-center justify-center mb-1">
-                  <Users className="w-14 h-14 text-white" />
+                <div className="w-[50px] h-[50px] flex items-center justify-center bg-[#107C10]/10 rounded-full border border-[#107C10]/20 mb-1 group-hover:bg-[#107C10]/20 transition-colors">
+                  <Users className="w-8 h-8 text-[#00ff00]" />
                 </div>
 
-                <h3 className="text-white font-bold text-lg">حسابات Xbox مشتركة</h3>
-                <p className="text-green-300/80 text-[13px]">العب مع أصدقائك بأقل سعر</p>
+                <h3 className="text-white font-bold text-xl">حسابات مشتركة</h3>
+                <p className="text-white/60 text-[14px] max-w-[250px]">العب مع أصدقائك بأقل الأسعار الممكنة والتوفير</p>
 
-                {/* Badge */}
-                <span className="mt-2 px-4 py-1.5 bg-[#0a3a0a] text-white text-xs font-bold rounded-full border border-green-500/30">
-                  توفير حتى 70% 💰
-                </span>
+                {/* Call to Action Button */}
+                <div className="mt-3 w-full py-2.5 bg-[#107C10]/20 text-[#00ff00] text-sm font-bold rounded-xl border border-[#107C10]/40 group-hover:bg-[#107C10] group-hover:text-white transition-all">
+                  اشترك الآن ←
+                </div>
               </div>
             </div>
           </Link>

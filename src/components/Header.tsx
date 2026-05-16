@@ -97,8 +97,11 @@ export default function Header({ categories = [] }: { categories?: Category[] })
                 <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
-                <span className="text-white font-black text-xl md:text-2xl leading-tight tracking-wider">MD218</span>
-                <span className="text-crimson-light text-[10px] md:text-xs font-bold -mt-0.5 tracking-[0.3em]">.LY</span>
+                <span className="font-black text-xl md:text-2xl leading-tight tracking-wider">
+                  <span className="text-white">MD</span>
+                  <span className="text-crimson">218</span>
+                </span>
+                <span className="text-white text-[10px] md:text-xs font-bold -mt-0.5 tracking-[0.3em]">LY</span>
               </div>
             </Link>
 

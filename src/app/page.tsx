@@ -20,11 +20,6 @@ export default async function Home() {
         {/* Hero Carousel */}
         <HeroCarousel />
 
-        {/* NEW: Xbox Games & Accounts Section */}
-        <div className="container mx-auto px-4">
-          <XboxSection />
-        </div>
-
         {/* Section Title */}
         <section className="container mx-auto px-4 mt-8 mb-6">
           <h2 className="text-gold-gradient text-2xl md:text-3xl font-extrabold text-center md:text-right">
@@ -36,6 +31,11 @@ export default async function Home() {
         <section className="container mx-auto px-4">
           <ProductGrid categories={categories} />
         </section>
+
+        {/* Xbox Games & Accounts Section Moved to Bottom */}
+        <div className="container mx-auto px-4 mt-12 mb-8">
+          <XboxSection />
+        </div>
       </main>
 
       <Footer />
