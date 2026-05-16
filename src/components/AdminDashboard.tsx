@@ -44,20 +44,62 @@ export default function AdminDashboard() {
     setIsSaving(true);
     setMessage(null);
     try {
-      const res = await fetch("/api/admin/update", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password, data }),
+      // Since the site is a Static Export, we communicate with GitHub directly from the browser!
+      const owner = "redaipoo";
+      const repo = "MD.LY";
+      const filePath = "src/data/categories.json";
+      const branch = "main";
+      const token = password.trim();
+
+      if (!token.startsWith("ghp_") && !token.startsWith("github_pat_")) {
+        setMessage({ text: "رمز قيت هب (Token) غير صالح. يجب أن يبدأ بـ ghp_", type: "error" });
+        setIsSaving(false);
+        return;
+      }
+
+      // 1. Get the current file's SHA
+      const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json"
+        }
       });
-      const result = await res.json();
-      
-      if (res.ok) {
-        setMessage({ text: result.message || "تم الحفظ بنجاح", type: "success" });
+
+      let sha = undefined;
+      if (getRes.ok) {
+        const getJson = await getRes.json();
+        sha = getJson.sha;
+      }
+
+      // Encode the content using browser's btoa (handling unicode properly)
+      const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+
+      // 2. Update the file
+      const updateRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: "Admin Panel: Update categories and prices",
+          content: encodedContent,
+          sha: sha,
+          branch: branch
+        })
+      });
+
+      if (updateRes.ok) {
+        setMessage({ text: "تم الحفظ بنجاح! سيتم تحديث الموقع خلال دقيقة.", type: "success" });
       } else {
-        setMessage({ text: result.error || "فشل الحفظ", type: "error" });
+        const errText = await updateRes.text();
+        console.error("GitHub API Error:", errText);
+        setMessage({ text: "حدث خطأ أثناء الاتصال بقيت هب. تأكد من صلاحيات الرمز (Token).", type: "error" });
       }
     } catch (error) {
-      setMessage({ text: "حدث خطأ غير متوقع", type: "error" });
+      console.error("Save error:", error);
+      setMessage({ text: `حدث خطأ في الاتصال: ${error instanceof Error ? error.message : String(error)}`, type: "error" });
     }
     setIsSaving(false);
   };
@@ -124,7 +166,7 @@ export default function AdminDashboard() {
             <Lock className="w-8 h-8 text-crimson" />
           </div>
           <h1 className="text-2xl font-black text-white text-center mb-2">لوحة التحكم</h1>
-          <p className="text-white/50 text-center text-sm mb-8">أدخل كلمة المرور للوصول إلى إدارة المتجر</p>
+          <p className="text-white/50 text-center text-sm mb-8">للحماية، يرجى إدخال <b>رمز قيت هب (GitHub Token)</b> الخاص بك للوصول وإجراء التعديلات</p>
           
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
@@ -132,8 +174,8 @@ export default function AdminDashboard() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="كلمة المرور..."
-                className="w-full bg-navy border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-crimson focus:ring-1 focus:ring-crimson transition-all text-center tracking-widest"
+                placeholder="ghp_xxxxxxxxxxxxxxxxxxxxx..."
+                className="w-full bg-navy border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-crimson focus:ring-1 focus:ring-crimson transition-all text-center tracking-widest text-sm"
                 required
               />
             </div>
