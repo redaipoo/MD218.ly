@@ -12,15 +12,15 @@ export default function Footer() {
           <div className="text-center md:text-right">
             <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
               <div className="w-14 h-14 rounded-xl overflow-hidden shadow-lg shadow-crimson/30">
-                <img src="/logo.png" alt="MD.LY" className="w-full h-full object-cover" />
+                <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
-                <span className="text-white font-black text-2xl leading-tight tracking-wider">MD</span>
+                <span className="text-white font-black text-2xl leading-tight tracking-wider">MD218</span>
                 <span className="text-crimson-light text-xs font-bold -mt-1 tracking-[0.3em]">.LY</span>
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
-              MD.LY متجرك الأول لبطاقات الألعاب والهدايا الرقمية.
+              MD218.LY متجرك الأول لبطاقات الألعاب والهدايا الرقمية.
               اختر منتجك وأرسل طلبك مباشرة عبر واتساب.
             </p>
             <div className="flex items-center justify-center md:justify-start gap-2 mt-4">
@@ -113,7 +113,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-border text-center">
           <p className="text-white/40 text-sm">
-            © 2026 MD.LY - جميع الحقوق محفوظة
+            © 2026 MD218.LY - جميع الحقوق محفوظة
           </p>
         </div>
       </div>

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MD.LY | بطاقات رقمية وشحن فوري",
+  title: "MD218.LY | بطاقات رقمية وشحن فوري",
   description:
-    "MD.LY - متجرك الأول لبطاقات الألعاب والهدايا الرقمية. Xbox, PlayStation, Steam, Apple, Netflix وأكثر. اطلب عبر واتساب!",
+    "MD218.LY - متجرك الأول لبطاقات الألعاب والهدايا الرقمية. Xbox, PlayStation, Steam, Apple, Netflix وأكثر. اطلب عبر واتساب!",
   keywords: [
     "بطاقات رقمية",
     "شحن فوري",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "نتفلكس",
     "ببجي",
     "ليبيا",
-    "MD.LY",
+    "MD218.LY",
   ],
   icons: {
     icon: "/logo.png",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "MD.LY | بطاقات رقمية وشحن فوري",
+    title: "MD218.LY | بطاقات رقمية وشحن فوري",
     description:
       "متجرك الأول لبطاقات الألعاب والهدايا الرقمية. اطلب عبر واتساب!",
     type: "website",

@@ -94,10 +94,10 @@ export default function Header({ categories = [] }: { categories?: Category[] })
             {/* Right Side: Logo - Bigger & More Prominent */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
               <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-2xl overflow-hidden shadow-lg shadow-crimson/30 group-hover:shadow-crimson/50 transition-all duration-300 group-hover:scale-105 ring-2 ring-crimson/20 group-hover:ring-crimson/40 flex-shrink-0">
-                <img src="/logo.png" alt="MD.LY" className="w-full h-full object-cover" />
+                <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
-                <span className="text-white font-black text-xl md:text-2xl leading-tight tracking-wider">MD</span>
+                <span className="text-white font-black text-xl md:text-2xl leading-tight tracking-wider">MD218</span>
                 <span className="text-crimson-light text-[10px] md:text-xs font-bold -mt-0.5 tracking-[0.3em]">.LY</span>
               </div>
             </Link>

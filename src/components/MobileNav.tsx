@@ -39,7 +39,7 @@ export default function MobileNav() {
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-crimson/50 to-red-500/50 rounded-full blur-lg opacity-60 group-hover:opacity-100 group-active:opacity-100 transition-opacity" />
           <div className="relative w-16 h-16 rounded-full overflow-hidden border-[3px] border-navy-dark shadow-2xl shadow-crimson/30 ring-2 ring-crimson/30 group-active:scale-95 transition-transform">
-            <img src="/logo.png" alt="MD.LY" className="w-full h-full object-cover" />
+            <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
           </div>
         </Link>
 

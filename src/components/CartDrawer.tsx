@@ -23,7 +23,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const sendToWhatsApp = () => {
     if (items.length === 0) return;
 
-    let message = "🛒 *طلب جديد من MD.LY*\n";
+    let message = "🛒 *طلب جديد من MD218.LY*\n";
     message += "━━━━━━━━━━━━━━━━━━\n\n";
 
     items.forEach((item, index) => {
@@ -39,7 +39,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     message += `📊 إجمالي العناصر: ${totalItems}\n`;
     message += `💳 طريقة الدفع المختارة: ${paymentMethod === 'lyd' ? 'دينار ليبي 💵' : 'رصيد ليبيانا 📱'}\n`;
     message += `🧾 الإجمالي المطلوب: *${totalPrice} ${currencyLabel}*\n`;
-    message += "\nشكراً لاختياركم MD.LY! ✨";
+    message += "\nشكراً لاختياركم MD218.LY! ✨";
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, "_blank");

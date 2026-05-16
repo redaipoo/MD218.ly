@@ -24,7 +24,7 @@ export async function generateMetadata({
 
   if (!category) {
     return {
-      title: "القسم غير موجود | MD.LY",
+      title: "القسم غير موجود | MD218.LY",
     };
   }
 
@@ -34,10 +34,10 @@ export async function generateMetadata({
   );
 
   return {
-    title: `${category.name} - ${category.nameEn} | MD.LY`,
+    title: `${category.name} - ${category.nameEn} | MD218.LY`,
     description: `اشترِ بطاقات ${category.name} (${category.nameEn}) بأسعار منافسة. ${totalProducts} فئة متوفرة. اطلب فوراً عبر واتساب!`,
     openGraph: {
-      title: `${category.name} | MD.LY`,
+      title: `${category.name} | MD218.LY`,
       description: `بطاقات ${category.name} - ${totalProducts} منتج متوفر`,
       type: "website",
       locale: "ar_LY",
