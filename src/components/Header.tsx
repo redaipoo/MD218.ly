@@ -164,7 +164,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
 
                 {/* Cart Toast Notification - More prominent and urgent */}
                 {cartToast && (
-                  <div className="fixed md:absolute bottom-24 md:bottom-auto md:top-full left-1/2 -translate-x-1/2 md:mt-4 whitespace-nowrap z-[100] animate-toast-in">
+                  <div className="fixed md:absolute bottom-24 md:bottom-auto md:translate-y-0 md:top-full left-1/2 -translate-x-1/2 md:mt-4 whitespace-nowrap z-[100] animate-toast-in">
                     <button
                       onClick={() => { setCartToast(false); setShowCart(true); }}
                       className="group flex flex-col items-center bg-gradient-to-br from-crimson via-red-600 to-crimson-dark text-white p-1 rounded-2xl shadow-[0_0_40px_rgba(220,38,38,0.5)] transition-all duration-300 hover:scale-105 active:scale-95"

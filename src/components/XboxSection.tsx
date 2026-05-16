@@ -41,7 +41,7 @@ export default function XboxSection() {
         {/* Two Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
           {/* Card 1 - Xbox Digital Games */}
-          <Link href="/category/xbox" className="block group">
+          <Link href="/xbox-games" className="block group">
             <div
               className="relative overflow-hidden cursor-pointer transition-all duration-300 ease-out group-hover:scale-[1.04] group-hover:shadow-[0_0_30px_rgba(16,124,16,0.5)]"
               style={{
@@ -72,7 +72,7 @@ export default function XboxSection() {
           </Link>
 
           {/* Card 2 - Xbox Shared Accounts */}
-          <Link href="/category/gamepass" className="block group">
+          <Link href="/shared-accounts" className="block group">
             <div
               className="relative overflow-hidden cursor-pointer transition-all duration-300 ease-out group-hover:scale-[1.04] group-hover:shadow-[0_0_30px_rgba(16,124,16,0.5)]"
               style={{
