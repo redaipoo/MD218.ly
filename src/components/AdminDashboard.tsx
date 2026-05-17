@@ -302,7 +302,7 @@ export default function AdminDashboard() {
                                 </div>
                                 <div className="flex w-full md:w-2/3 gap-2 items-end">
                                   <div className="flex-1">
-                                    <label className="block text-xs font-bold text-green-400/80 mb-1">سعر المدار (د.ل)</label>
+                                    <label className="block text-xs font-bold text-green-400/80 mb-1">سعر الدينار الليبي (د.ل)</label>
                                     <input
                                       type="number"
                                       value={den.priceLYD || 0}
