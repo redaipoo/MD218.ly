@@ -122,20 +122,20 @@
           {
             "value": "59",
             "label": "59 AED",
-            "priceLYD": 413,
-            "priceLibyana": 531
+            "priceLYD": 140,
+            "priceLibyana": 185
           },
           {
             "value": "99",
             "label": "99 AED",
-            "priceLYD": 693,
-            "priceLibyana": 891
+            "priceLYD": 235,
+            "priceLibyana": 310
           },
           {
             "value": "199",
             "label": "199 AED",
-            "priceLYD": 1393,
-            "priceLibyana": 1791
+            "priceLYD": 270,
+            "priceLibyana": 0
           }
         ]
       }
