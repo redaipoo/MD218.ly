@@ -61,9 +61,11 @@ export const useCartStore = create<CartStore>((set) => ({
   fetchCategories: async () => {
     set({ isCategoriesLoading: true });
     try {
-      // Fetch latest JSON directly from GitHub API to bypass Netlify static cache completely
-      const res = await fetch("https://api.github.com/repos/redaipoo/MD.LY/contents/src/data/categories.json", {
-        headers: { Accept: "application/vnd.github.v3.raw" },
+      // Fetch latest JSON directly from GitHub Raw to bypass Netlify static cache completely
+      // raw.githubusercontent has no strict rate limit compared to api.github.com (60/hr)
+      // We add a timestamp to bypass browser caching, though GitHub CDN may still cache for ~1-5 mins.
+      const timestamp = new Date().getTime();
+      const res = await fetch(`https://raw.githubusercontent.com/redaipoo/MD.LY/main/src/data/categories.json?t=${timestamp}`, {
         cache: "no-store"
       });
       if (res.ok) {
