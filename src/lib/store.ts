@@ -20,6 +20,10 @@ interface CartStore {
   removeItem: (id: string, value: string) => void;
   updateQuantity: (id: string, value: string, quantity: number) => void;
   clearCart: () => void;
+  // Product Catalog Hydration
+  categories: any[];
+  isCategoriesLoading: boolean;
+  fetchCategories: () => Promise<void>;
 }
 
 export const useCartStore = create<CartStore>((set) => ({
@@ -51,4 +55,26 @@ export const useCartStore = create<CartStore>((set) => ({
       ),
     })),
   clearCart: () => set({ items: [] }),
+  // Product Catalog Hydration
+  categories: [],
+  isCategoriesLoading: false,
+  fetchCategories: async () => {
+    set({ isCategoriesLoading: true });
+    try {
+      // Fetch latest JSON directly from GitHub API to bypass Netlify static cache completely
+      const res = await fetch("https://api.github.com/repos/redaipoo/MD.LY/contents/src/data/categories.json", {
+        headers: { Accept: "application/vnd.github.v3.raw" },
+        cache: "no-store"
+      });
+      if (res.ok) {
+        const data = await res.json();
+        set({ categories: data, isCategoriesLoading: false });
+      } else {
+        set({ isCategoriesLoading: false });
+      }
+    } catch (error) {
+      console.error("Failed to fetch fresh categories", error);
+      set({ isCategoriesLoading: false });
+    }
+  },
 }));

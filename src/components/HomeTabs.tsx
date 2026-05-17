@@ -1,14 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductGrid from "./ProductGrid";
 import { Gamepad2, Users, CreditCard } from "lucide-react";
 import type { Category } from "@/lib/products";
+import { useCartStore } from "@/lib/store";
 
 type TabId = "cards" | "accounts" | "games";
 
-export default function HomeTabs({ categories }: { categories: Category[] }) {
+export default function HomeTabs({ categories: initialCategories }: { categories: Category[] }) {
   const [activeTab, setActiveTab] = useState<TabId>("cards");
+  const { categories: liveCategories, fetchCategories } = useCartStore();
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
+
+  const displayCategories = liveCategories && liveCategories.length > 0 ? liveCategories : initialCategories;
 
   return (
     <div className="w-full">
@@ -57,7 +65,7 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
       <div className="transition-opacity duration-500 ease-in-out">
         {activeTab === "cards" && (
           <section className="container mx-auto px-4 animate-fade-in">
-            <ProductGrid categories={categories} />
+            <ProductGrid categories={displayCategories} />
           </section>
         )}
 
