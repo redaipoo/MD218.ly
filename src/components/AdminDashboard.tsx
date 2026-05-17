@@ -289,31 +289,41 @@ export default function AdminDashboard() {
                         {expandedSub === sub.id && (
                           <div className="p-4 border-t border-white/5 space-y-3">
                             {sub.denominations.map((den, idx) => (
-                              <div key={idx} className="flex flex-col md:flex-row gap-3 items-center bg-navy-dark p-3 rounded-lg border border-white/5">
-                                <input
-                                  type="text"
-                                  value={den.label}
-                                  onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'label', e.target.value)}
-                                  className="w-full md:w-1/2 bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson"
-                                  placeholder="اسم المنتج (مثال: 50 TRY)"
-                                />
-                                <div className="flex w-full md:w-1/2 gap-2 items-center">
-                                  <div className="flex-1 relative">
-                                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 text-xs">د.ل</span>
+                              <div key={idx} className="flex flex-col md:flex-row gap-3 items-end bg-navy-dark p-3 rounded-lg border border-white/5">
+                                <div className="w-full md:w-1/3">
+                                  <label className="block text-xs font-bold text-white/50 mb-1">اسم المنتج</label>
+                                  <input
+                                    type="text"
+                                    value={den.label}
+                                    onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'label', e.target.value)}
+                                    className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson"
+                                    placeholder="مثال: 50 TRY"
+                                  />
+                                </div>
+                                <div className="flex w-full md:w-2/3 gap-2 items-end">
+                                  <div className="flex-1">
+                                    <label className="block text-xs font-bold text-green-400/80 mb-1">سعر المدار (د.ل)</label>
                                     <input
                                       type="number"
                                       value={den.priceLYD || 0}
-                                      onChange={(e) => {
-                                        updateDenomination(cat.id, sub.id, idx, 'priceLYD', e.target.value);
-                                        updateDenomination(cat.id, sub.id, idx, 'priceLibyana', e.target.value);
-                                      }}
-                                      className="w-full bg-black/50 border border-white/10 rounded-md pr-10 pl-3 py-2 text-sm text-green-400 font-bold focus:border-crimson text-left"
-                                      placeholder="سعر المنتج"
+                                      onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'priceLYD', e.target.value)}
+                                      className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-green-400 font-bold focus:border-crimson text-left"
+                                      placeholder="0"
+                                    />
+                                  </div>
+                                  <div className="flex-1">
+                                    <label className="block text-xs font-bold text-blue-400/80 mb-1">سعر ليبيانا (د.ل)</label>
+                                    <input
+                                      type="number"
+                                      value={den.priceLibyana || 0}
+                                      onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'priceLibyana', e.target.value)}
+                                      className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-blue-400 font-bold focus:border-crimson text-left"
+                                      placeholder="0"
                                     />
                                   </div>
                                   <button
                                     onClick={() => deleteDenomination(cat.id, sub.id, idx)}
-                                    className="w-10 h-10 flex-shrink-0 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-md flex items-center justify-center transition-colors"
+                                    className="w-10 h-[38px] flex-shrink-0 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-md flex items-center justify-center transition-colors mb-[1px]"
                                   >
                                     <Trash2 className="w-4 h-4" />
                                   </button>
