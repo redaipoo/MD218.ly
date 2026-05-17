@@ -65,63 +65,63 @@ export default function AdminDashboard() {
     setIsSaving(true);
     setMessage(null);
     try {
-      // Since the site is a Static Export, we communicate with GitHub directly from the browser!
       const owner = "redaipoo";
       const repo = "MD.LY";
       const filePath = "src/data/categories.json";
       const branch = "main";
-      const token = password.trim();
+      const githubToken = password.trim();
 
-      if (!token.startsWith("ghp_") && !token.startsWith("github_pat_")) {
-        setMessage({ text: "رمز قيت هب (Token) غير صالح. يجب أن يبدأ بـ ghp_", type: "error" });
+      if (!githubToken) {
+        setMessage({ text: "Please fill all fields!", type: "error" });
         setIsSaving(false);
         return;
       }
 
       // 1. Get the current file's SHA
-      const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
+      const getResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
         headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github.v3+json"
+          'Authorization': `token ${githubToken}`,
+          'Accept': 'application/vnd.github.v3+json'
         },
-        cache: "no-store"
+        cache: 'no-store'
       });
 
-      let sha = undefined;
-      if (getRes.ok) {
-        const getJson = await getRes.json();
-        sha = getJson.sha;
+      if (!getResponse.ok) {
+        throw new Error(`Failed to fetch file: ${getResponse.status}`);
       }
 
-      // Encode the content using browser's btoa (handling unicode properly)
-      const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+      const fileData = await getResponse.json();
+      const currentSha = fileData.sha;
 
-      // 2. Update the file
-      const updateRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
-        method: "PUT",
+      // Prepare updated content in Base64 (safely handling Arabic/UTF-8)
+      const newContent = JSON.stringify(data, null, 2);
+      // We use encodeURIComponent to handle Arabic characters properly before btoa
+      const updatedContent = btoa(unescape(encodeURIComponent(newContent)));
+
+      // 3. Send PUT request to update the file
+      const updateResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
+        method: 'PUT',
         headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github.v3+json",
-          "Content-Type": "application/json"
+          'Authorization': `token ${githubToken}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          message: "Admin Panel: Update categories and prices",
-          content: encodedContent,
-          sha: sha,
+          message: "Update price via Admin page",
+          content: updatedContent,
+          sha: currentSha,
           branch: branch
         })
       });
 
-      if (updateRes.ok) {
-        setMessage({ text: "تم الحفظ بنجاح! سيتم تحديث الموقع خلال دقيقة.", type: "success" });
-      } else {
-        const errText = await updateRes.text();
-        console.error("GitHub API Error:", errText);
-        setMessage({ text: "حدث خطأ أثناء الاتصال بقيت هب. تأكد من صلاحيات الرمز (Token).", type: "error" });
+      if (!updateResponse.ok) {
+        throw new Error(`Failed to update file: ${updateResponse.status}`);
       }
+
+      setMessage({ text: "✅ Price updated successfully!", type: "success" });
     } catch (error) {
-      console.error("Save error:", error);
-      setMessage({ text: `حدث خطأ في الاتصال: ${error instanceof Error ? error.message : String(error)}`, type: "error" });
+      console.error(error);
+      setMessage({ text: `❌ Error updating price: ${error instanceof Error ? error.message : String(error)}`, type: "error" });
     }
     setIsSaving(false);
   };
