@@ -36,7 +36,7 @@ export default function AdminDashboard() {
       const branch = "main";
 
       // Fetch absolutely fresh data using the token to prevent any rate limits and bypass cache!
-      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`, {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
         headers: { 
           Authorization: `Bearer ${token}`,
           Accept: "application/vnd.github.v3.raw" 
@@ -79,11 +79,12 @@ export default function AdminDashboard() {
       }
 
       // 1. Get the current file's SHA
-      const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`, {
+      const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: "application/vnd.github.v3+json"
-        }
+        },
+        cache: "no-store"
       });
 
       let sha = undefined;
