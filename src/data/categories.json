@@ -214,26 +214,26 @@
           {
             "value": "250",
             "label": "250 TRY",
-            "priceLYD": 1750,
-            "priceLibyana": 2250
+            "priceLYD": 50,
+            "priceLibyana": 65
           },
           {
             "value": "500",
             "label": "500 TRY",
-            "priceLYD": 3500,
-            "priceLibyana": 4500
+            "priceLYD": 100,
+            "priceLibyana": 130
           },
           {
             "value": "750",
             "label": "750 TRY",
-            "priceLYD": 5250,
-            "priceLibyana": 6750
+            "priceLYD": 145,
+            "priceLibyana": 195
           },
           {
             "value": "1000",
             "label": "1000 TRY",
-            "priceLYD": 7000,
-            "priceLibyana": 9000
+            "priceLYD": 195,
+            "priceLibyana": 260
           }
         ]
       },
