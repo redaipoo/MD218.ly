@@ -48,26 +48,26 @@
           {
             "value": "50",
             "label": "50 SAR",
-            "priceLYD": 350,
-            "priceLibyana": 450
+            "priceLYD": 112,
+            "priceLibyana": 150
           },
           {
             "value": "100",
             "label": "100 SAR",
-            "priceLYD": 700,
-            "priceLibyana": 900
+            "priceLYD": 225,
+            "priceLibyana": 285
           },
           {
             "value": "200",
             "label": "200 SAR",
-            "priceLYD": 1400,
-            "priceLibyana": 570
+            "priceLYD": 445,
+            "priceLibyana": 0
           },
           {
             "value": "300",
             "label": "300 SAR",
-            "priceLYD": 2100,
-            "priceLibyana": 2700
+            "priceLYD": 660,
+            "priceLibyana": 0
           }
         ]
       },
