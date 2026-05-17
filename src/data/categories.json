@@ -522,20 +522,20 @@
           {
             "value": "325",
             "label": "325 UC",
-            "priceLYD": 2275,
-            "priceLibyana": 2925
+            "priceLYD": 40,
+            "priceLibyana": 53
           },
           {
             "value": "660",
             "label": "660 UC",
-            "priceLYD": 4620,
-            "priceLibyana": 5940
+            "priceLYD": 80,
+            "priceLibyana": 105
           },
           {
             "value": "1800",
             "label": "1800 UC",
-            "priceLYD": 12600,
-            "priceLibyana": 16200
+            "priceLYD": 200,
+            "priceLibyana": 260
           }
         ]
       }
