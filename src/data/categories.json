@@ -330,9 +330,27 @@
         "denominations": [
           {
             "value": "50",
-            "label": "50 USD",
-            "priceLYD": 343,
-            "priceLibyana": 450
+            "label": "2 USD",
+            "priceLYD": 17,
+            "priceLibyana": 23
+          },
+          {
+            "label": "5 USD",
+            "value": "new",
+            "priceLYD": 43,
+            "priceLibyana": 56
+          },
+          {
+            "label": "10 USD",
+            "value": "new",
+            "priceLYD": 85,
+            "priceLibyana": 112
+          },
+          {
+            "label": "20 USD",
+            "value": "new",
+            "priceLYD": 170,
+            "priceLibyana": 224
           }
         ]
       },
