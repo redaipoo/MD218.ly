@@ -1,0 +1,322 @@
+[
+  {
+    "id": "shared-1",
+    "title": "Resident Evil Biohazard",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-1.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-2",
+    "title": "The Witcher 3: Wild Hunt",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-2.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-3",
+    "title": "Elden Ring",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-3.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-4",
+    "title": "حساب ألعاب مشترك 4",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-4.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-5",
+    "title": "Far Cry New Dawn",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-5.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-6",
+    "title": "Black Myth: Wukong",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-6.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-7",
+    "title": "حساب ألعاب مشترك 7",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-7.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-8",
+    "title": "Red Dead Redemption: Undead Nightmare",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-8.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-9",
+    "title": "Resident Evil 2 & 3",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-9.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-10",
+    "title": "حساب ألعاب مشترك 10",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-10.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-11",
+    "title": "Bleach: Rebirth of Souls",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-11.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-12",
+    "title": "The First Berserker: Khazan",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-12.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-13",
+    "title": "حساب ألعاب مشترك 13",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-13.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-14",
+    "title": "حساب ألعاب مشترك 14",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-14.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-15",
+    "title": "حساب ألعاب مشترك 15",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-15.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-16",
+    "title": "حساب ألعاب مشترك 16",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-16.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-17",
+    "title": "Silent Hill 2",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-17.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-18",
+    "title": "Devil May Cry HD Collection",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-18.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-19",
+    "title": "حساب ألعاب مشترك 19",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-19.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-20",
+    "title": "حساب ألعاب مشترك 20",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-20.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-21",
+    "title": "حساب ألعاب مشترك 21",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-21.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-22",
+    "title": "Call of Duty: Black Ops 6",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-22.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-23",
+    "title": "حساب ألعاب مشترك 23",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-23.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-24",
+    "title": "Borderlands",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-24.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-25",
+    "title": "Resident Evil 4 Gold Edition",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-25.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-26",
+    "title": "حساب ألعاب مشترك 26",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-26.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-27",
+    "title": "Sekiro: Shadows Die Twice",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-27.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-28",
+    "title": "حساب ألعاب مشترك 28",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-28.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-29",
+    "title": "حساب ألعاب مشترك 29",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-29.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-30",
+    "title": "Dark Souls II",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-30.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-31",
+    "title": "حساب ألعاب مشترك 31",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-31.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-32",
+    "title": "حساب ألعاب مشترك 32",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-32.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-33",
+    "title": "حساب ألعاب مشترك 33",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-33.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-34",
+    "title": "حساب ألعاب مشترك 34",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-34.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-35",
+    "title": "حساب ألعاب مشترك 35",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-35.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-36",
+    "title": "Overture Bundle",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-36.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-37",
+    "title": "Resident Evil Triple Pack",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-37.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-38",
+    "title": "حساب ألعاب مشترك 38",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-38.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-39",
+    "title": "حساب ألعاب مشترك 39",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-39.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-40",
+    "title": "حساب ألعاب مشترك 40",
+    "titleAr": "ألعاب منوعة",
+    "image": "/images/shared-accounts/game-40.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  }
+]
