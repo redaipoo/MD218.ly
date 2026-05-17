@@ -18,19 +18,11 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
   const addItem = useCartStore((s) => s.addItem);
   const paymentMethod = useCartStore((s) => s.paymentMethod);
   const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
-  const { categories: liveCategories, fetchCategories } = useCartStore();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setLoaded(true);
-    if (!liveCategories || liveCategories.length === 0) {
-      fetchCategories();
-    }
-  }, [liveCategories, fetchCategories]);
-
-  // Use live data if available, fallback to static data
-  const activeCategory = liveCategories?.find(c => c.id === category.id) || category;
-  const activeCategories = liveCategories && liveCategories.length > 0 ? liveCategories : categories;
+  }, []);
 
   const handleAddToCart = (
     subId: string,
@@ -43,7 +35,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
     const uniqueKey = `${subId}-${denomValue}`;
     addItem({
       id: subId,
-      name: activeCategory.name,
+      name: category.name,
       region: region,
       value: denomLabel,
       quantity: 1,
@@ -62,11 +54,11 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
     }, 1500);
   };
 
-  const hasBgImage = activeCategory.bgUrl && activeCategory.bgUrl.length > 0;
+  const hasBgImage = category.bgUrl && category.bgUrl.length > 0;
 
   return (
     <div className="min-h-screen bg-navy flex flex-col">
-      <Header categories={activeCategories} />
+      <Header categories={categories} />
 
       <main className="flex-grow pb-24 md:pb-12">
         {/* ===== HERO BACKGROUND SECTION ===== */}
@@ -74,12 +66,12 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
           {/* Background Image or Gradient Fallback */}
           {hasBgImage ? (
             <img
-              src={activeCategory.bgUrl}
-              alt={activeCategory.nameEn}
+              src={category.bgUrl}
+              alt={category.nameEn}
               className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${loaded ? "scale-100 opacity-100" : "scale-110 opacity-0"}`}
             />
           ) : (
-            <div className={`absolute inset-0 bg-gradient-to-br ${activeCategory.gradient}`} />
+            <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient}`} />
           )}
 
           {/* Dark overlays for depth */}
@@ -105,11 +97,11 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
             <div className={`flex-shrink-0 transition-all duration-700 ${loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
               <div className="relative group">
                 {/* Glow behind image */}
-                <div className={`absolute -inset-4 bg-gradient-to-br ${activeCategory.gradient} rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
+                <div className={`absolute -inset-4 bg-gradient-to-br ${category.gradient} rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
                 <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border-2 border-white/20 shadow-2xl">
                   <img
-                    src={activeCategory.productImageUrl}
-                    alt={activeCategory.nameEn}
+                    src={category.productImageUrl}
+                    alt={category.nameEn}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Shine effect */}
@@ -121,17 +113,17 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
             {/* Category Info */}
             <div className={`text-center md:text-right transition-all duration-700 delay-200 ${loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
               <h1 className="text-4xl md:text-6xl font-black text-white mb-3 drop-shadow-lg">
-                {activeCategory.name}
+                {category.name}
               </h1>
               <p className="text-white/50 text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-5">
-                {activeCategory.nameEn}
+                {category.nameEn}
               </p>
               <div className="flex items-center justify-center md:justify-start gap-3">
                 <span className="px-5 py-2 bg-white/10 backdrop-blur-md rounded-full text-white/80 text-sm font-medium border border-white/15">
-                  📍 {activeCategory.subCategories.length} منطقة
+                  📍 {category.subCategories.length} منطقة
                 </span>
                 <span className="px-5 py-2 bg-crimson/20 backdrop-blur-md rounded-full text-crimson-light text-sm font-bold border border-crimson/30">
-                  🛒 {activeCategory.subCategories.reduce((s: number, sub: SubCategory) => s + sub.denominations.length, 0)} منتج
+                  🛒 {category.subCategories.reduce((s: number, sub: SubCategory) => s + sub.denominations.length, 0)} منتج
                 </span>
               </div>
             </div>
@@ -141,7 +133,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
         {/* ===== PRODUCTS SECTION ===== */}
         <div className="container mx-auto px-4 -mt-8 relative z-10">
           <div className="space-y-10">
-            {activeCategory.subCategories.map((sub: SubCategory, subIndex: number) => (
+            {category.subCategories.map((sub: SubCategory, subIndex: number) => (
               <div
                 key={sub.id}
                 className={`transition-all duration-500 ${loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
@@ -151,7 +143,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-1.5 h-8 bg-crimson rounded-full" />
                   <h2 className="text-white text-xl font-bold">
-                    {activeCategory.name} - {sub.region}
+                    {category.name} - {sub.region}
                   </h2>
                   {sub.currency && (
                     <span className="px-3 py-1 bg-crimson/20 text-crimson-light text-xs font-bold rounded-full border border-crimson/30">
@@ -173,12 +165,12 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                         style={{ transitionDelay: `${400 + (subIndex * 4 + denomIndex) * 40}ms` }}
                       >
                         {/* Card Top - Value Display */}
-                        <div className={`relative p-5 bg-gradient-to-br ${activeCategory.gradient} bg-opacity-20`}>
+                        <div className={`relative p-5 bg-gradient-to-br ${category.gradient} bg-opacity-20`}>
                           <div className="absolute inset-0 bg-black/40" />
                           {/* Small product thumbnail */}
                           <div className="absolute top-2 left-2 w-8 h-8 rounded-lg overflow-hidden border border-white/20 opacity-60">
                             <img
-                              src={activeCategory.productImageUrl}
+                              src={category.productImageUrl}
                               alt=""
                               className="w-full h-full object-cover"
                             />
@@ -205,7 +197,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                                 sub.id,
                                 denom.label,
                                 denom.value,
-                                `${activeCategory.name} - ${sub.region}`,
+                                `${category.name} - ${sub.region}`,
                                 denom.priceLYD || 0,
                                 denom.priceLibyana || 0
                               )

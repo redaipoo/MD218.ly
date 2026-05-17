@@ -1,7 +1,5 @@
 import { create } from 'zustand';
 
-import type { Category } from '@/lib/products';
-
 export interface CartItem {
   id: string;
   name: string;
@@ -22,10 +20,6 @@ interface CartStore {
   removeItem: (id: string, value: string) => void;
   updateQuantity: (id: string, value: string, quantity: number) => void;
   clearCart: () => void;
-  // Product Catalog Hydration
-  categories: Category[];
-  isCategoriesLoading: boolean;
-  fetchCategories: () => Promise<void>;
 }
 
 export const useCartStore = create<CartStore>((set) => ({
@@ -57,28 +51,5 @@ export const useCartStore = create<CartStore>((set) => ({
       ),
     })),
   clearCart: () => set({ items: [] }),
-  // Product Catalog Hydration
-  categories: [],
-  isCategoriesLoading: false,
-  fetchCategories: async () => {
-    set({ isCategoriesLoading: true });
-    try {
-      // Fetch latest JSON directly from GitHub Raw to bypass Netlify static cache completely
-      // raw.githubusercontent has no strict rate limit compared to api.github.com (60/hr)
-      // We add a timestamp to bypass browser caching, though GitHub CDN may still cache for ~1-5 mins.
-      const timestamp = new Date().getTime();
-      const res = await fetch(`https://raw.githubusercontent.com/redaipoo/MD.LY/main/src/data/categories.json?t=${timestamp}`, {
-        cache: "no-store"
-      });
-      if (res.ok) {
-        const data = await res.json();
-        set({ categories: data, isCategoriesLoading: false });
-      } else {
-        set({ isCategoriesLoading: false });
-      }
-    } catch (error) {
-      console.error("Failed to fetch fresh categories", error);
-      set({ isCategoriesLoading: false });
-    }
-  },
 }));
+
