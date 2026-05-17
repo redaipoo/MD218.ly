@@ -17,8 +17,8 @@
           {
             "value": "25",
             "label": "25 TRY",
-            "priceLYD": 175,
-            "priceLibyana": 225
+            "priceLYD": 201,
+            "priceLibyana": 200
           },
           {
             "value": "50",
@@ -159,8 +159,8 @@
           {
             "value": "1",
             "label": "1 USD",
-            "priceLYD": 30,
-            "priceLibyana": 24
+            "priceLYD": 7,
+            "priceLibyana": 9
           },
           {
             "value": "2",
