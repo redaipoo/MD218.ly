@@ -355,8 +355,8 @@
           {
             "value": "50",
             "label": "50 USD",
-            "priceLYD": 343,
-            "priceLibyana": 450
+            "priceLYD": 450,
+            "priceLibyana": 500
           }
         ]
       },
@@ -479,8 +479,8 @@
           {
             "value": "5",
             "label": "5 USD",
-            "priceLYD": 51,
-            "priceLibyana": 61
+            "priceLYD": 35,
+            "priceLibyana": 45
           },
           {
             "value": "10",
