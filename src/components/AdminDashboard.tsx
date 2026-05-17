@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { Category, SubCategory, Denomination } from "@/lib/products";
 import { Lock, Save, Plus, Trash2, Edit3, CheckCircle2, ChevronDown, ChevronUp, AlertCircle, LogOut } from "lucide-react";
+import AdminSharedAccounts from "./AdminSharedAccounts";
+import AdminNewCategory from "./AdminNewCategory";
 
 export default function AdminDashboard() {
   const [password, setPassword] = useState("");
@@ -35,7 +37,6 @@ export default function AdminDashboard() {
       const filePath = "src/data/categories.json";
       const branch = "main";
 
-      // Fetch absolutely fresh data using the token to prevent any rate limits and bypass cache!
       const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
         headers: { 
           Authorization: `Bearer ${token}`,
@@ -77,7 +78,6 @@ export default function AdminDashboard() {
         return;
       }
 
-      // 1. Get the current file's SHA
       const getResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
         headers: {
           'Authorization': `token ${githubToken}`,
@@ -93,12 +93,9 @@ export default function AdminDashboard() {
       const fileData = await getResponse.json();
       const currentSha = fileData.sha;
 
-      // Prepare updated content in Base64 (safely handling Arabic/UTF-8)
       const newContent = JSON.stringify(data, null, 2);
-      // We use encodeURIComponent to handle Arabic characters properly before btoa
       const updatedContent = btoa(unescape(encodeURIComponent(newContent)));
 
-      // 3. Send PUT request to update the file
       const updateResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
         method: 'PUT',
         headers: {
@@ -118,10 +115,10 @@ export default function AdminDashboard() {
         throw new Error(`Failed to update file: ${updateResponse.status}`);
       }
 
-      setMessage({ text: "✅ Price updated successfully!", type: "success" });
+      setMessage({ text: "✅ تم تحديث الأسعار بنجاح!", type: "success" });
     } catch (error) {
       console.error(error);
-      setMessage({ text: `❌ Error updating price: ${error instanceof Error ? error.message : String(error)}`, type: "error" });
+      setMessage({ text: `❌ خطأ: ${error instanceof Error ? error.message : String(error)}`, type: "error" });
     }
     setIsSaving(false);
   };
@@ -256,7 +253,7 @@ export default function AdminDashboard() {
               }`}
             >
               <Save className="w-4 h-4" />
-              {isSaving ? "جاري الحفظ..." : "حفظ التعديلات"}
+              {isSaving ? "جاري الحفظ..." : "حفظ البطاقات"}
             </button>
           </div>
         </div>
@@ -275,105 +272,121 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 gap-4">
-          {data.map((cat) => (
-            <div key={cat.id} className="bg-navy-dark border border-white/5 rounded-2xl overflow-hidden shadow-lg">
-              {/* Category Header */}
-              <div 
-                className="p-4 md:p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors"
-                onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="text-3xl">{cat.icon}</div>
-                  <div>
-                    <h2 className="text-white font-bold text-lg">{cat.name}</h2>
-                    <span className="text-white/40 text-xs">{cat.subCategories.length} أقسام فرعية</span>
-                  </div>
-                </div>
-                {expandedCat === cat.id ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
-              </div>
+        {/* ===== Shared Accounts Section ===== */}
+        <div className="mb-6">
+          <h2 className="text-white/30 text-xs font-bold mb-3 tracking-widest">🎮 إدارة الحسابات المشتركة</h2>
+          <AdminSharedAccounts token={password.trim()} />
+        </div>
 
-              {/* Category Content */}
-              {expandedCat === cat.id && (
-                <div className="p-4 border-t border-white/5 bg-black/20">
-                  <div className="space-y-4">
-                    {cat.subCategories.map((sub) => (
-                      <div key={sub.id} className="bg-navy border border-white/5 rounded-xl overflow-hidden">
-                        
-                        {/* Subcategory Header */}
-                        <div 
-                          className="p-4 flex items-center justify-between cursor-pointer hover:bg-white/5"
-                          onClick={() => setExpandedSub(expandedSub === sub.id ? null : sub.id)}
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className="px-3 py-1 bg-white/10 rounded-md text-white/80 text-sm font-bold">{sub.region}</span>
-                            <span className="text-white/50 text-xs">{sub.denominations.length} عناصر</span>
+        {/* ===== Cards Section ===== */}
+        <div className="mb-6">
+          <h2 className="text-white/30 text-xs font-bold mb-3 tracking-widest">💳 إدارة البطاقات والأسعار</h2>
+          <div className="grid grid-cols-1 gap-4">
+            {data.map((cat) => (
+              <div key={cat.id} className="bg-navy-dark border border-white/5 rounded-2xl overflow-hidden shadow-lg">
+                {/* Category Header */}
+                <div 
+                  className="p-4 md:p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors"
+                  onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="text-3xl">{cat.icon}</div>
+                    <div>
+                      <h2 className="text-white font-bold text-lg">{cat.name}</h2>
+                      <span className="text-white/40 text-xs">{cat.subCategories.length} أقسام فرعية</span>
+                    </div>
+                  </div>
+                  {expandedCat === cat.id ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
+                </div>
+
+                {/* Category Content */}
+                {expandedCat === cat.id && (
+                  <div className="p-4 border-t border-white/5 bg-black/20">
+                    <div className="space-y-4">
+                      {cat.subCategories.map((sub) => (
+                        <div key={sub.id} className="bg-navy border border-white/5 rounded-xl overflow-hidden">
+                          
+                          {/* Subcategory Header */}
+                          <div 
+                            className="p-4 flex items-center justify-between cursor-pointer hover:bg-white/5"
+                            onClick={() => setExpandedSub(expandedSub === sub.id ? null : sub.id)}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="px-3 py-1 bg-white/10 rounded-md text-white/80 text-sm font-bold">{sub.region}</span>
+                              <span className="text-white/50 text-xs">{sub.denominations.length} عناصر</span>
+                            </div>
+                            {expandedSub === sub.id ? <ChevronUp className="w-4 h-4 text-white/40" /> : <ChevronDown className="w-4 h-4 text-white/40" />}
                           </div>
-                          {expandedSub === sub.id ? <ChevronUp className="w-4 h-4 text-white/40" /> : <ChevronDown className="w-4 h-4 text-white/40" />}
+
+                          {/* Denominations List */}
+                          {expandedSub === sub.id && (
+                            <div className="p-4 border-t border-white/5 space-y-3">
+                              {sub.denominations.map((den, idx) => (
+                                <div key={idx} className="flex flex-col md:flex-row gap-3 items-end bg-navy-dark p-3 rounded-lg border border-white/5">
+                                  <div className="w-full md:w-1/3">
+                                    <label className="block text-xs font-bold text-white/50 mb-1">اسم المنتج</label>
+                                    <input
+                                      type="text"
+                                      value={den.label}
+                                      onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'label', e.target.value)}
+                                      className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson"
+                                      placeholder="مثال: 50 TRY"
+                                    />
+                                  </div>
+                                  <div className="flex w-full md:w-2/3 gap-2 items-end">
+                                    <div className="flex-1">
+                                      <label className="block text-xs font-bold text-green-400/80 mb-1">سعر الدينار الليبي (د.ل)</label>
+                                      <input
+                                        type="number"
+                                        value={den.priceLYD || 0}
+                                        onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'priceLYD', e.target.value)}
+                                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-green-400 font-bold focus:border-crimson text-left"
+                                        placeholder="0"
+                                      />
+                                    </div>
+                                    <div className="flex-1">
+                                      <label className="block text-xs font-bold text-blue-400/80 mb-1">سعر ليبيانا (د.ل)</label>
+                                      <input
+                                        type="number"
+                                        value={den.priceLibyana || 0}
+                                        onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'priceLibyana', e.target.value)}
+                                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-blue-400 font-bold focus:border-crimson text-left"
+                                        placeholder="0"
+                                      />
+                                    </div>
+                                    <button
+                                      onClick={() => deleteDenomination(cat.id, sub.id, idx)}
+                                      className="w-10 h-[38px] flex-shrink-0 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-md flex items-center justify-center transition-colors mb-[1px]"
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                    </button>
+                                  </div>
+                                </div>
+                              ))}
+                              
+                              <button
+                                onClick={() => addDenomination(cat.id, sub.id)}
+                                className="w-full py-3 border border-dashed border-white/20 hover:border-crimson/50 rounded-lg text-white/50 hover:text-crimson transition-colors flex items-center justify-center gap-2 text-sm font-bold"
+                              >
+                                <Plus className="w-4 h-4" />
+                                إضافة بطاقة جديدة
+                              </button>
+                            </div>
+                          )}
                         </div>
-
-                        {/* Denominations List */}
-                        {expandedSub === sub.id && (
-                          <div className="p-4 border-t border-white/5 space-y-3">
-                            {sub.denominations.map((den, idx) => (
-                              <div key={idx} className="flex flex-col md:flex-row gap-3 items-end bg-navy-dark p-3 rounded-lg border border-white/5">
-                                <div className="w-full md:w-1/3">
-                                  <label className="block text-xs font-bold text-white/50 mb-1">اسم المنتج</label>
-                                  <input
-                                    type="text"
-                                    value={den.label}
-                                    onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'label', e.target.value)}
-                                    className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson"
-                                    placeholder="مثال: 50 TRY"
-                                  />
-                                </div>
-                                <div className="flex w-full md:w-2/3 gap-2 items-end">
-                                  <div className="flex-1">
-                                    <label className="block text-xs font-bold text-green-400/80 mb-1">سعر الدينار الليبي (د.ل)</label>
-                                    <input
-                                      type="number"
-                                      value={den.priceLYD || 0}
-                                      onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'priceLYD', e.target.value)}
-                                      className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-green-400 font-bold focus:border-crimson text-left"
-                                      placeholder="0"
-                                    />
-                                  </div>
-                                  <div className="flex-1">
-                                    <label className="block text-xs font-bold text-blue-400/80 mb-1">سعر ليبيانا (د.ل)</label>
-                                    <input
-                                      type="number"
-                                      value={den.priceLibyana || 0}
-                                      onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'priceLibyana', e.target.value)}
-                                      className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-blue-400 font-bold focus:border-crimson text-left"
-                                      placeholder="0"
-                                    />
-                                  </div>
-                                  <button
-                                    onClick={() => deleteDenomination(cat.id, sub.id, idx)}
-                                    className="w-10 h-[38px] flex-shrink-0 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-md flex items-center justify-center transition-colors mb-[1px]"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                  </button>
-                                </div>
-                              </div>
-                            ))}
-                            
-                            <button
-                              onClick={() => addDenomination(cat.id, sub.id)}
-                              className="w-full py-3 border border-dashed border-white/20 hover:border-crimson/50 rounded-lg text-white/50 hover:text-crimson transition-colors flex items-center justify-center gap-2 text-sm font-bold"
-                            >
-                              <Plus className="w-4 h-4" />
-                              إضافة بطاقة جديدة
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ===== Add New Category Section ===== */}
+        <div className="mb-6">
+          <h2 className="text-white/30 text-xs font-bold mb-3 tracking-widest">🆕 إضافة منتجات جديدة</h2>
+          <AdminNewCategory token={password.trim()} categories={data} setCategories={setData as (cats: Category[]) => void} />
         </div>
       </div>
     </div>
