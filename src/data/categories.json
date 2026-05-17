@@ -479,8 +479,8 @@
           {
             "value": "5",
             "label": "5 USD",
-            "priceLYD": 85,
-            "priceLibyana": 33
+            "priceLYD": 35,
+            "priceLibyana": 45
           },
           {
             "value": "10",
@@ -540,8 +540,8 @@
           {
             "value": "60",
             "label": "60 UC",
-            "priceLYD": 420,
-            "priceLibyana": 540
+            "priceLYD": 200,
+            "priceLibyana": 250
           },
           {
             "value": "325",
@@ -608,8 +608,8 @@
           {
             "value": "3-months",
             "label": "اشتراك 3 أشهر",
-            "priceLYD": 50,
-            "priceLibyana": 77
+            "priceLYD": 21,
+            "priceLibyana": 27
           }
         ]
       }
