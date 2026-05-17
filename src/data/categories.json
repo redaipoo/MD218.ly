@@ -244,27 +244,21 @@
         "denominations": [
           {
             "value": "10",
-            "label": "10 SAR",
-            "priceLYD": 70,
-            "priceLibyana": 90
+            "label": "KSA 10 USD",
+            "priceLYD": 88,
+            "priceLibyana": 110
           },
           {
             "value": "20",
-            "label": "20 SAR",
-            "priceLYD": 140,
-            "priceLibyana": 180
-          },
-          {
-            "value": "30",
-            "label": "30 SAR",
-            "priceLYD": 210,
-            "priceLibyana": 270
+            "label": "KSA 20 USD",
+            "priceLYD": 175,
+            "priceLibyana": 220
           },
           {
             "value": "50",
-            "label": "50 SAR",
-            "priceLYD": 350,
-            "priceLibyana": 450
+            "label": "KSA 50 USD",
+            "priceLYD": 445,
+            "priceLibyana": 550
           }
         ]
       },
