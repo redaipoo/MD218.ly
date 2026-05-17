@@ -17,18 +17,22 @@ export default function AdminDashboard() {
   const [expandedSub, setExpandedSub] = useState<string | null>(null);
 
   useEffect(() => {
-    // We fetch initial data directly from the frontend using the static import for default, 
-    // but to get fresh data we can fetch from the local categories.json API or just import it 
-    // since it's built statically. Wait, the admin needs the latest data. 
-    // We will create a GET route or just import it statically for now since it rebuilds anyway.
-    import("@/data/categories.json")
-      .then((mod) => {
-        setData(mod.default as Category[]);
+    // Fetch absolutely fresh data directly from GitHub API bypassing Netlify caching
+    fetch("https://api.github.com/repos/redaipoo/MD.LY/contents/src/data/categories.json", {
+      headers: { Accept: "application/vnd.github.v3.raw" },
+      cache: "no-store"
+    })
+      .then((res) => res.json())
+      .then((freshData) => {
+        setData(freshData);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.error("Failed to load categories", err);
-        setIsLoading(false);
+        console.error("Failed to load fresh categories, falling back to local", err);
+        import("@/data/categories.json").then(mod => {
+          setData(mod.default as Category[]);
+          setIsLoading(false);
+        });
       });
   }, []);
 
@@ -290,28 +294,21 @@ export default function AdminDashboard() {
                                   type="text"
                                   value={den.label}
                                   onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'label', e.target.value)}
-                                  className="w-full md:w-1/3 bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson"
+                                  className="w-full md:w-1/2 bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson"
                                   placeholder="اسم المنتج (مثال: 50 TRY)"
                                 />
-                                <div className="flex w-full md:w-2/3 gap-2 items-center">
+                                <div className="flex w-full md:w-1/2 gap-2 items-center">
                                   <div className="flex-1 relative">
                                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 text-xs">د.ل</span>
                                     <input
                                       type="number"
                                       value={den.priceLYD || 0}
-                                      onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'priceLYD', e.target.value)}
+                                      onChange={(e) => {
+                                        updateDenomination(cat.id, sub.id, idx, 'priceLYD', e.target.value);
+                                        updateDenomination(cat.id, sub.id, idx, 'priceLibyana', e.target.value);
+                                      }}
                                       className="w-full bg-black/50 border border-white/10 rounded-md pr-10 pl-3 py-2 text-sm text-green-400 font-bold focus:border-crimson text-left"
-                                      placeholder="سعر المدار"
-                                    />
-                                  </div>
-                                  <div className="flex-1 relative">
-                                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 text-xs">د.ل</span>
-                                    <input
-                                      type="number"
-                                      value={den.priceLibyana || 0}
-                                      onChange={(e) => updateDenomination(cat.id, sub.id, idx, 'priceLibyana', e.target.value)}
-                                      className="w-full bg-black/50 border border-white/10 rounded-md pr-10 pl-3 py-2 text-sm text-blue-400 font-bold focus:border-crimson text-left"
-                                      placeholder="سعر ليبيانا"
+                                      placeholder="سعر المنتج"
                                     />
                                   </div>
                                   <button
