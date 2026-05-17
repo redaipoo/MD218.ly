@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
-import type { Category } from "@/lib/products";
+import type { Category, SubCategory, Denomination } from "@/lib/products";
 import { useCartStore } from "@/lib/store";
 
 interface CategoryPageClientProps {
@@ -131,7 +131,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                   📍 {activeCategory.subCategories.length} منطقة
                 </span>
                 <span className="px-5 py-2 bg-crimson/20 backdrop-blur-md rounded-full text-crimson-light text-sm font-bold border border-crimson/30">
-                  🛒 {activeCategory.subCategories.reduce((s, sub) => s + sub.denominations.length, 0)} منتج
+                  🛒 {activeCategory.subCategories.reduce((s: number, sub: SubCategory) => s + sub.denominations.length, 0)} منتج
                 </span>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
         {/* ===== PRODUCTS SECTION ===== */}
         <div className="container mx-auto px-4 -mt-8 relative z-10">
           <div className="space-y-10">
-            {activeCategory.subCategories.map((sub, subIndex) => (
+            {activeCategory.subCategories.map((sub: SubCategory, subIndex: number) => (
               <div
                 key={sub.id}
                 className={`transition-all duration-500 ${loaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
@@ -162,7 +162,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
 
                 {/* Denomination Cards */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-                  {sub.denominations.map((denom, denomIndex) => {
+                  {sub.denominations.map((denom: Denomination, denomIndex: number) => {
                     const uniqueKey = `${sub.id}-${denom.value}`;
                     const isAdded = addedItems.has(uniqueKey);
 

@@ -9,38 +9,55 @@ export default function AdminDashboard() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   const [data, setData] = useState<Category[] | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null);
+  const [loginError, setLoginError] = useState<string | null>(null);
 
   const [expandedCat, setExpandedCat] = useState<string | null>(null);
   const [expandedSub, setExpandedSub] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Fetch absolutely fresh data directly from GitHub API bypassing Netlify caching
-    fetch("https://api.github.com/repos/redaipoo/MD.LY/contents/src/data/categories.json", {
-      headers: { Accept: "application/vnd.github.v3.raw" },
-      cache: "no-store"
-    })
-      .then((res) => res.json())
-      .then((freshData) => {
-        setData(freshData);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to load fresh categories, falling back to local", err);
-        import("@/data/categories.json").then(mod => {
-          setData(mod.default as Category[]);
-          setIsLoading(false);
-        });
-      });
-  }, []);
-
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Very simple client side check, real check is on the server when saving
-    if (password.length > 3) {
-      setIsLoggedIn(true);
+    setLoginError(null);
+    setIsLoading(true);
+
+    const token = password.trim();
+    if (!token.startsWith("ghp_") && !token.startsWith("github_pat_")) {
+      setLoginError("رمز قيت هب (Token) غير صالح. يجب أن يبدأ بـ ghp_ أو github_pat_");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const owner = "redaipoo";
+      const repo = "MD.LY";
+      const filePath = "src/data/categories.json";
+      const branch = "main";
+
+      // Fetch absolutely fresh data using the token to prevent any rate limits and bypass cache!
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`, {
+        headers: { 
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3.raw" 
+        },
+        cache: "no-store"
+      });
+
+      if (res.ok) {
+        const freshData = await res.json();
+        setData(freshData);
+        setIsLoggedIn(true);
+      } else {
+        const errText = await res.text();
+        console.error("Login fetch error:", errText);
+        setLoginError("فشل تسجيل الدخول. تأكد من صحة الرمز (Token) وصلاحياته للقراءة والكتابة في مستودع redaipoo/MD.LY");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setLoginError(`حدث خطأ في الاتصال: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -172,6 +189,13 @@ export default function AdminDashboard() {
           <h1 className="text-2xl font-black text-white text-center mb-2">لوحة التحكم</h1>
           <p className="text-white/50 text-center text-sm mb-8">للحماية، يرجى إدخال <b>رمز قيت هب (GitHub Token)</b> الخاص بك للوصول وإجراء التعديلات</p>
           
+          {loginError && (
+            <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-sm flex items-start gap-2 mb-6">
+              <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <span>{loginError}</span>
+            </div>
+          )}
+          
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <input
@@ -181,13 +205,15 @@ export default function AdminDashboard() {
                 placeholder="ghp_xxxxxxxxxxxxxxxxxxxxx..."
                 className="w-full bg-navy border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-crimson focus:ring-1 focus:ring-crimson transition-all text-center tracking-widest text-sm"
                 required
+                disabled={isLoading}
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-crimson hover:bg-crimson-dark text-white font-bold py-3 px-4 rounded-xl transition-all shadow-lg shadow-crimson/30"
+              disabled={isLoading}
+              className="w-full bg-crimson hover:bg-crimson-dark disabled:bg-crimson/50 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-lg shadow-crimson/30 flex items-center justify-center gap-2"
             >
-              دخول
+              {isLoading ? "جاري التحقق..." : "دخول"}
             </button>
           </form>
         </div>

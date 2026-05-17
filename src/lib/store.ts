@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 
+import type { Category } from '@/lib/products';
+
 export interface CartItem {
   id: string;
   name: string;
@@ -21,7 +23,7 @@ interface CartStore {
   updateQuantity: (id: string, value: string, quantity: number) => void;
   clearCart: () => void;
   // Product Catalog Hydration
-  categories: any[];
+  categories: Category[];
   isCategoriesLoading: boolean;
   fetchCategories: () => Promise<void>;
 }
