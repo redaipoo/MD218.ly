@@ -157,30 +157,6 @@
         "currency": "USD",
         "denominations": [
           {
-            "value": "1",
-            "label": "1 USD",
-            "priceLYD": 18,
-            "priceLibyana": 9
-          },
-          {
-            "value": "2",
-            "label": "2 USD",
-            "priceLYD": 14,
-            "priceLibyana": 18
-          },
-          {
-            "value": "3",
-            "label": "3 USD",
-            "priceLYD": 21,
-            "priceLibyana": 27
-          },
-          {
-            "value": "4",
-            "label": "4 USD",
-            "priceLYD": 28,
-            "priceLibyana": 36
-          },
-          {
             "value": "5",
             "label": "5 USD",
             "priceLYD": 35,
