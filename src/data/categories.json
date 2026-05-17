@@ -583,8 +583,20 @@
           {
             "value": "2-months",
             "label": "شهرين التمت - حساب كامل",
-            "priceLYD": 14,
-            "priceLibyana": 18
+            "priceLYD": 115,
+            "priceLibyana": 150
+          },
+          {
+            "label": "شهرين التمت - نص حساب رءيسي",
+            "value": "new",
+            "priceLYD": 55,
+            "priceLibyana": 75
+          },
+          {
+            "label": "شهرين التمت - نص حساب تسجيل دخول ",
+            "value": "new",
+            "priceLYD": 65,
+            "priceLibyana": 85
           }
         ]
       }
