@@ -269,39 +269,21 @@
         "denominations": [
           {
             "value": "10",
-            "label": "10 AED",
-            "priceLYD": 70,
-            "priceLibyana": 90
+            "label": "UAE 10 USD",
+            "priceLYD": 85,
+            "priceLibyana": 105
           },
           {
             "value": "15",
-            "label": "15 AED",
-            "priceLYD": 105,
-            "priceLibyana": 135
-          },
-          {
-            "value": "20",
-            "label": "20 AED",
-            "priceLYD": 140,
-            "priceLibyana": 180
-          },
-          {
-            "value": "25",
-            "label": "25 AED",
-            "priceLYD": 175,
-            "priceLibyana": 225
-          },
-          {
-            "value": "30",
-            "label": "30 AED",
-            "priceLYD": 210,
-            "priceLibyana": 270
+            "label": "UAE 20 USD",
+            "priceLYD": 170,
+            "priceLibyana": 205
           },
           {
             "value": "50",
-            "label": "50 AED",
-            "priceLYD": 350,
-            "priceLibyana": 450
+            "label": "UAE 50 USD",
+            "priceLYD": 420,
+            "priceLibyana": 515
           }
         ]
       }
