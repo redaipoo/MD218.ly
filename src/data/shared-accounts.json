@@ -20,48 +20,40 @@
     "title": "Forza Horizon 4",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-3.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-4",
     "title": "Darksiders III: Blades & Whip Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-4.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
-  },
-  {
-    "id": "shared-5",
-    "title": "Resident Evil 7 & Village Gold Edition",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-5.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-6",
     "title": "The Witcher 3: Wild Hunt Complete Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-6.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 8,
+    "priceLibyana": 10
   },
   {
     "id": "shared-7",
     "title": "Elden Ring + Shadow of the Erdtree",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-7.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-8",
     "title": "Alan Wake II Deluxe Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-8.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-9",
@@ -76,56 +68,56 @@
     "title": "Black Myth: Wukong",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-10.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-11",
     "title": "Ready or Not",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-11.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-12",
     "title": "Red Dead Redemption",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-12.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 8,
+    "priceLibyana": 10
   },
   {
     "id": "shared-13",
     "title": "Resident Evil: Raccoon City Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-13.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-14",
     "title": "Death Stranding Director's Cut",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-14.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-15",
     "title": "Bleach: Rebirth of Souls",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-15.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 8,
+    "priceLibyana": 10
   },
   {
     "id": "shared-16",
     "title": "The First Berserker: Khazan",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-16.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-17",
@@ -140,24 +132,24 @@
     "title": "Resident Evil: Requiem",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-18.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-19",
     "title": "Elden Ring Nightreign Deluxe Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-19.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-20",
     "title": "Resident Evil 7: Biohazard Gold Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-20.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 8,
+    "priceLibyana": 10
   },
   {
     "id": "shared-21",
@@ -172,24 +164,24 @@
     "title": "Red Dead Redemption 2",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-22.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-23",
     "title": "Silent Hill HD Collection",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-23.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-24",
     "title": "Devil May Cry HD Collection & 4 SE",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-24.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-25",
@@ -204,24 +196,24 @@
     "title": "Forza Horizon 3",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-26.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-27",
     "title": "Mouse: P.I. For Hire",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-27.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-28",
     "title": "Call of Duty: Black Ops",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-28.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-29",
@@ -236,24 +228,24 @@
     "title": "Resident Evil 4 Gold Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-30.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-31",
     "title": "Metal Gear Solid Δ: Snake Eater",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-31.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-32",
     "title": "Sekiro: Shadows Die Twice GOTY",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-32.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-33",
@@ -268,24 +260,24 @@
     "title": "Cyberpunk 2077 Ultimate Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-34.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-35",
     "title": "Dark Souls III Deluxe Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-35.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-36",
     "title": "Dark Souls II: Scholar of the First Sin",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-36.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-37",
@@ -300,12 +292,12 @@
     "title": "Silent Hill 2",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-38.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-39",
-    "title": "Lies of P  ",
+    "title": "Lies of P: Overture Bundle",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-39.jpg",
     "priceLYD": 15,
@@ -316,7 +308,7 @@
     "title": "Resident Evil Triple Pack",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-40.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   }
 ]
