@@ -169,7 +169,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                         <div className={`relative p-5 md:p-6 bg-gradient-to-br ${category.gradient} bg-opacity-20`}>
                           <div className="absolute inset-0 bg-black/40" />
                           {/* Small product thumbnail */}
-                          <div className="absolute top-2.5 left-2.5 w-7 h-7 rounded-lg overflow-hidden border border-white/15 opacity-50">
+                          <div className="absolute top-2.5 left-2.5 w-7 h-7 rounded-full overflow-hidden border border-white/15 opacity-50">
                             <img
                               src={assetPath(category.productImageUrl)}
                               alt=""

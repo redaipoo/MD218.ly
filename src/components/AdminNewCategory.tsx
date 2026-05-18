@@ -20,7 +20,7 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
   const [newRegion, setNewRegion] = useState({ region: "", currency: "" });
   const [newDenom, setNewDenom] = useState({ label: "", value: "", priceLYD: 0, priceLibyana: 0 });
 
-  const owner = "redaipoo", repo = "MD.LY", branch = "main";
+  const owner = "redaipoo", repo = "MD218.ly", branch = "main";
   const filePath = "src/data/categories.json";
 
   const saveCategories = async (data: Category[]) => {

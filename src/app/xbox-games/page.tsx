@@ -5,11 +5,12 @@ import MobileNav from "@/components/MobileNav";
 import { getCategories } from "@/lib/products";
 import Link from "next/link";
 import { ArrowRight, Gamepad2 } from "lucide-react";
+import XboxGamesClient from "./XboxGamesClient";
 
 export const metadata: Metadata = {
   title: "ألعاب Xbox الرقمية | MD218.LY",
   description:
-    "تسوق ألعاب Xbox الرقمية بأفضل الأسعار في ليبيا. مفاتيح رقمية بتفعيل فوري. اطلب الآن عبر واتساب!",
+    "تسوق ألعاب Xbox الرقمية بأفضل الأسعار في ليبيا. شراء في حسابك أو حسابات كاملة. اطلب الآن عبر واتساب!",
 };
 
 export default async function XboxGamesPage() {
@@ -68,59 +69,13 @@ export default async function XboxGamesPage() {
               🎮 ألعاب Xbox الرقمية
             </h1>
             <p className="text-green-300/80 text-base md:text-xl max-w-xl mb-4">
-              مفاتيح رقمية بتفعيل فوري - أفضل الأسعار في ليبيا
+              شراء في حسابك أو حسابات كاملة - أفضل الأسعار في ليبيا
             </p>
-            <span className="px-5 py-2 bg-[#0a3a0a]/80 backdrop-blur-md rounded-full text-white/80 text-sm font-bold border border-green-500/30">
-              قريبًا سيتم إضافة الألعاب ⏳
-            </span>
           </div>
         </div>
 
-        {/* Coming Soon Content */}
-        <div className="container mx-auto px-4 mt-10">
-          <div className="max-w-2xl mx-auto text-center">
-            <div
-              className="relative rounded-2xl overflow-hidden p-8 md:p-12"
-              style={{
-                background:
-                  "linear-gradient(180deg, #0a1f0a 0%, #0d2b0d 100%)",
-                border: "1px solid rgba(16,124,16,0.3)",
-              }}
-            >
-              {/* Glow */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-[#107C10]/10 rounded-full blur-3xl" />
-
-              <div className="relative">
-                <div className="text-6xl mb-6">🎮</div>
-                <h2
-                  className="text-2xl md:text-3xl font-black text-white mb-4"
-                  style={{
-                    textShadow: "0 0 12px #107C10",
-                  }}
-                >
-                  قريبًا... ألعاب بأسعار خيالية!
-                </h2>
-                <p className="text-green-300/60 text-sm md:text-base leading-relaxed mb-6">
-                  نعمل على إضافة مجموعة كبيرة من الألعاب الرقمية لمنصة Xbox
-                  <br />
-                  بأسعار تنافسية وتفعيل فوري. ترقبوا التحديثات!
-                </p>
-
-                <div className="flex flex-wrap justify-center gap-3">
-                  <span className="px-4 py-2 bg-[#107C10]/20 text-green-400 text-xs font-bold rounded-full border border-green-500/20">
-                    ألعاب حصرية 🔥
-                  </span>
-                  <span className="px-4 py-2 bg-[#107C10]/20 text-green-400 text-xs font-bold rounded-full border border-green-500/20">
-                    تفعيل فوري ⚡
-                  </span>
-                  <span className="px-4 py-2 bg-[#107C10]/20 text-green-400 text-xs font-bold rounded-full border border-green-500/20">
-                    أسعار منافسة 💰
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Games Content */}
+        <XboxGamesClient />
       </main>
 
       <Footer />

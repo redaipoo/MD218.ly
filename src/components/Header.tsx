@@ -94,7 +94,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
             <div className="flex items-center justify-between h-20 md:h-[72px] gap-3">
             {/* Right Side: Logo */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-              <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-2xl overflow-hidden shadow-premium group-hover:shadow-glow-crimson transition-all duration-[400ms] ease-premium group-hover:scale-[1.04] ring-2 ring-crimson/15 group-hover:ring-crimson/35 flex-shrink-0">
+              <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-full overflow-hidden shadow-premium group-hover:shadow-glow-crimson transition-all duration-[400ms] ease-premium group-hover:scale-[1.04] ring-2 ring-crimson/15 group-hover:ring-crimson/35 flex-shrink-0">
                 <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">

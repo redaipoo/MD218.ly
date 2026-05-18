@@ -26,7 +26,7 @@ export default function AdminSharedAccounts({ token }: Props) {
   const [showAdd, setShowAdd] = useState(false);
   const [newGame, setNewGame] = useState({ title: "", priceLYD: 15, priceLibyana: 20, imageUrl: "" });
 
-  const owner = "redaipoo", repo = "MD.LY", branch = "main";
+  const owner = "redaipoo", repo = "MD218.ly", branch = "main";
   const filePath = "src/data/shared-accounts.json";
 
   const loadData = async () => {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Category, SubCategory, Denomination } from "@/lib/products";
 import { Lock, Save, Plus, Trash2, Edit3, CheckCircle2, ChevronDown, ChevronUp, AlertCircle, LogOut } from "lucide-react";
 import AdminSharedAccounts from "./AdminSharedAccounts";
+import AdminXboxGames from "./AdminXboxGames";
 import AdminNewCategory from "./AdminNewCategory";
 
 export default function AdminDashboard() {
@@ -33,7 +34,7 @@ export default function AdminDashboard() {
 
     try {
       const owner = "redaipoo";
-      const repo = "MD.LY";
+      const repo = "MD218.ly";
       const filePath = "src/data/categories.json";
       const branch = "main";
 
@@ -52,7 +53,7 @@ export default function AdminDashboard() {
       } else {
         const errText = await res.text();
         console.error("Login fetch error:", errText);
-        setLoginError("فشل تسجيل الدخول. تأكد من صحة الرمز (Token) وصلاحياته للقراءة والكتابة في مستودع redaipoo/MD.LY");
+        setLoginError("فشل تسجيل الدخول. تأكد من صحة الرمز (Token) وصلاحياته للقراءة والكتابة في مستودع redaipoo/MD218.ly");
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -67,7 +68,7 @@ export default function AdminDashboard() {
     setMessage(null);
     try {
       const owner = "redaipoo";
-      const repo = "MD.LY";
+      const repo = "MD218.ly";
       const filePath = "src/data/categories.json";
       const branch = "main";
       const githubToken = password.trim();
@@ -276,6 +277,12 @@ export default function AdminDashboard() {
         <div className="mb-6">
           <h2 className="text-white/30 text-xs font-bold mb-3 tracking-widest">🎮 إدارة الحسابات المشتركة</h2>
           <AdminSharedAccounts token={password.trim()} />
+        </div>
+
+        {/* ===== Xbox Games Section ===== */}
+        <div className="mb-6">
+          <h2 className="text-white/30 text-xs font-bold mb-3 tracking-widest">🕹️ إدارة ألعاب Xbox (شراء في حسابك + حسابات كاملة)</h2>
+          <AdminXboxGames token={password.trim()} />
         </div>
 
         {/* ===== Cards Section ===== */}

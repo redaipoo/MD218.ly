@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Logo & Description */}
           <div className="text-center md:text-right">
             <div className="flex items-center justify-center md:justify-start gap-4 mb-5">
-              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-glow-crimson ring-2 ring-crimson/15">
+              <div className="w-16 h-16 rounded-full overflow-hidden shadow-glow-crimson ring-2 ring-crimson/15">
                 <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
