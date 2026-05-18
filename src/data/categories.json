@@ -61,13 +61,13 @@
             "value": "200",
             "label": "200 SAR",
             "priceLYD": 445,
-            "priceLibyana": 0
+            "priceLibyana": 575
           },
           {
             "value": "300",
             "label": "300 SAR",
             "priceLYD": 660,
-            "priceLibyana": 0
+            "priceLibyana": 860
           }
         ]
       },
