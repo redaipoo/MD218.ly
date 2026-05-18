@@ -28,8 +28,8 @@
     "title": "The Witcher 3: Wild Hunt Complete Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-6.jpg",
-    "priceLYD": 8,
-    "priceLibyana": 10
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-7",
@@ -104,14 +104,6 @@
     "priceLibyana": 15
   },
   {
-    "id": "shared-17",
-    "title": "Dying Light: The Beast",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-17.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
-  },
-  {
     "id": "shared-18",
     "title": "Resident Evil: Requiem",
     "titleAr": "حساب مشترك",
@@ -140,8 +132,8 @@
     "title": "Red Dead Redemption 2",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-22.jpg",
-    "priceLYD": 10,
-    "priceLibyana": 15
+    "priceLYD": 8,
+    "priceLibyana": 10
   },
   {
     "id": "shared-23",
