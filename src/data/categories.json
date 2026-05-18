@@ -649,20 +649,7 @@
         "id": "shein-sar",
         "region": "سعودي",
         "currency": "SAR",
-        "denominations": [
-          {
-            "value": "200",
-            "label": "100 SAR",
-            "priceLYD": 240,
-            "priceLibyana": 320
-          },
-          {
-            "value": "300",
-            "label": "200 SAR",
-            "priceLYD": 480,
-            "priceLibyana": 585
-          }
-        ]
+        "denominations": []
       }
     ]
   }
