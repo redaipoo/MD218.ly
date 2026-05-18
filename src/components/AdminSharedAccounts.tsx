@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Save, Plus, Trash2, Edit3, ChevronDown, ChevronUp, Image, X } from "lucide-react";
 import { assetPath } from "@/lib/utils";
+import ImageUploader from "./ImageUploader";
 
 interface SharedAccount {
   id: string;
@@ -121,11 +122,16 @@ export default function AdminSharedAccounts({ token }: Props) {
                         <input type="text" value={game.title} onChange={e => updateAccount(game.id, "title", e.target.value)}
                           className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-white focus:border-crimson" />
                       </div>
-                      <div>
-                        <label className="block text-[10px] font-bold text-white/50 mb-1">رابط الصورة</label>
-                        <input type="text" value={game.image} onChange={e => updateAccount(game.id, "image", e.target.value)}
-                          className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-white focus:border-crimson" />
-                      </div>
+                      <ImageUploader
+                        token={token}
+                        currentImage={assetPath(game.image)}
+                        uploadPath="public/images/shared-accounts"
+                        fileName={game.id}
+                        onUpload={(path) => updateAccount(game.id, "image", path)}
+                        label="صورة اللعبة"
+                        accentColor="[#107C10]"
+                        small
+                      />
                       <div className="flex gap-2">
                         <div className="flex-1">
                           <label className="block text-[10px] font-bold text-green-400/80 mb-1">سعر د.ل</label>
@@ -175,11 +181,15 @@ export default function AdminSharedAccounts({ token }: Props) {
                 <input type="text" value={newGame.title} onChange={e => setNewGame({ ...newGame, title: e.target.value })}
                   className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-[#107C10]" placeholder="مثال: GTA V" />
               </div>
-              <div>
-                <label className="block text-[10px] font-bold text-white/50 mb-1">رابط الصورة (اختياري)</label>
-                <input type="text" value={newGame.imageUrl} onChange={e => setNewGame({ ...newGame, imageUrl: e.target.value })}
-                  className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-[#107C10]" placeholder="/images/shared-accounts/game-41.jpg" />
-              </div>
+              <ImageUploader
+                token={token}
+                currentImage={newGame.imageUrl ? assetPath(newGame.imageUrl) : undefined}
+                uploadPath="public/images/shared-accounts"
+                fileName={`shared-new-${Date.now()}`}
+                onUpload={(path) => setNewGame({ ...newGame, imageUrl: path })}
+                label="📷 صورة اللعبة (اختياري)"
+                accentColor="[#107C10]"
+              />
               <div className="flex gap-2">
                 <div className="flex-1">
                   <label className="block text-[10px] font-bold text-green-400/80 mb-1">سعر د.ل</label>

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Save, Plus, Trash2, Edit3, ChevronDown, ChevronUp, X, RefreshCw } from "lucide-react";
 import { assetPath } from "@/lib/utils";
+import ImageUploader from "./ImageUploader";
 
 interface XboxGame {
   id: string;
@@ -18,6 +19,7 @@ interface FullAccount {
   titleAr: string;
   image: string;
   games: string[];
+  gameImages?: string[];
   priceLYD: number;
   priceLibyana: number;
 }
@@ -297,11 +299,16 @@ export default function AdminXboxGames({ token }: Props) {
                             <input type="text" value={game.title} onChange={e => updateBuyGame(game.id, "title", e.target.value)}
                               className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-white focus:border-crimson outline-none" />
                           </div>
-                          <div>
-                            <label className="block text-[10px] font-bold text-white/50 mb-1">رابط الصورة</label>
-                            <input type="text" value={game.image} onChange={e => updateBuyGame(game.id, "image", e.target.value)}
-                              className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-white focus:border-crimson outline-none" />
-                          </div>
+                          <ImageUploader
+                            token={token}
+                            currentImage={assetPath(game.image)}
+                            uploadPath="public/images/xbox-games"
+                            fileName={game.id}
+                            onUpload={(path) => updateBuyGame(game.id, "image", path)}
+                            label="صورة اللعبة"
+                            accentColor="purple-500"
+                            small
+                          />
                           <div className="flex gap-2">
                             <div className="flex-1">
                               <label className="block text-[10px] font-bold text-green-400/80 mb-1">سعر د.ل</label>
@@ -352,11 +359,15 @@ export default function AdminXboxGames({ token }: Props) {
                     <input type="text" value={newBuyGame.title} onChange={e => setNewBuyGame({ ...newBuyGame, title: e.target.value })}
                       className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2.5 text-sm text-white focus:border-[#107C10] outline-none" placeholder="مثال: GTA V" />
                   </div>
-                  <div>
-                    <label className="block text-[10px] font-bold text-white/50 mb-1">رابط الصورة (اختياري)</label>
-                    <input type="text" value={newBuyGame.imageUrl} onChange={e => setNewBuyGame({ ...newBuyGame, imageUrl: e.target.value })}
-                      className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2.5 text-sm text-white focus:border-[#107C10] outline-none" placeholder="/images/xbox-games/buy-1.jpg" />
-                  </div>
+                  <ImageUploader
+                    token={token}
+                    currentImage={newBuyGame.imageUrl ? assetPath(newBuyGame.imageUrl) : undefined}
+                    uploadPath="public/images/xbox-games"
+                    fileName={`buy-new-${Date.now()}`}
+                    onUpload={(path) => setNewBuyGame({ ...newBuyGame, imageUrl: path })}
+                    label="📷 صورة اللعبة (اختياري)"
+                    accentColor="[#107C10]"
+                  />
                   <div className="flex gap-2">
                     <div className="flex-1">
                       <label className="block text-[10px] font-bold text-green-400/80 mb-1">سعر اللعبة (د.ل)</label>
@@ -406,27 +417,50 @@ export default function AdminXboxGames({ token }: Props) {
                             <input type="text" value={account.title} onChange={e => updateFullAccount(account.id, "title", e.target.value)}
                               className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-white focus:border-orange-500 outline-none" />
                           </div>
+                          <ImageUploader
+                            token={token}
+                            currentImage={assetPath(account.image)}
+                            uploadPath="public/images/xbox-games"
+                            fileName={account.id}
+                            onUpload={(path) => updateFullAccount(account.id, "image", path)}
+                            label="صورة الحساب"
+                            accentColor="orange-500"
+                            small
+                          />
+                          {/* Games List with Images */}
                           <div>
-                            <label className="block text-[10px] font-bold text-white/50 mb-1">رابط الصورة</label>
-                            <input type="text" value={account.image} onChange={e => updateFullAccount(account.id, "image", e.target.value)}
-                              className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-white focus:border-orange-500 outline-none" />
-                          </div>
-                          {/* Games List */}
-                          <div>
-                            <label className="block text-[10px] font-bold text-orange-400/80 mb-1">الألعاب في الحساب</label>
+                            <label className="block text-[10px] font-bold text-orange-400/80 mb-1.5">🎮 الألعاب في الحساب (مع الصور)</label>
                             {account.games.map((game, gi) => (
-                              <div key={gi} className="flex gap-1 mb-1">
-                                <input type="text" value={game} onChange={e => updateFullAccountGame(account.id, gi, e.target.value)}
-                                  className="flex-1 bg-black/50 border border-orange-500/15 rounded-md px-3 py-1.5 text-sm text-orange-300 focus:border-orange-500 outline-none"
-                                  placeholder={`لعبة ${gi + 1}`} />
-                                {account.games.length > 1 && (
-                                  <button onClick={() => removeGameFromAccount(account.id, gi)}
-                                    className="w-8 h-8 bg-red-500/10 text-red-500 rounded-md flex items-center justify-center text-xs">✕</button>
-                                )}
+                              <div key={gi} className="bg-black/30 rounded-lg p-2 mb-2 border border-orange-500/10">
+                                <div className="flex gap-2 items-center mb-1.5">
+                                  <span className="text-orange-400/50 text-[10px] font-bold w-5 text-center">#{gi + 1}</span>
+                                  <input type="text" value={game} onChange={e => updateFullAccountGame(account.id, gi, e.target.value)}
+                                    className="flex-1 bg-black/50 border border-orange-500/15 rounded-md px-3 py-1.5 text-sm text-orange-300 focus:border-orange-500 outline-none"
+                                    placeholder={`اسم اللعبة ${gi + 1}`} />
+                                  {account.games.length > 1 && (
+                                    <button onClick={() => removeGameFromAccount(account.id, gi)}
+                                      className="w-8 h-8 bg-red-500/10 text-red-500 rounded-md flex items-center justify-center text-xs hover:bg-red-500/20 transition-colors">✕</button>
+                                  )}
+                                </div>
+                                <ImageUploader
+                                  token={token}
+                                  currentImage={account.gameImages?.[gi] ? assetPath(account.gameImages[gi]) : undefined}
+                                  uploadPath="public/images/xbox-games/game-covers"
+                                  fileName={`${account.id}-game-${gi}`}
+                                  onUpload={(path) => {
+                                    const newGameImages = [...(account.gameImages || account.games.map(() => ""))];
+                                    while (newGameImages.length <= gi) newGameImages.push("");
+                                    newGameImages[gi] = path;
+                                    updateFullAccount(account.id, "gameImages", newGameImages);
+                                  }}
+                                  label={`صورة ${game || `اللعبة ${gi + 1}`}`}
+                                  accentColor="orange-500"
+                                  small
+                                />
                               </div>
                             ))}
                             <button onClick={() => addGameToAccount(account.id)}
-                              className="w-full py-1.5 border border-dashed border-orange-500/20 rounded-md text-orange-400/50 hover:text-orange-400 text-xs font-bold mt-1">
+                              className="w-full py-2 border border-dashed border-orange-500/20 hover:border-orange-500/40 rounded-lg text-orange-400/50 hover:text-orange-400 text-xs font-bold mt-1 transition-colors">
                               + إضافة لعبة للحساب
                             </button>
                           </div>
@@ -509,11 +543,15 @@ export default function AdminXboxGames({ token }: Props) {
                       + إضافة لعبة أخرى للحساب
                     </button>
                   </div>
-                  <div>
-                    <label className="block text-[10px] font-bold text-white/50 mb-1">رابط الصورة (اختياري)</label>
-                    <input type="text" value={newFullAccount.imageUrl} onChange={e => setNewFullAccount({ ...newFullAccount, imageUrl: e.target.value })}
-                      className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2.5 text-sm text-white focus:border-orange-500 outline-none" placeholder="/images/xbox-games/full-1.jpg" />
-                  </div>
+                  <ImageUploader
+                    token={token}
+                    currentImage={newFullAccount.imageUrl ? assetPath(newFullAccount.imageUrl) : undefined}
+                    uploadPath="public/images/xbox-games"
+                    fileName={`full-new-${Date.now()}`}
+                    onUpload={(path) => setNewFullAccount({ ...newFullAccount, imageUrl: path })}
+                    label="📷 صورة الحساب (اختياري)"
+                    accentColor="orange-500"
+                  />
                   <div className="flex gap-2">
                     <div className="flex-1">
                       <label className="block text-[10px] font-bold text-green-400/80 mb-1">💰 سعر الحساب الكامل (د.ل)</label>
