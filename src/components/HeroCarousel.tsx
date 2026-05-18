@@ -69,61 +69,69 @@ export default function HeroCarousel() {
   };
 
   return (
-    <section className="relative w-full py-8">
+    <section className="relative w-full pt-6 pb-8 md:pt-8 md:pb-10">
       <div className="container mx-auto px-4">
-        <div className="relative overflow-hidden rounded-2xl border border-crimson/30 bg-navy-light">
+        <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-crimson/20 bg-navy-light shadow-premium-lg">
           {/* Slides */}
           <div
-            className="flex transition-transform duration-500 ease-out"
+            className="flex transition-transform duration-[600ms] ease-premium"
             style={{ transform: `translateX(${currentSlide * 100}%)` }}
           >
             {slides.map((slide) => (
               <div
                 key={slide.id}
-                className={`min-w-full aspect-[16/6] relative ${
+                className={`min-w-full aspect-[16/6] lg:aspect-[16/5.5] relative ${
                   slide.isXbox ? "" : `bg-gradient-to-br ${slide.gradient}`
                 }`}
                 style={
                   slide.isXbox
-                    ? { background: "linear-gradient(135deg, #107C10 0%, #0a3a0a 100%)" }
+                    ? { background: "linear-gradient(135deg, #107C10 0%, #0a3a0a 50%, #061f06 100%)" }
                     : undefined
                 }
               >
-                {/* Decorative elements */}
-                <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-white/20 rounded-full blur-3xl" />
-                  <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-white/10 rounded-full blur-3xl" />
+                {/* Animated decorative elements */}
+                <div className="absolute inset-0 opacity-20 overflow-hidden">
+                  <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-white/20 rounded-full blur-3xl animate-float" />
+                  <div className="absolute bottom-1/4 left-1/4 w-56 h-56 bg-white/10 rounded-full blur-3xl animate-float-delayed" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/[0.03] rounded-full blur-3xl" />
                 </div>
+
+                {/* Vignette edges */}
+                <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.4)]" />
 
                 {/* Xbox watermark for Xbox slide */}
                 {slide.isXbox ? (
-                  <div className="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 opacity-[0.15]">
-                    <Gamepad2 className="w-32 h-32 md:w-48 md:h-48 text-white" />
+                  <div className="absolute right-6 md:right-16 top-1/2 -translate-y-1/2 opacity-[0.1]">
+                    <Gamepad2 className="w-36 h-36 md:w-56 md:h-56 text-white" />
                   </div>
                 ) : (
-                  <div className="absolute top-4 right-4 w-16 h-16 opacity-20 rounded-xl overflow-hidden">
+                  <div className="absolute top-5 right-5 w-14 h-14 opacity-15 rounded-xl overflow-hidden">
                     <img src={assetPath("/logo.png")} alt="" className="w-full h-full object-cover" />
                   </div>
                 )}
 
                 {/* Content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                  <slide.Icon className="w-16 h-16 md:w-20 md:h-20 text-white/90 mb-4" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 md:p-10">
+                  <div className="p-3 md:p-4 rounded-2xl bg-white/[0.06] backdrop-blur-sm mb-4 md:mb-5">
+                    <slide.Icon className="w-12 h-12 md:w-16 md:h-16 text-white/90" />
+                  </div>
                   <h2
-                    className={`text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2 drop-shadow-lg ${
-                      slide.isXbox ? "text-[26px] md:text-4xl" : ""
+                    className={`text-2xl md:text-4xl lg:text-5xl font-black text-white mb-3 drop-shadow-lg leading-tight ${
+                      slide.isXbox ? "text-[24px] md:text-4xl" : ""
                     }`}
                   >
                     {slide.title}
                   </h2>
-                  <p className="text-white/70 text-sm md:text-lg max-w-2xl">{slide.subtitle}</p>
+                  <p className="text-white/60 text-sm md:text-lg max-w-2xl leading-relaxed font-medium">
+                    {slide.subtitle}
+                  </p>
 
                   {/* CTA Button for Xbox slide */}
                   {slide.isXbox && slide.ctaText && (
                     <button
                       onClick={scrollToXbox}
-                      className="mt-5 px-7 py-2.5 bg-white font-bold rounded-full text-sm md:text-base transition-all hover:scale-105 hover:shadow-lg hover:shadow-green-500/30"
-                      style={{ color: "#107C10", borderRadius: "25px" }}
+                      className="mt-6 md:mt-7 px-8 py-3 bg-white font-black rounded-full text-sm md:text-base transition-all duration-300 ease-premium hover:scale-105 hover:shadow-[0_4px_24px_rgba(16,124,16,0.35)] active:scale-[0.98]"
+                      style={{ color: "#107C10" }}
                     >
                       {slide.ctaText}
                     </button>
@@ -131,40 +139,40 @@ export default function HeroCarousel() {
                 </div>
 
                 {/* Bottom gradient overlay */}
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/60 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/50 to-transparent" />
               </div>
             ))}
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows — premium glass style */}
           <button
             onClick={prevSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-navy/80 border border-white/20 flex items-center justify-center text-white hover:bg-crimson hover:border-crimson transition-all"
+            className="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-11 md:h-11 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-crimson/80 hover:border-crimson/50 transition-all duration-300 ease-premium hover:shadow-glow-crimson"
             aria-label="Previous slide"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-navy/80 border border-white/20 flex items-center justify-center text-white hover:bg-crimson hover:border-crimson transition-all"
+            className="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-11 md:h-11 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-crimson/80 hover:border-crimson/50 transition-all duration-300 ease-premium hover:shadow-glow-crimson"
             aria-label="Next slide"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Dots Indicator */}
-        <div className="flex justify-center gap-2 mt-4">
+        {/* Dots Indicator — premium pill style */}
+        <div className="flex justify-center gap-2.5 mt-5">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-3 rounded-full transition-all duration-300 ${
+              className={`h-2.5 rounded-full transition-all duration-[400ms] ease-premium ${
                 currentSlide === index
                   ? index === 0
-                    ? "bg-[#107C10] w-8 shadow-lg shadow-green-500/40"
-                    : "bg-crimson w-8 shadow-lg shadow-crimson/40"
-                  : "bg-white/20 hover:bg-white/40 w-3"
+                    ? "bg-[#107C10] w-9 shadow-[0_0_12px_rgba(16,124,16,0.5)]"
+                    : "bg-crimson w-9 shadow-[0_0_12px_rgba(139,26,26,0.5)]"
+                  : "bg-white/15 hover:bg-white/30 w-2.5"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

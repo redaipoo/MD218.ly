@@ -59,28 +59,28 @@ export default function Header({ categories = [] }: { categories?: Category[] })
 
   return (
     <>
-      <div className="sticky top-0 z-50 w-full flex flex-col shadow-2xl shadow-black/20">
-        {/* Top Bar for Currency Selection */}
-        <div className="bg-navy-dark border-b border-white/5 py-2">
+      <div className="sticky top-0 z-50 w-full flex flex-col shadow-[0_4px_30px_rgba(0,0,0,0.3)]">
+        {/* Top Bar for Currency Selection — subtle gradient */}
+        <div className="bg-gradient-to-b from-navy-dark to-navy-dark/95 border-b border-white/[0.04] py-2">
           <div className="container mx-auto px-4 flex justify-between items-center">
-            <span className="text-[11px] md:text-sm text-white/70 font-bold">عرض الأسعار بـ:</span>
-            <div className="flex bg-navy rounded-lg p-1 border border-white/10 shadow-inner">
+            <span className="text-[11px] md:text-sm text-white/50 font-bold">عرض الأسعار بـ:</span>
+            <div className="flex bg-navy/80 rounded-xl p-1 border border-white/[0.06] shadow-inner-glow">
               <button
                 onClick={() => setPaymentMethod('lyd')}
-                className={`px-3 md:px-5 py-1.5 text-[11px] md:text-xs font-black rounded-md transition-all ${
+                className={`px-3 md:px-5 py-1.5 text-[11px] md:text-xs font-black rounded-lg transition-all duration-300 ease-premium ${
                   paymentMethod === 'lyd'
-                    ? 'bg-crimson text-white shadow-lg shadow-crimson/30'
-                    : 'text-white/50 hover:text-white hover:bg-white/5'
+                    ? 'bg-crimson text-white shadow-glow-crimson'
+                    : 'text-white/40 hover:text-white/70 hover:bg-white/[0.04]'
                 }`}
               >
                 دينار ليبي 💵
               </button>
               <button
                 onClick={() => setPaymentMethod('libyana')}
-                className={`px-3 md:px-5 py-1.5 text-[11px] md:text-xs font-black rounded-md transition-all ${
+                className={`px-3 md:px-5 py-1.5 text-[11px] md:text-xs font-black rounded-lg transition-all duration-300 ease-premium ${
                   paymentMethod === 'libyana'
-                    ? 'bg-crimson text-white shadow-lg shadow-crimson/30'
-                    : 'text-white/50 hover:text-white hover:bg-white/5'
+                    ? 'bg-crimson text-white shadow-glow-crimson'
+                    : 'text-white/40 hover:text-white/70 hover:bg-white/[0.04]'
                 }`}
               >
                 رصيد ليبيانا 📱
@@ -89,12 +89,12 @@ export default function Header({ categories = [] }: { categories?: Category[] })
           </div>
         </div>
 
-        <header className="w-full bg-navy-dark/95 backdrop-blur-xl border-b border-border/40 overflow-x-clip">
+        <header className="w-full bg-navy-dark/90 backdrop-blur-2xl border-b border-white/[0.04] overflow-x-clip">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between h-20 md:h-[72px] gap-3">
-            {/* Right Side: Logo - Bigger & More Prominent */}
+            {/* Right Side: Logo */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-              <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-2xl overflow-hidden shadow-lg shadow-crimson/30 group-hover:shadow-crimson/50 transition-all duration-300 group-hover:scale-105 ring-2 ring-crimson/20 group-hover:ring-crimson/40 flex-shrink-0">
+              <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-2xl overflow-hidden shadow-premium group-hover:shadow-glow-crimson transition-all duration-[400ms] ease-premium group-hover:scale-[1.04] ring-2 ring-crimson/15 group-hover:ring-crimson/35 flex-shrink-0">
                 <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
@@ -107,18 +107,18 @@ export default function Header({ categories = [] }: { categories?: Category[] })
             </Link>
 
             {/* Center / Right: Nav Items */}
-            <div className="flex items-center gap-3 flex-1 justify-end">
+            <div className="flex items-center gap-2 md:gap-3 flex-1 justify-end">
               {/* Search */}
               <div ref={searchRef} className="relative">
                 {showSearch && (
-                  <div className="absolute top-full left-0 mt-3 w-80 bg-navy-light/95 backdrop-blur-xl border border-border/50 rounded-2xl shadow-2xl shadow-black/60 p-4 z-50 animate-slide-up">
+                  <div className="absolute top-full left-0 mt-3 w-80 bg-navy-light/95 backdrop-blur-2xl border border-white/[0.06] rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.5)] p-4 z-50 animate-fade-in-scale">
                     <input
                       type="text"
                       autoFocus
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="ابحث عن بطاقة..."
-                      className="w-full bg-navy border border-border text-white rounded-xl focus:ring-2 focus:ring-crimson/50 focus:border-crimson transition-all py-2.5 px-4 placeholder-white/30 text-sm"
+                      className="w-full bg-navy/80 border border-white/[0.06] text-white rounded-xl focus:ring-2 focus:ring-crimson/40 focus:border-crimson/40 transition-all duration-200 py-2.5 px-4 placeholder-white/25 text-sm outline-none"
                     />
                     {filteredCategories.length > 0 && (
                       <div className="mt-3 space-y-1 max-h-60 overflow-y-auto">
@@ -127,14 +127,14 @@ export default function Header({ categories = [] }: { categories?: Category[] })
                             key={cat.id}
                             href={`/category/${cat.id}`}
                             onClick={() => { setShowSearch(false); setSearchQuery(""); }}
-                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.04] transition-all duration-200 ease-premium"
                           >
-                            <div className="w-8 h-8 rounded-lg overflow-hidden">
+                            <div className="w-8 h-8 rounded-lg overflow-hidden ring-1 ring-white/10">
                               <img src={assetPath(cat.productImageUrl)} alt="" className="w-full h-full object-cover" />
                             </div>
                             <div>
                               <p className="text-white text-sm font-medium">{cat.name}</p>
-                              <p className="text-white/40 text-xs">{cat.nameEn}</p>
+                              <p className="text-white/35 text-xs">{cat.nameEn}</p>
                             </div>
                           </Link>
                         ))}
@@ -144,7 +144,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
                 )}
                 <button
                   onClick={() => setShowSearch(!showSearch)}
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center text-white/40 hover:text-white hover:bg-white/[0.06] transition-all duration-300 ease-premium"
                   aria-label="بحث"
                 >
                   <Search className="w-5 h-5" />
@@ -155,23 +155,23 @@ export default function Header({ categories = [] }: { categories?: Category[] })
               <div className="relative">
                 <button
                   onClick={() => setShowCart(true)}
-                  className="relative w-11 h-11 rounded-xl flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all"
+                  className="relative w-11 h-11 rounded-xl flex items-center justify-center text-white/40 hover:text-white hover:bg-white/[0.06] transition-all duration-300 ease-premium"
                   aria-label="السلة"
                 >
                   <ShoppingCart className="w-5 h-5" />
                   {totalItems > 0 && (
-                    <span className="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] bg-crimson text-white text-[11px] font-bold rounded-full flex items-center justify-center px-1 shadow-lg shadow-crimson/40 animate-bounce-once">
+                    <span className="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] bg-crimson text-white text-[11px] font-bold rounded-full flex items-center justify-center px-1 shadow-glow-crimson animate-bounce-once">
                       {totalItems}
                     </span>
                   )}
                 </button>
 
-                {/* Cart Toast Notification - More prominent and urgent */}
+                {/* Cart Toast Notification */}
                 {cartToast && (
                   <div className="fixed top-[100px] md:top-full left-1/2 -translate-x-1/2 md:mt-4 z-[100] animate-toast-in w-[92%] max-w-[340px] md:w-auto md:max-w-none">
                     <button
                       onClick={() => { setCartToast(false); setShowCart(true); }}
-                      className="group flex flex-col items-center bg-gradient-to-br from-crimson via-red-600 to-crimson-dark text-white p-1 rounded-2xl shadow-[0_0_40px_rgba(220,38,38,0.5)] transition-all duration-300 hover:scale-105 active:scale-95"
+                      className="group flex flex-col items-center bg-gradient-to-br from-crimson via-red-600 to-crimson-dark text-white p-1 rounded-2xl shadow-glow-crimson-lg transition-all duration-300 ease-premium hover:scale-[1.03] active:scale-[0.97]"
                     >
                       <div className="flex items-center gap-3 px-6 py-3.5 bg-navy-dark/10 rounded-xl w-full">
                         <div className="relative">
@@ -182,11 +182,10 @@ export default function Header({ categories = [] }: { categories?: Category[] })
                           <span className="text-sm font-black tracking-wide">تمت الإضافة بنجاح! 🛍️</span>
                           <span className="text-[11px] font-bold text-white/80 opacity-90">انقر هنا لإتمام الطلب الآن</span>
                         </div>
-                        <ArrowLeft className="w-5 h-5 mr-1 group-hover:-translate-x-1 transition-transform" />
+                        <ArrowLeft className="w-5 h-5 mr-1 group-hover:-translate-x-1 transition-transform duration-300" />
                       </div>
                     </button>
-                    {/* Pulsing ring around toast */}
-                    <div className="absolute inset-0 -z-10 bg-crimson/30 rounded-2xl blur-xl animate-pulse" />
+                    <div className="absolute inset-0 -z-10 bg-crimson/20 rounded-2xl blur-xl animate-pulse" />
                   </div>
                 )}
               </div>

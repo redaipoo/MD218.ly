@@ -10,20 +10,23 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-navy">
-      {/* Red top accent bar */}
-      <div className="w-full h-[3px]" style={{ background: "#cc0000" }} />
+      {/* Red top accent bar — premium gradient */}
+      <div className="w-full h-[3px] bg-gradient-to-r from-crimson-dark via-crimson to-crimson-dark" />
 
       <Header categories={categories} />
 
-      <main className="pb-20 md:pb-0">
+      <main className="pb-24 md:pb-0">
         {/* Hero Carousel */}
         <HeroCarousel />
 
-        {/* Section Title */}
-        <section className="container mx-auto px-4 mt-8 mb-6">
-          <h2 className="text-gold-gradient text-2xl md:text-3xl font-extrabold text-center md:text-right">
+        {/* Section Title — premium typography */}
+        <section className="container mx-auto px-4 mt-6 md:mt-8 mb-4 md:mb-6">
+          <h2 className="text-gold-gradient text-2xl md:text-3xl font-black text-center md:text-right leading-relaxed">
             اختر البطاقة التي تناسبك
           </h2>
+          <div className="flex justify-center md:justify-start mt-3">
+            <div className="w-16 h-0.5 bg-gradient-to-r from-crimson to-transparent rounded-full" />
+          </div>
         </section>
 
         {/* Unified Tabbed Interface for Cards, Accounts, and Games */}
