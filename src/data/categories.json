@@ -652,21 +652,15 @@
         "denominations": [
           {
             "value": "200",
-            "label": "200 SAR",
-            "priceLYD": 1111,
-            "priceLibyana": 1800
+            "label": "100 SAR",
+            "priceLYD": 240,
+            "priceLibyana": 320
           },
           {
             "value": "300",
-            "label": "300 SAR",
-            "priceLYD": 2100,
-            "priceLibyana": 2700
-          },
-          {
-            "value": "400",
-            "label": "400 SAR",
-            "priceLYD": 2800,
-            "priceLibyana": 3600
+            "label": "200 SAR",
+            "priceLYD": 480,
+            "priceLibyana": 585
           }
         ]
       }
