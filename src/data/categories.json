@@ -419,9 +419,9 @@
     "nameEn": "STEAM",
     "gradient": "from-blue-800 via-blue-700 to-indigo-600",
     "icon": "🎮",
-    "logoUrl": "/images/products/steam.png",
-    "productImageUrl": "/images/products/steam-product.jpg",
-    "bgUrl": "/images/products/steam-bg.jpg",
+    "logoUrl": "/images/products/steam.svg",
+    "productImageUrl": "/images/products/steam-product.svg",
+    "bgUrl": "/images/products/steam-bg.svg",
     "subCategories": [
       {
         "id": "steam-usd",
