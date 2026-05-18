@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Save, Plus, Trash2, Edit3, ChevronDown, ChevronUp, Image, X } from "lucide-react";
+import { assetPath } from "@/lib/utils";
 
 interface SharedAccount {
   id: string;
@@ -111,7 +112,7 @@ export default function AdminSharedAccounts({ token }: Props) {
           {accounts.map((game) => (
             <div key={game.id} className="bg-navy border border-white/5 rounded-xl p-3 space-y-2">
               <div className="flex items-center gap-3">
-                <img src={game.image} alt={game.title} className="w-12 h-16 object-cover rounded-lg border border-white/10" />
+                <img src={assetPath(game.image)} alt={game.title} className="w-12 h-16 object-cover rounded-lg border border-white/10" />
                 <div className="flex-1 min-w-0">
                   {editingId === game.id ? (
                     <div className="space-y-2">

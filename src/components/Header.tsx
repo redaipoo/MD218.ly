@@ -6,6 +6,7 @@ import { Search, ShoppingCart, X, ArrowLeft } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import CartDrawer from "./CartDrawer";
 import type { Category } from "@/lib/products";
+import { assetPath } from "@/lib/utils";
 
 export default function Header({ categories = [] }: { categories?: Category[] }) {
   const [showSearch, setShowSearch] = useState(false);
@@ -94,7 +95,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
             {/* Right Side: Logo - Bigger & More Prominent */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
               <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-2xl overflow-hidden shadow-lg shadow-crimson/30 group-hover:shadow-crimson/50 transition-all duration-300 group-hover:scale-105 ring-2 ring-crimson/20 group-hover:ring-crimson/40 flex-shrink-0">
-                <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
+                <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
                 <span className="font-black text-xl md:text-2xl leading-tight tracking-wider">
@@ -129,7 +130,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
                             className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors"
                           >
                             <div className="w-8 h-8 rounded-lg overflow-hidden">
-                              <img src={cat.productImageUrl} alt="" className="w-full h-full object-cover" />
+                              <img src={assetPath(cat.productImageUrl)} alt="" className="w-full h-full object-cover" />
                             </div>
                             <div>
                               <p className="text-white text-sm font-medium">{cat.name}</p>

@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
 import type { Category, SubCategory, Denomination } from "@/lib/products";
 import { useCartStore } from "@/lib/store";
+import { assetPath } from "@/lib/utils";
 
 interface CategoryPageClientProps {
   category: Category;
@@ -66,7 +67,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
           {/* Background Image or Gradient Fallback */}
           {hasBgImage ? (
             <img
-              src={category.bgUrl}
+              src={assetPath(category.bgUrl)}
               alt={category.nameEn}
               className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${loaded ? "scale-100 opacity-100" : "scale-110 opacity-0"}`}
             />
@@ -100,7 +101,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                 <div className={`absolute -inset-4 bg-gradient-to-br ${category.gradient} rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
                 <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border-2 border-white/20 shadow-2xl">
                   <img
-                    src={category.productImageUrl}
+                    src={assetPath(category.productImageUrl)}
                     alt={category.nameEn}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -170,7 +171,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                           {/* Small product thumbnail */}
                           <div className="absolute top-2 left-2 w-8 h-8 rounded-lg overflow-hidden border border-white/20 opacity-60">
                             <img
-                              src={category.productImageUrl}
+                              src={assetPath(category.productImageUrl)}
                               alt=""
                               className="w-full h-full object-cover"
                             />

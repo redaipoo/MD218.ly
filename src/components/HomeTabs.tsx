@@ -6,6 +6,7 @@ import { Gamepad2, Users, CreditCard, Plus, Check } from "lucide-react";
 import type { Category } from "@/lib/products";
 import sharedAccounts from "@/data/shared-accounts.json";
 import { useCartStore } from "@/lib/store";
+import { assetPath } from "@/lib/utils";
 
 type TabId = "cards" | "accounts" | "games";
 
@@ -118,7 +119,7 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                     {/* Game Cover */}
                     <div className="relative aspect-[3/4] overflow-hidden bg-black/50">
                       <img
-                        src={game.image}
+                        src={assetPath(game.image)}
                         alt={game.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-90 group-hover:opacity-100"
                         loading="lazy"

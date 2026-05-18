@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { assetPath } from "@/lib/utils";
 import { MessageCircle } from "lucide-react";
 
 export default function Footer() {
@@ -12,7 +13,7 @@ export default function Footer() {
           <div className="text-center md:text-right">
             <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
               <div className="w-14 h-14 rounded-xl overflow-hidden shadow-lg shadow-crimson/30">
-                <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
+                <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
                 <span className="text-white font-black text-2xl leading-tight tracking-wider">MD218</span>

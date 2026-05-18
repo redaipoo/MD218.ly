@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Gamepad2, CreditCard, Gift } from "lucide-react";
+import { assetPath } from "@/lib/utils";
 
 interface Slide {
   id: number;
@@ -101,7 +102,7 @@ export default function HeroCarousel() {
                   </div>
                 ) : (
                   <div className="absolute top-4 right-4 w-16 h-16 opacity-20 rounded-xl overflow-hidden">
-                    <img src="/logo.png" alt="" className="w-full h-full object-cover" />
+                    <img src={assetPath("/logo.png")} alt="" className="w-full h-full object-cover" />
                   </div>
                 )}
 

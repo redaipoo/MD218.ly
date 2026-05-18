@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { Category } from "@/lib/products";
+import { assetPath } from "@/lib/utils";
 
 // Map category IDs to brand accent colors
 const brandAccents: Record<string, string> = {
@@ -45,7 +46,7 @@ export default function ProductGrid({ categories = [] }: { categories: Category[
               <div className="relative aspect-[3/4] overflow-hidden">
                 {/* Actual product image as full background */}
                 <img
-                  src={category.productImageUrl}
+                  src={assetPath(category.productImageUrl)}
                   alt={category.nameEn}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />

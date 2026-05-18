@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Home, ShoppingCart } from "lucide-react";
 import { useCartStore } from "@/lib/store";
+import { assetPath } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
 export default function MobileNav() {
@@ -38,7 +39,7 @@ export default function MobileNav() {
           className="relative -mt-4 group"
         >
           <div className="relative w-14 h-14 rounded-full overflow-hidden border-[3px] border-navy-dark shadow-xl ring-2 ring-crimson/20 group-active:scale-95 transition-transform">
-            <img src="/logo.png" alt="MD218.LY" className="w-full h-full object-cover" />
+            <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
           </div>
         </Link>
 
