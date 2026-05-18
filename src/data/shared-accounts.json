@@ -1,19 +1,11 @@
 [
   {
-    "id": "shared-1",
-    "title": "Assassin's Creed Shadows",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-1.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
-  },
-  {
     "id": "shared-2",
     "title": "FIFA 17",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-2.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-3",
@@ -54,14 +46,6 @@
     "image": "/images/shared-accounts/game-8.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
-  },
-  {
-    "id": "shared-9",
-    "title": "Cronos: The New Dawn",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-9.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
   },
   {
     "id": "shared-10",
@@ -152,14 +136,6 @@
     "priceLibyana": 10
   },
   {
-    "id": "shared-21",
-    "title": "Mafia: The Old Country",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-21.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
-  },
-  {
     "id": "shared-22",
     "title": "Red Dead Redemption 2",
     "titleAr": "حساب مشترك",
@@ -182,14 +158,6 @@
     "image": "/images/shared-accounts/game-24.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
-  },
-  {
-    "id": "shared-25",
-    "title": "WWE 2K26",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-25.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
   },
   {
     "id": "shared-26",
@@ -216,14 +184,6 @@
     "priceLibyana": 15
   },
   {
-    "id": "shared-29",
-    "title": "Borderlands 4",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-29.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
-  },
-  {
     "id": "shared-30",
     "title": "Resident Evil 4 Gold Edition",
     "titleAr": "حساب مشترك",
@@ -246,14 +206,6 @@
     "image": "/images/shared-accounts/game-32.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
-  },
-  {
-    "id": "shared-33",
-    "title": "Crimson Desert",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-33.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
   },
   {
     "id": "shared-34",
@@ -280,28 +232,12 @@
     "priceLibyana": 15
   },
   {
-    "id": "shared-37",
-    "title": "Hell is Us",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-37.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
-  },
-  {
     "id": "shared-38",
     "title": "Silent Hill 2",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-38.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
-  },
-  {
-    "id": "shared-39",
-    "title": "Lies of P: Overture Bundle",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-39.jpg",
-    "priceLYD": 15,
-    "priceLibyana": 20
   },
   {
     "id": "shared-40",
