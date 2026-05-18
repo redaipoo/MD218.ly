@@ -627,9 +627,15 @@
         "denominations": [
           {
             "value": "4k",
-            "label": "اشتراك نتفلكس 4K",
-            "priceLYD": 28,
-            "priceLibyana": 36
+            "label": "15 USD",
+            "priceLYD": 137,
+            "priceLibyana": 180
+          },
+          {
+            "label": "20 USD",
+            "value": "new",
+            "priceLYD": 175,
+            "priceLibyana": 235
           }
         ]
       }
