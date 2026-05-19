@@ -1,182 +1,273 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Gamepad2, CreditCard, Gift } from "lucide-react";
+import React, { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, ChevronLeft, ArrowLeft, Users, ShieldCheck, Zap, Headphones, Tag } from "lucide-react";
 import { assetPath } from "@/lib/utils";
 
-interface Slide {
-  id: number;
-  title: string;
-  subtitle: string;
-  gradient: string;
-  Icon: typeof Gamepad2;
-  isXbox?: boolean;
-  ctaText?: string;
-}
-
-const slides: Slide[] = [
-  {
-    id: 0,
-    title: "ألعاب Xbox + حسابات مشتركة 🎮",
-    subtitle: "أفضل الأسعار في ليبيا - تفعيل فوري",
-    gradient: "xbox-custom",
-    Icon: Gamepad2,
-    isXbox: true,
-    ctaText: "تسوق الآن ←",
-  },
+// --- Data ---
+const slides = [
   {
     id: 1,
-    title: "بطاقات الألعاب",
-    subtitle: "Xbox • PlayStation • Steam وأكثر بأسعار منافسة",
-    gradient: "from-crimson via-red-700 to-red-900",
-    Icon: Gamepad2,
+    headline: "Xbox Libya",
+    subheadline: "وجهتك الأولى لكل ما يخص Xbox في ليبيا",
+    badge: "متجر إلكتروني متخصص في منتجات وخدمات Xbox",
+    stats: "10,000",
+    statsLabel: "عضو حقيقي",
+    ctaText: "تصفح المتجر الآن",
+    bgImage: "/images/xbox-hero-banner.jpg",
   },
   {
     id: 2,
-    title: "بطاقات الهدايا",
-    subtitle: "Apple • Netflix • SHEIN • Razer Gold وأكثر",
-    gradient: "from-red-800 via-crimson to-rose-700",
-    Icon: Gift,
+    headline: "حسابات ألعاب مشتركة",
+    subheadline: "العب أحدث الألعاب بأقل تكلفة ممكنة",
+    badge: "توفير يصل إلى 80%",
+    stats: "24/7",
+    statsLabel: "تفعيل فوري",
+    ctaText: "استكشف الألعاب",
+    bgImage: "/images/xbox-hero-banner.jpg", // Reusing the premium bg for cohesive aesthetic
   },
   {
     id: 3,
-    title: "اطلب عبر واتساب",
-    subtitle: "اختر منتجاتك وأرسل طلبك مباشرة - سهل وسريع",
-    gradient: "from-rose-900 via-red-800 to-crimson-dark",
-    Icon: CreditCard,
-  },
+    headline: "بطاقات الهدايا",
+    subheadline: "رصيد لجميع المنصات العالمية",
+    badge: "PlayStation • Steam • Netflix",
+    stats: "100%",
+    statsLabel: "أصلية ومضمونة",
+    ctaText: "تسوق البطاقات",
+    bgImage: "/images/xbox-hero-banner.jpg",
+  }
+];
+
+const bottomIcons = [
+  { icon: Headphones, label: "دعم فني متواصل" },
+  { icon: Zap, label: "تفعيل فوري وآمن" },
+  { icon: ShieldCheck, label: "ضمان كامل" },
+  { icon: Tag, label: "أفضل الأسعار" },
+  { icon: Users, label: "مجتمع ضخم وموثوق" },
 ];
 
 export default function HeroCarousel() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, direction: "rtl" }, [
+    Autoplay({ delay: 5000, stopOnInteraction: true }),
+  ]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  }, []);
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
 
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  }, []);
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi, setSelectedIndex]);
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, [nextSlide]);
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
 
-  const scrollToXbox = () => {
-    const el = document.getElementById("xbox-section");
+  const scrollToSection = () => {
+    const el = document.getElementById("xbox-section") || document.querySelector(".stagger-grid");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative w-full pt-6 pb-8 md:pt-8 md:pb-10">
-      <div className="container mx-auto px-4">
-        <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-crimson/20 bg-navy-light shadow-premium-lg">
-          {/* Slides */}
-          <div
-            className="flex transition-transform duration-[600ms] ease-premium"
-            style={{ transform: `translateX(${currentSlide * 100}%)` }}
-          >
-            {slides.map((slide) => (
-              <div
-                key={slide.id}
-                className={`min-w-full aspect-[16/6] lg:aspect-[16/5.5] relative ${
-                  slide.isXbox ? "" : `bg-gradient-to-br ${slide.gradient}`
-                }`}
-                style={
-                  slide.isXbox
-                    ? { background: "linear-gradient(135deg, #107C10 0%, #0a3a0a 50%, #061f06 100%)" }
-                    : undefined
-                }
-              >
-                {/* Animated decorative elements */}
-                <div className="absolute inset-0 opacity-20 overflow-hidden">
-                  <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-white/20 rounded-full blur-3xl animate-float" />
-                  <div className="absolute bottom-1/4 left-1/4 w-56 h-56 bg-white/10 rounded-full blur-3xl animate-float-delayed" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/[0.03] rounded-full blur-3xl" />
-                </div>
+    <section className="relative w-full pt-4 pb-6 md:pt-8 md:pb-10 overflow-hidden">
+      <div className="container mx-auto px-2 md:px-4">
+        
+        {/* Main Slider Container */}
+        <div className="relative overflow-hidden rounded-[24px] md:rounded-[32px] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_0_40px_rgba(139,26,26,0.15)] bg-navy-dark h-[380px] md:h-[500px]">
+          
+          {/* Viewport for Embla */}
+          <div className="overflow-hidden h-full w-full" ref={emblaRef} dir="rtl">
+            <div className="flex h-full w-full touch-pan-y">
+              
+              {/* Slides */}
+              {slides.map((slide, index) => {
+                const isActive = index === selectedIndex;
+                
+                return (
+                  <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 h-full">
+                    
+                    {/* Background Image with Parallax & Blur */}
+                    <div className="absolute inset-0 w-full h-full">
+                      <img 
+                        src={assetPath(slide.bgImage)} 
+                        alt="Hero Background" 
+                        className="absolute inset-0 w-full h-full object-cover object-center"
+                        style={{
+                          transform: isActive ? "scale(1.05)" : "scale(1.1)",
+                          transition: "transform 6s cubic-bezier(0.25, 1, 0.5, 1)",
+                        }}
+                      />
+                      {/* Cinematic Gradient Overlays to hide original text and create depth */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/40" />
+                      
+                      {/* Ambient Grid/Noise Overlay */}
+                      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-30" />
+                      
+                      {/* Red Neon Glows */}
+                      <div className="absolute -top-20 -right-20 w-96 h-96 bg-crimson/30 rounded-full blur-[100px] pointer-events-none" />
+                      <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-red-900/40 rounded-full blur-[80px] pointer-events-none" />
+                    </div>
 
-                {/* Vignette edges */}
-                <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.4)]" />
+                    {/* Content Overlay */}
+                    <AnimatePresence mode="wait">
+                      {isActive && (
+                        <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-24">
+                          <div className="max-w-2xl flex flex-col items-start gap-4 md:gap-6 relative z-10">
+                            
+                            {/* Top Badge */}
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                              className="inline-flex items-center gap-2 px-4 py-1.5 md:py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-premium"
+                            >
+                              <span className="w-2 h-2 rounded-full bg-crimson shadow-[0_0_10px_rgba(139,26,26,0.8)] animate-pulse" />
+                              <span className="text-white/80 text-xs md:text-sm font-bold tracking-wide">{slide.badge}</span>
+                            </motion.div>
 
-                {/* Xbox watermark for Xbox slide */}
-                {slide.isXbox ? (
-                  <div className="absolute right-6 md:right-16 top-1/2 -translate-y-1/2 opacity-[0.1]">
-                    <Gamepad2 className="w-36 h-36 md:w-56 md:h-56 text-white" />
+                            {/* Main Headline */}
+                            <motion.h1
+                              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                              animate={{ opacity: 1, scale: 1, y: 0 }}
+                              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                              className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]"
+                            >
+                              {slide.headline}
+                            </motion.h1>
+
+                            {/* Subheadline with Accent Line */}
+                            <motion.div
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                              className="flex items-center gap-4"
+                            >
+                              <div className="w-8 md:w-12 h-[2px] bg-crimson shadow-[0_0_10px_rgba(139,26,26,0.6)]" />
+                              <p className="text-white/70 text-sm md:text-xl font-bold max-w-md leading-relaxed">
+                                {slide.subheadline}
+                              </p>
+                            </motion.div>
+
+                            {/* Glassmorphism Stats Panel */}
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+                              className="mt-2 flex items-center gap-4 bg-white/5 border border-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl shadow-premium relative overflow-hidden group"
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                              <div className="flex flex-col">
+                                <span className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gold-light via-white to-gold-dark drop-shadow-md">
+                                  {slide.stats}
+                                </span>
+                                <span className="text-white/50 text-[10px] md:text-xs font-bold tracking-wider">{slide.statsLabel}</span>
+                              </div>
+                            </motion.div>
+
+                            {/* Premium CTA Button */}
+                            <motion.button
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                              onClick={scrollToSection}
+                              className="mt-4 md:mt-6 relative group overflow-hidden bg-crimson text-white px-8 py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black text-sm md:text-base flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(139,26,26,0.4)] hover:shadow-[0_0_40px_rgba(139,26,26,0.6)]"
+                            >
+                              {/* Animated Shine Effect */}
+                              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+                              
+                              <span className="relative z-10">{slide.ctaText}</span>
+                              <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:-translate-x-1 transition-transform duration-300" />
+                            </motion.button>
+
+                          </div>
+                        </div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                ) : (
-                  <div className="absolute top-5 right-5 w-14 h-14 opacity-15 rounded-xl overflow-hidden">
-                    <img src={assetPath("/logo.png")} alt="" className="w-full h-full object-cover" />
-                  </div>
-                )}
-
-                {/* Content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 md:p-10">
-                  <div className="p-3 md:p-4 rounded-2xl bg-white/[0.06] backdrop-blur-sm mb-4 md:mb-5">
-                    <slide.Icon className="w-12 h-12 md:w-16 md:h-16 text-white/90" />
-                  </div>
-                  <h2
-                    className={`text-2xl md:text-4xl lg:text-5xl font-black text-white mb-3 drop-shadow-lg leading-tight ${
-                      slide.isXbox ? "text-[24px] md:text-4xl" : ""
-                    }`}
-                  >
-                    {slide.title}
-                  </h2>
-                  <p className="text-white/60 text-sm md:text-lg max-w-2xl leading-relaxed font-medium">
-                    {slide.subtitle}
-                  </p>
-
-                  {/* CTA Button for Xbox slide */}
-                  {slide.isXbox && slide.ctaText && (
-                    <button
-                      onClick={scrollToXbox}
-                      className="mt-6 md:mt-7 px-8 py-3 bg-white font-black rounded-full text-sm md:text-base transition-all duration-300 ease-premium hover:scale-105 hover:shadow-[0_4px_24px_rgba(16,124,16,0.35)] active:scale-[0.98]"
-                      style={{ color: "#107C10" }}
-                    >
-                      {slide.ctaText}
-                    </button>
-                  )}
-                </div>
-
-                {/* Bottom gradient overlay */}
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/50 to-transparent" />
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
 
-          {/* Navigation Arrows — premium glass style */}
-          <button
-            onClick={prevSlide}
-            className="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-11 md:h-11 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-crimson/80 hover:border-crimson/50 transition-all duration-300 ease-premium hover:shadow-glow-crimson"
-            aria-label="Previous slide"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-11 md:h-11 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-crimson/80 hover:border-crimson/50 transition-all duration-300 ease-premium hover:shadow-glow-crimson"
-            aria-label="Next slide"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Dots Indicator — premium pill style */}
-        <div className="flex justify-center gap-2.5 mt-5">
-          {slides.map((_, index) => (
+          {/* Floating Navigation Arrows - Circular Glass Style */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 px-4 flex justify-between pointer-events-none z-20">
             <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-2.5 rounded-full transition-all duration-[400ms] ease-premium ${
-                currentSlide === index
-                  ? index === 0
-                    ? "bg-[#107C10] w-9 shadow-[0_0_12px_rgba(16,124,16,0.5)]"
-                    : "bg-crimson w-9 shadow-[0_0_12px_rgba(139,26,26,0.5)]"
-                  : "bg-white/15 hover:bg-white/30 w-2.5"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
+              onClick={scrollPrev}
+              className="pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-crimson/50 hover:bg-crimson/20 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(139,26,26,0.4)] active:scale-95"
+              aria-label="السابق"
+            >
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+            </button>
+            <button
+              onClick={scrollNext}
+              className="pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-crimson/50 hover:bg-crimson/20 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(139,26,26,0.4)] active:scale-95"
+              aria-label="التالي"
+            >
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+            </button>
+          </div>
+
+          {/* Capsule Pagination (Xbox A,B,X,Y colors logic or premium red glow) */}
+          <div className="absolute bottom-[80px] md:bottom-28 left-0 right-0 flex justify-center z-20">
+            <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 shadow-premium">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full h-2 md:h-2.5 ${
+                    selectedIndex === index 
+                      ? "w-8 md:w-10 bg-crimson shadow-[0_0_12px_rgba(139,26,26,0.8)]" 
+                      : "w-2 md:w-2.5 bg-white/30 hover:bg-white/60"
+                  }`}
+                  aria-label={`الذهاب للشريحة ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Very Bottom Bar: 5 Feature Icons (Glassmorphism) */}
+          <div className="absolute bottom-0 left-0 right-0 h-auto md:h-20 bg-black/60 backdrop-blur-2xl border-t border-white/10 z-20 overflow-x-auto custom-scrollbar">
+            <div className="flex items-center justify-between md:justify-around min-w-[600px] h-full px-4 py-3 md:py-0">
+              {bottomIcons.map((item, idx) => (
+                <React.Fragment key={idx}>
+                  <div className="flex items-center gap-3 group cursor-default px-2">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-crimson group-hover:bg-crimson group-hover:text-white transition-all duration-300 shadow-inner-glow group-hover:shadow-[0_0_15px_rgba(139,26,26,0.5)]">
+                      <item.icon className="w-4 h-4 md:w-5 md:h-5" />
+                    </div>
+                    <span className="text-white/60 text-[10px] md:text-xs font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
+                      {item.label}
+                    </span>
+                  </div>
+                  
+                  {/* Subtle red glow dot separator (skip after last item) */}
+                  {idx < bottomIcons.length - 1 && (
+                    <div className="w-1 h-1 rounded-full bg-crimson/50 shadow-[0_0_5px_rgba(139,26,26,0.8)]" />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+          {/* Sleek Progress Bar at very bottom edge */}
+          <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/5 z-30">
+            <motion.div
+              key={selectedIndex}
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 5, ease: "linear" }}
+              className="h-full bg-crimson shadow-[0_0_10px_rgba(139,26,26,1)]"
             />
-          ))}
+          </div>
+
         </div>
       </div>
     </section>
