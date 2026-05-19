@@ -22,6 +22,7 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
   // Custom image states
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [productImgFile, setProductImgFile] = useState<File | null>(null);
+  const [bgFile, setBgFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
 
   const owner = "redaipoo", repo = "MD218.ly", branch = "main";
@@ -73,6 +74,14 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
         const ext = productImgFile.name.split(".").pop() || "jpg";
         const destPath = `public/images/products/${id}-product.${ext}`;
         productImageUrl = await uploadImageToGitHub(productImgFile, destPath, token, `Upload product image for ${id}`);
+      }
+
+      // Upload Background Image if selected
+      if (bgFile) {
+        const ext = bgFile.name.split(".").pop() || "jpg";
+        const destPath = `public/images/products/${id}-bg.${ext}`;
+        bgUrl = await uploadImageToGitHub(bgFile, destPath, token, `Upload background for ${id}`);
+      } else if (productImgFile) {
         bgUrl = productImageUrl; // Use same for background or fallback
       }
 
@@ -95,6 +104,7 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
       setNewCat({ name: "", nameEn: "", icon: "💳", gradient: "from-purple-600 via-purple-500 to-purple-400" });
       setLogoFile(null);
       setProductImgFile(null);
+      setBgFile(null);
       setShowForm(false);
       setMsg({ text: "✅ تمت إضافة البطاقة بنجاح، لا تنسى النقر على 'حفظ جميع المنتجات' بالأسفل لتثبيت التغييرات!", type: "success" });
     } catch (err) {
@@ -147,7 +157,7 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
               </div>
 
               {/* Upload Inputs */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-black/10 p-3 rounded-lg border border-white/5">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-black/10 p-3 rounded-lg border border-white/5">
                 <div>
                   <label className="block text-[10px] font-bold text-white/50 mb-1 flex items-center gap-1">
                     <Upload className="w-3 h-3 text-crimson" /> رفع شعار البطاقة (الدائري)
@@ -162,7 +172,7 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold text-white/50 mb-1 flex items-center gap-1">
-                    <Upload className="w-3 h-3 text-crimson" /> رفع صورة المنتج الكبيرة
+                    <Upload className="w-3 h-3 text-crimson" /> رفع صورة الواجهة (البطاقة)
                   </label>
                   <input
                     type="file"
@@ -171,6 +181,18 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
                     className="w-full text-xs text-white/60 file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-crimson/20 file:text-crimson-light hover:file:bg-crimson/30 cursor-pointer"
                   />
                   {productImgFile && <p className="text-[10px] text-green-400 mt-1">✓ تم اختيار: {productImgFile.name}</p>}
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-white/50 mb-1 flex items-center gap-1">
+                    <Upload className="w-3 h-3 text-crimson" /> رفع صورة الغلاف (الخلفية)
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={e => setBgFile(e.target.files?.[0] || null)}
+                    className="w-full text-xs text-white/60 file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-crimson/20 file:text-crimson-light hover:file:bg-crimson/30 cursor-pointer"
+                  />
+                  {bgFile && <p className="text-[10px] text-green-400 mt-1">✓ تم اختيار: {bgFile.name}</p>}
                 </div>
               </div>
 
