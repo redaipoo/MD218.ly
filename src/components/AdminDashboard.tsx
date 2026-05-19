@@ -6,6 +6,7 @@ import { Lock, Save, Plus, Trash2, Edit3, CheckCircle2, ChevronDown, ChevronUp, 
 import AdminSharedAccounts from "./AdminSharedAccounts";
 import AdminXboxGames from "./AdminXboxGames";
 import AdminNewCategory from "./AdminNewCategory";
+import { uploadImageToGitHub } from "@/lib/github-upload";
 
 export default function AdminDashboard() {
   const [password, setPassword] = useState("");
@@ -145,6 +146,16 @@ export default function AdminDashboard() {
     
     setData(newData);
   };
+
+  const updateCategoryField = (catId: string, field: keyof Category, value: string) => {
+    if (!data) return;
+    const newData = data.map(c => {
+      if (c.id !== catId) return c;
+      return { ...c, [field]: value };
+    });
+    setData(newData);
+  };
+
 
   const deleteDenomination = (catId: string, subId: string, denIdx: number) => {
     if (!data) return;
@@ -350,7 +361,103 @@ export default function AdminDashboard() {
 
                 {/* Category Content */}
                 {expandedCat === cat.id && (
-                  <div className="p-4 border-t border-white/5 bg-black/20">
+                  <div className="p-4 border-t border-white/5 bg-black/20 space-y-4">
+                    {/* Category Details & Image Uploads */}
+                    <div className="bg-navy p-4 rounded-xl border border-white/5 space-y-3">
+                      <h3 className="text-white/60 text-xs font-bold mb-2">⚙️ إعدادات القسم والصور</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-[10px] font-bold text-white/50 mb-1">الاسم بالعربي</label>
+                          <input
+                            type="text"
+                            value={cat.name}
+                            onChange={(e) => updateCategoryField(cat.id, 'name', e.target.value)}
+                            className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[10px] font-bold text-white/50 mb-1">الاسم بالإنجليزي</label>
+                          <input
+                            type="text"
+                            value={cat.nameEn || ""}
+                            onChange={(e) => updateCategoryField(cat.id, 'nameEn', e.target.value)}
+                            className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        {/* Logo Upload */}
+                        <div className="bg-black/10 p-3 rounded-lg border border-white/5 flex flex-col gap-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs font-bold text-white/50">شعار القسم (الدائري)</span>
+                            {cat.logoUrl && <img src={cat.logoUrl} className="w-8 h-8 rounded-full object-cover border border-white/10" alt="" />}
+                          </div>
+                          <input
+                            type="text"
+                            value={cat.logoUrl || ""}
+                            onChange={(e) => updateCategoryField(cat.id, 'logoUrl', e.target.value)}
+                            className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white/70 focus:border-crimson text-left"
+                            dir="ltr"
+                          />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              try {
+                                setMessage({ text: "جاري رفع الشعار إلى GitHub...", type: "success" });
+                                const ext = file.name.split(".").pop() || "png";
+                                const dest = `public/images/products/${cat.id}.${ext}`;
+                                const url = await uploadImageToGitHub(file, dest, password.trim(), `Update logo for ${cat.id}`);
+                                updateCategoryField(cat.id, 'logoUrl', url);
+                                setMessage({ text: "✅ تم رفع الشعار وتحديث الرابط بنجاح! لا تنسى النقر على 'حفظ البطاقات' لحفظ التغييرات في المستودع.", type: "success" });
+                              } catch (err) {
+                                setMessage({ text: `❌ خطأ في رفع الشعار: ${err instanceof Error ? err.message : String(err)}`, type: "error" });
+                              }
+                            }}
+                            className="text-[10px] text-white/50 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:bg-crimson/20 file:text-crimson hover:file:bg-crimson/30 cursor-pointer"
+                          />
+                        </div>
+
+                        {/* Product Image Upload */}
+                        <div className="bg-black/10 p-3 rounded-lg border border-white/5 flex flex-col gap-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs font-bold text-white/50">صورة المنتج الكبيرة</span>
+                            {cat.productImageUrl && <img src={cat.productImageUrl} className="w-8 h-8 rounded object-cover border border-white/10" alt="" />}
+                          </div>
+                          <input
+                            type="text"
+                            value={cat.productImageUrl || ""}
+                            onChange={(e) => updateCategoryField(cat.id, 'productImageUrl', e.target.value)}
+                            className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white/70 focus:border-crimson text-left"
+                            dir="ltr"
+                          />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              try {
+                                setMessage({ text: "جاري رفع الصورة إلى GitHub...", type: "success" });
+                                const ext = file.name.split(".").pop() || "jpg";
+                                const dest = `public/images/products/${cat.id}-product.${ext}`;
+                                const url = await uploadImageToGitHub(file, dest, password.trim(), `Update product image for ${cat.id}`);
+                                updateCategoryField(cat.id, 'productImageUrl', url);
+                                updateCategoryField(cat.id, 'bgUrl', url);
+                                setMessage({ text: "✅ تم رفع صورة المنتج وتحديث الرابط بنجاح! لا تنسى النقر على 'حفظ البطاقات' لحفظ التغييرات في المستودع.", type: "success" });
+                              } catch (err) {
+                                setMessage({ text: `❌ خطأ في رفع الصورة: ${err instanceof Error ? err.message : String(err)}`, type: "error" });
+                              }
+                            }}
+                            className="text-[10px] text-white/50 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:bg-crimson/20 file:text-crimson hover:file:bg-crimson/30 cursor-pointer"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="space-y-4">
                       {cat.subCategories.map((sub) => (
                         <div key={sub.id} className="bg-navy border border-white/5 rounded-xl overflow-hidden">

@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import type { Category } from "@/lib/products";
-import { Save, Plus, Trash2, ChevronDown, ChevronUp, X } from "lucide-react";
+import { Save, Plus, Trash2, ChevronDown, ChevronUp, X, Upload } from "lucide-react";
+import { uploadImageToGitHub } from "@/lib/github-upload";
 
 interface Props {
   token: string;
@@ -17,8 +18,11 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
   const [newCat, setNewCat] = useState({
     name: "", nameEn: "", icon: "💳", gradient: "from-purple-600 via-purple-500 to-purple-400"
   });
-  const [newRegion, setNewRegion] = useState({ region: "", currency: "" });
-  const [newDenom, setNewDenom] = useState({ label: "", value: "", priceLYD: 0, priceLibyana: 0 });
+  
+  // Custom image states
+  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [productImgFile, setProductImgFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
 
   const owner = "redaipoo", repo = "MD218.ly", branch = "main";
   const filePath = "src/data/categories.json";
@@ -45,61 +49,70 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
     setSaving(false);
   };
 
-  const addCategory = () => {
+  const addCategory = async () => {
     if (!newCat.name.trim() || !newCat.nameEn.trim()) return;
     const id = newCat.nameEn.toLowerCase().replace(/[^a-z0-9]/g, "-");
-    const cat: Category = {
-      id, name: newCat.name, nameEn: newCat.nameEn, gradient: newCat.gradient,
-      icon: newCat.icon, logoUrl: `/images/products/${id}.png`,
-      productImageUrl: `/images/products/${id}-product.jpg`, bgUrl: `/images/products/${id}-bg.jpg`,
-      subCategories: []
-    };
-    const updated = [...categories, cat];
-    setCategories(updated);
-    setNewCat({ name: "", nameEn: "", icon: "💳", gradient: "from-purple-600 via-purple-500 to-purple-400" });
-    setShowForm(false);
-  };
+    
+    setUploading(true);
+    setMsg(null);
+    
+    let logoUrl = `/images/products/${id}.png`;
+    let productImageUrl = `/images/products/${id}-product.jpg`;
+    let bgUrl = `/images/products/${id}-bg.jpg`;
 
-  const addSubCategory = (catId: string) => {
-    if (!newRegion.region.trim()) return;
-    const updated = categories.map(c => {
-      if (c.id !== catId) return c;
-      const subId = `${catId}-${newRegion.currency.toLowerCase() || "sub"}`;
-      return { ...c, subCategories: [...c.subCategories, { id: subId, region: newRegion.region, currency: newRegion.currency, denominations: [] }] };
-    });
-    setCategories(updated);
-    setNewRegion({ region: "", currency: "" });
-  };
+    try {
+      // Upload Logo if selected
+      if (logoFile) {
+        const ext = logoFile.name.split(".").pop() || "png";
+        const destPath = `public/images/products/${id}.${ext}`;
+        logoUrl = await uploadImageToGitHub(logoFile, destPath, token, `Upload logo for ${id}`);
+      }
 
-  const addDenomination = (catId: string, subId: string) => {
-    if (!newDenom.label.trim()) return;
-    const updated = categories.map(c => {
-      if (c.id !== catId) return c;
-      return {
-        ...c, subCategories: c.subCategories.map(s => {
-          if (s.id !== subId) return s;
-          return { ...s, denominations: [...s.denominations, { ...newDenom }] };
-        })
+      // Upload Product Image if selected
+      if (productImgFile) {
+        const ext = productImgFile.name.split(".").pop() || "jpg";
+        const destPath = `public/images/products/${id}-product.${ext}`;
+        productImageUrl = await uploadImageToGitHub(productImgFile, destPath, token, `Upload product image for ${id}`);
+        bgUrl = productImageUrl; // Use same for background or fallback
+      }
+
+      const cat: Category = {
+        id,
+        name: newCat.name,
+        nameEn: newCat.nameEn,
+        gradient: newCat.gradient,
+        icon: newCat.icon,
+        logoUrl,
+        productImageUrl,
+        bgUrl,
+        subCategories: []
       };
-    });
-    setCategories(updated);
-    setNewDenom({ label: "", value: "", priceLYD: 0, priceLibyana: 0 });
-  };
 
-  const deleteCategory = (catId: string) => {
-    if (!confirm("هل أنت متأكد من حذف هذا المنتج؟")) return;
-    setCategories(categories.filter(c => c.id !== catId));
+      const updated = [...categories, cat];
+      setCategories(updated);
+      
+      // Reset form
+      setNewCat({ name: "", nameEn: "", icon: "💳", gradient: "from-purple-600 via-purple-500 to-purple-400" });
+      setLogoFile(null);
+      setProductImgFile(null);
+      setShowForm(false);
+      setMsg({ text: "✅ تمت إضافة البطاقة بنجاح، لا تنسى النقر على 'حفظ جميع المنتجات' بالأسفل لتثبيت التغييرات!", type: "success" });
+    } catch (err) {
+      setMsg({ text: `❌ فشل رفع الصور: ${err instanceof Error ? err.message : String(err)}`, type: "error" });
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
-    <div className="bg-navy-dark border border-white/5 rounded-2xl overflow-hidden shadow-lg mt-4">
+    <div className="bg-navy-dark border border-white/5 rounded-2xl overflow-hidden shadow-lg mt-4 animate-fade-in">
       <div className="p-4 md:p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors"
         onClick={() => setExpanded(!expanded)}>
         <div className="flex items-center gap-4">
           <div className="text-3xl">➕</div>
           <div>
             <h2 className="text-white font-bold text-lg">إضافة منتج بطاقة جديد</h2>
-            <span className="text-white/40 text-xs">إضافة نوع بطاقة جديد مثل أمازون</span>
+            <span className="text-white/40 text-xs">إضافة نوع بطاقة جديد مثل أمازون، مع خيار رفع صور مخصصة</span>
           </div>
         </div>
         {expanded ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
@@ -115,12 +128,12 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
 
           {/* Add New Category Form */}
           {showForm ? (
-            <div className="bg-navy border border-crimson/30 rounded-xl p-4 space-y-3">
+            <div className="bg-navy border border-crimson/30 rounded-xl p-4 space-y-4">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-crimson font-bold text-sm">➕ إضافة نوع بطاقة جديد</h3>
                 <button onClick={() => setShowForm(false)} className="text-white/50 hover:text-white"><X className="w-4 h-4" /></button>
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-col md:flex-row gap-3">
                 <div className="flex-1">
                   <label className="block text-[10px] font-bold text-white/50 mb-1">الاسم بالعربي *</label>
                   <input type="text" value={newCat.name} onChange={e => setNewCat({ ...newCat, name: e.target.value })}
@@ -132,6 +145,35 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
                     className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson" placeholder="AMAZON" />
                 </div>
               </div>
+
+              {/* Upload Inputs */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-black/10 p-3 rounded-lg border border-white/5">
+                <div>
+                  <label className="block text-[10px] font-bold text-white/50 mb-1 flex items-center gap-1">
+                    <Upload className="w-3 h-3 text-crimson" /> رفع شعار البطاقة (الدائري)
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={e => setLogoFile(e.target.files?.[0] || null)}
+                    className="w-full text-xs text-white/60 file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-crimson/20 file:text-crimson-light hover:file:bg-crimson/30 cursor-pointer"
+                  />
+                  {logoFile && <p className="text-[10px] text-green-400 mt-1">✓ تم اختيار: {logoFile.name}</p>}
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-white/50 mb-1 flex items-center gap-1">
+                    <Upload className="w-3 h-3 text-crimson" /> رفع صورة المنتج الكبيرة
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={e => setProductImgFile(e.target.files?.[0] || null)}
+                    className="w-full text-xs text-white/60 file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-crimson/20 file:text-crimson-light hover:file:bg-crimson/30 cursor-pointer"
+                  />
+                  {productImgFile && <p className="text-[10px] text-green-400 mt-1">✓ تم اختيار: {productImgFile.name}</p>}
+                </div>
+              </div>
+
               <div className="flex gap-2">
                 <div className="w-20">
                   <label className="block text-[10px] font-bold text-white/50 mb-1">أيقونة</label>
@@ -151,8 +193,12 @@ export default function AdminNewCategory({ token, categories, setCategories }: P
                   </select>
                 </div>
               </div>
-              <button onClick={addCategory} className="w-full py-2.5 bg-crimson hover:bg-crimson-dark text-white font-bold rounded-lg transition-colors text-sm">
-                إضافة المنتج
+              <button 
+                onClick={addCategory} 
+                disabled={uploading}
+                className="w-full py-2.5 bg-crimson hover:bg-crimson-dark disabled:bg-crimson/50 text-white font-bold rounded-lg transition-colors text-sm flex items-center justify-center gap-2"
+              >
+                {uploading ? "جاري رفع الصور..." : "إضافة المنتج"}
               </button>
             </div>
           ) : (
