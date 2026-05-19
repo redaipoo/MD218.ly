@@ -238,5 +238,21 @@
     "image": "/images/shared-accounts/game-40.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
+  },
+  {
+    "id": "shared-41",
+    "title": "silent hill f",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-new-1779202226773.jpg",
+    "priceLYD": 15,
+    "priceLibyana": 20
+  },
+  {
+    "id": "shared-42",
+    "title": "Pragmata",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-42.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
   }
 ]
