@@ -290,6 +290,104 @@
     ]
   },
   {
+    "id": "gamepass",
+    "name": "قيم باس",
+    "nameEn": "GAME PASS",
+    "gradient": "from-green-700 via-emerald-700 to-teal-600",
+    "icon": "🏆",
+    "logoUrl": "/images/products/gamepass.png",
+    "productImageUrl": "/images/products/gamepass-product.jpg",
+    "bgUrl": "/images/products/gamepass-bg.jpg",
+    "subCategories": [
+      {
+        "id": "gamepass-ultimate",
+        "region": "التمت",
+        "currency": "",
+        "denominations": [
+          {
+            "value": "2-months",
+            "label": "شهرين التمت - حساب كامل",
+            "priceLYD": 115,
+            "priceLibyana": 150
+          },
+          {
+            "label": "شهرين التمت - نص حساب رئيسي",
+            "value": "new",
+            "priceLYD": 55,
+            "priceLibyana": 75
+          },
+          {
+            "label": "شهرين التمت - نص حساب تسجيل دخول ",
+            "value": "new",
+            "priceLYD": 65,
+            "priceLibyana": 85
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "steam",
+    "name": "ستيم",
+    "nameEn": "STEAM",
+    "gradient": "from-blue-800 via-blue-700 to-indigo-600",
+    "icon": "🎮",
+    "logoUrl": "/images/products/steam.jpg",
+    "productImageUrl": "/images/products/steam-product.jpg",
+    "bgUrl": "/images/products/steam-bg.jpg",
+    "subCategories": [
+      {
+        "id": "steam-usd",
+        "region": "أمريكي",
+        "currency": "USD",
+        "denominations": [
+          {
+            "value": "5",
+            "label": "5 USD",
+            "priceLYD": 35,
+            "priceLibyana": 45
+          },
+          {
+            "value": "10",
+            "label": "10 USD",
+            "priceLYD": 70,
+            "priceLibyana": 90
+          },
+          {
+            "value": "15",
+            "label": "15 USD",
+            "priceLYD": 105,
+            "priceLibyana": 135
+          },
+          {
+            "value": "20",
+            "label": "20 USD",
+            "priceLYD": 140,
+            "priceLibyana": 180
+          },
+          {
+            "value": "25",
+            "label": "25 USD",
+            "priceLYD": 175,
+            "priceLibyana": 225
+          },
+          {
+            "value": "30",
+            "label": "30 USD",
+            "priceLYD": 210,
+            "priceLibyana": 270
+          },
+          {
+            "value": "50",
+            "label": "50 USD",
+            "priceLYD": 350,
+            "priceLibyana": 450
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "apple",
     "name": "بطاقات ابل",
     "nameEn": "APPLE / iTunes",
@@ -414,67 +512,6 @@
     ]
   },
   {
-    "id": "steam",
-    "name": "ستيم",
-    "nameEn": "STEAM",
-    "gradient": "from-blue-800 via-blue-700 to-indigo-600",
-    "icon": "🎮",
-    "logoUrl": "/images/products/steam.jpg",
-    "productImageUrl": "/images/products/steam-product.jpg",
-    "bgUrl": "/images/products/steam-bg.jpg",
-    "subCategories": [
-      {
-        "id": "steam-usd",
-        "region": "أمريكي",
-        "currency": "USD",
-        "denominations": [
-          {
-            "value": "5",
-            "label": "5 USD",
-            "priceLYD": 35,
-            "priceLibyana": 45
-          },
-          {
-            "value": "10",
-            "label": "10 USD",
-            "priceLYD": 70,
-            "priceLibyana": 90
-          },
-          {
-            "value": "15",
-            "label": "15 USD",
-            "priceLYD": 105,
-            "priceLibyana": 135
-          },
-          {
-            "value": "20",
-            "label": "20 USD",
-            "priceLYD": 140,
-            "priceLibyana": 180
-          },
-          {
-            "value": "25",
-            "label": "25 USD",
-            "priceLYD": 175,
-            "priceLibyana": 225
-          },
-          {
-            "value": "30",
-            "label": "30 USD",
-            "priceLYD": 210,
-            "priceLibyana": 270
-          },
-          {
-            "value": "50",
-            "label": "50 USD",
-            "priceLYD": 350,
-            "priceLibyana": 450
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "pubg",
     "name": "شدات ببجي",
     "nameEn": "PUBG",
@@ -512,43 +549,6 @@
             "label": "1800 UC",
             "priceLYD": 200,
             "priceLibyana": 260
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "gamepass",
-    "name": "قيم باس",
-    "nameEn": "GAME PASS",
-    "gradient": "from-green-700 via-emerald-700 to-teal-600",
-    "icon": "🏆",
-    "logoUrl": "/images/products/gamepass.png",
-    "productImageUrl": "/images/products/gamepass-product.jpg",
-    "bgUrl": "/images/products/gamepass-bg.jpg",
-    "subCategories": [
-      {
-        "id": "gamepass-ultimate",
-        "region": "التمت",
-        "currency": "",
-        "denominations": [
-          {
-            "value": "2-months",
-            "label": "شهرين التمت - حساب كامل",
-            "priceLYD": 115,
-            "priceLibyana": 150
-          },
-          {
-            "label": "شهرين التمت - نص حساب رئيسي",
-            "value": "new",
-            "priceLYD": 55,
-            "priceLibyana": 75
-          },
-          {
-            "label": "شهرين التمت - نص حساب تسجيل دخول ",
-            "value": "new",
-            "priceLYD": 65,
-            "priceLibyana": 85
           }
         ]
       }
