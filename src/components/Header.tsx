@@ -1,12 +1,22 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Search, ShoppingCart, X, ArrowLeft } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import CartDrawer from "./CartDrawer";
 import type { Category } from "@/lib/products";
 import { assetPath } from "@/lib/utils";
+import sharedAccountsData from "@/data/shared-accounts.json";
+
+interface SearchResult {
+  id: string;
+  name: string;
+  nameSecondary: string;
+  image: string;
+  type: "card" | "game";
+  href: string;
+}
 
 export default function Header({ categories = [] }: { categories?: Category[] }) {
   const [showSearch, setShowSearch] = useState(false);
@@ -20,12 +30,45 @@ export default function Header({ categories = [] }: { categories?: Category[] })
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
   const prevTotalRef = useRef(totalItems);
 
-  const filteredCategories = searchQuery.trim()
-    ? categories.filter(
-        (c) =>
-          c.name.includes(searchQuery) ||
-          c.nameEn.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+  // Build unified search index across all site items
+  const allItems = useMemo<SearchResult[]>(() => {
+    const results: SearchResult[] = [];
+
+    // Categories (cards)
+    for (const c of categories) {
+      results.push({
+        id: c.id,
+        name: c.name,
+        nameSecondary: c.nameEn,
+        image: c.productImageUrl,
+        type: "card",
+        href: `/category/${c.id}`,
+      });
+    }
+
+    // Shared accounts (games)
+    for (const sa of sharedAccountsData) {
+      results.push({
+        id: sa.id,
+        name: sa.title,
+        nameSecondary: sa.titleAr,
+        image: sa.image,
+        type: "game",
+        href: "/#shared-accounts",
+      });
+    }
+
+    return results;
+  }, [categories]);
+
+  const filteredResults = searchQuery.trim()
+    ? allItems
+        .filter(
+          (item) =>
+            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.nameSecondary.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        .slice(0, 10)
     : [];
 
   // Listen for open-cart custom event from MobileNav
@@ -111,34 +154,61 @@ export default function Header({ categories = [] }: { categories?: Category[] })
               {/* Search */}
               <div ref={searchRef} className="relative">
                 {showSearch && (
-                  <div className="absolute top-full left-0 mt-3 w-80 bg-navy-light/95 backdrop-blur-2xl border border-white/[0.06] rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.5)] p-4 z-50 animate-fade-in-scale">
+                  <div className="fixed inset-x-3 top-[140px] md:absolute md:inset-x-auto md:top-full md:left-0 md:mt-3 md:w-96 bg-navy-light/95 backdrop-blur-2xl border border-white/[0.06] rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.5)] p-4 z-50 animate-fade-in-scale">
                     <input
                       type="text"
                       autoFocus
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="ابحث عن بطاقة..."
+                      placeholder="ابحث عن بطاقة، لعبة، حساب..."
                       className="w-full bg-navy/80 border border-white/[0.06] text-white rounded-xl focus:ring-2 focus:ring-crimson/40 focus:border-crimson/40 transition-all duration-200 py-2.5 px-4 placeholder-white/25 text-sm outline-none"
                     />
-                    {filteredCategories.length > 0 && (
+                    {filteredResults.length > 0 && (
                       <div className="mt-3 space-y-1 max-h-60 overflow-y-auto">
-                        {filteredCategories.map((cat) => (
+                        {filteredResults.map((item) => (
                           <Link
-                            key={cat.id}
-                            href={`/category/${cat.id}`}
-                            onClick={() => { setShowSearch(false); setSearchQuery(""); }}
+                            key={item.id}
+                            href={item.href}
+                            onClick={() => {
+                              setShowSearch(false);
+                              setSearchQuery("");
+                            }}
                             className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.04] transition-all duration-200 ease-premium"
                           >
-                            <div className="w-8 h-8 rounded-lg overflow-hidden ring-1 ring-white/10">
-                              <img src={assetPath(cat.productImageUrl)} alt="" className="w-full h-full object-cover" />
+                            <div className="w-8 h-8 rounded-lg overflow-hidden ring-1 ring-white/10 flex-shrink-0">
+                              <img
+                                src={assetPath(item.image)}
+                                alt=""
+                                className="w-full h-full object-cover"
+                              />
                             </div>
-                            <div>
-                              <p className="text-white text-sm font-medium">{cat.name}</p>
-                              <p className="text-white/35 text-xs">{cat.nameEn}</p>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-white text-sm font-medium truncate">
+                                {item.name}
+                              </p>
+                              <div className="flex items-center gap-2">
+                                <p className="text-white/35 text-xs truncate">
+                                  {item.nameSecondary}
+                                </p>
+                                {item.type === "card" ? (
+                                  <span className="text-[8px] bg-crimson/20 text-crimson-light px-1.5 py-0.5 rounded font-bold flex-shrink-0">
+                                    بطاقة
+                                  </span>
+                                ) : (
+                                  <span className="text-[8px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded font-bold flex-shrink-0">
+                                    لعبة
+                                  </span>
+                                )}
+                              </div>
                             </div>
                           </Link>
                         ))}
                       </div>
+                    )}
+                    {searchQuery.trim() && filteredResults.length === 0 && (
+                      <p className="mt-3 text-white/30 text-sm text-center py-4">
+                        لا توجد نتائج
+                      </p>
                     )}
                   </div>
                 )}
@@ -170,7 +240,10 @@ export default function Header({ categories = [] }: { categories?: Category[] })
                 {cartToast && (
                   <div className="fixed top-[100px] md:top-full left-1/2 -translate-x-1/2 md:mt-4 z-[100] animate-toast-in w-[92%] max-w-[340px] md:w-auto md:max-w-none">
                     <button
-                      onClick={() => { setCartToast(false); setShowCart(true); }}
+                      onClick={() => {
+                        setCartToast(false);
+                        setShowCart(true);
+                      }}
                       className="group flex flex-col items-center bg-gradient-to-br from-crimson via-red-600 to-crimson-dark text-white p-1 rounded-2xl shadow-glow-crimson-lg transition-all duration-300 ease-premium hover:scale-[1.03] active:scale-[0.97]"
                     >
                       <div className="flex items-center gap-3 px-6 py-3.5 bg-navy-dark/10 rounded-xl w-full">
@@ -179,8 +252,12 @@ export default function Header({ categories = [] }: { categories?: Category[] })
                           <span className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full animate-ping" />
                         </div>
                         <div className="flex flex-col items-start">
-                          <span className="text-sm font-black tracking-wide">تمت الإضافة بنجاح! 🛍️</span>
-                          <span className="text-[11px] font-bold text-white/80 opacity-90">انقر هنا لإتمام الطلب الآن</span>
+                          <span className="text-sm font-black tracking-wide">
+                            تمت الإضافة بنجاح! 🛍️
+                          </span>
+                          <span className="text-[11px] font-bold text-white/80 opacity-90">
+                            انقر هنا لإتمام الطلب الآن
+                          </span>
                         </div>
                         <ArrowLeft className="w-5 h-5 mr-1 group-hover:-translate-x-1 transition-transform duration-300" />
                       </div>
