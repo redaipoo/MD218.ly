@@ -30,9 +30,9 @@ const FB_GROUP_URL =
    ═══════════════════════════════════════════ */
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 10 },
+  initial: { opacity: 0, y: 8 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.45, ease: [0.25, 1, 0.5, 1] as const, delay },
+  transition: { duration: 0.25, ease: [0.25, 1, 0.5, 1] as const, delay },
 });
 
 /* ═══════════════════════════════════════════
@@ -49,7 +49,7 @@ const slides: SlideData[] = [
   {
     id: 1,
     type: "community",
-    bgImage: "/images/xbox-hero-banner.jpg",
+    bgImage: "/images/xbox-community-banner.png",
   },
   {
     id: 2,
@@ -73,7 +73,7 @@ function CommunitySlide() {
       {/* Top section: badge + title + subtitle */}
       <div className="flex flex-col gap-1.5 md:gap-3 flex-1 min-w-0">
         <motion.div
-          {...fadeUp(0.05)}
+          {...fadeUp(0)}
           className="inline-flex items-center gap-1.5 self-start px-2.5 py-1 rounded-full bg-white/8 border border-white/10"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#1877F2]" />
@@ -83,7 +83,7 @@ function CommunitySlide() {
         </motion.div>
 
         <motion.h2
-          {...fadeUp(0.12)}
+          {...fadeUp(0.04)}
           className="text-[clamp(1.05rem,3.8vw,2.2rem)] font-black text-white leading-[1.25]"
         >
           انضم إلى أكبر مجتمع
@@ -92,7 +92,7 @@ function CommunitySlide() {
         </motion.h2>
 
         <motion.p
-          {...fadeUp(0.18)}
+          {...fadeUp(0.08)}
           className="text-white/40 text-[clamp(0.6rem,2vw,0.85rem)] font-medium"
         >
           +10,000 عضو حقيقي وتفاعل يومي
@@ -101,7 +101,7 @@ function CommunitySlide() {
 
       {/* Bottom row: CTA left, stats right */}
       <motion.div
-        {...fadeUp(0.25)}
+        {...fadeUp(0.1)}
         className="flex items-end justify-between gap-3 mt-auto"
       >
         {/* CTA Button */}
@@ -151,14 +151,14 @@ function FeaturesSlide() {
       {/* Title */}
       <div className="flex flex-col gap-1.5 md:gap-3">
         <motion.h2
-          {...fadeUp(0.05)}
+          {...fadeUp(0)}
           className="text-[clamp(1rem,3.5vw,2rem)] font-black text-white leading-tight"
         >
           لماذا <span className="text-crimson">MD218.LY</span>؟
         </motion.h2>
 
         <motion.p
-          {...fadeUp(0.1)}
+          {...fadeUp(0.03)}
           className="text-white/40 text-[clamp(0.6rem,1.8vw,0.8rem)] font-medium"
         >
           متجرك الموثوق لمنتجات Xbox والبطاقات الرقمية
@@ -170,7 +170,7 @@ function FeaturesSlide() {
         {features.map((f, i) => (
           <motion.div
             key={i}
-            {...fadeUp(0.12 + i * 0.06)}
+            {...fadeUp(0.04 + i * 0.03)}
             className="flex items-center gap-2 bg-white/5 border border-white/8 rounded-xl px-2.5 py-2 md:px-4 md:py-3"
           >
             <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-crimson/15 flex items-center justify-center flex-shrink-0">
@@ -184,7 +184,7 @@ function FeaturesSlide() {
       </div>
 
       {/* CTA */}
-      <motion.div {...fadeUp(0.4)}>
+      <motion.div {...fadeUp(0.15)}>
         <button
           onClick={() => {
             const el =
@@ -217,7 +217,7 @@ function ProductsSlide() {
     <div className="hero-safe-area">
       {/* Title */}
       <motion.h2
-        {...fadeUp(0.05)}
+        {...fadeUp(0)}
         className="text-[clamp(1rem,3.5vw,2rem)] font-black text-white leading-tight"
       >
         منتجاتنا <span className="text-crimson">المميزة</span>
@@ -228,7 +228,7 @@ function ProductsSlide() {
         {products.map((p, i) => (
           <motion.div
             key={i}
-            {...fadeUp(0.1 + i * 0.08)}
+            {...fadeUp(0.04 + i * 0.03)}
             className="flex-1 min-w-0 bg-white/5 border border-white/8 rounded-xl overflow-hidden"
           >
             <div className="relative w-full h-full overflow-hidden">
@@ -251,7 +251,7 @@ function ProductsSlide() {
       </div>
 
       {/* CTA */}
-      <motion.div {...fadeUp(0.4)}>
+      <motion.div {...fadeUp(0.12)}>
         <button
           onClick={() => {
             const el =

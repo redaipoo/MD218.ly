@@ -114,7 +114,7 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                 حسابات ألعاب مشتركة
               </h2>
               <p className="text-white/50 text-center max-w-lg text-sm md:text-base leading-relaxed">
-                استمتع بأفضل الألعاب بأقل الأسعار! حسابات أصلية ومضمونة للعب أوفلاين.
+                استمتع بأفضل الألعاب بأقل الأسعار! حسابات أصلية ومضمونة بتفعيل فوري.
               </p>
             </div>
 

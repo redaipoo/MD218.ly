@@ -22,7 +22,7 @@ export default async function Home() {
         {/* Section Title — premium typography */}
         <section className="container mx-auto px-4 mt-6 md:mt-8 mb-4 md:mb-6">
           <h2 className="text-gold-gradient text-2xl md:text-3xl font-black text-center md:text-right leading-relaxed">
-            اختر البطاقة التي تناسبك
+            اكتشف عالمك الرقمي الآن
           </h2>
           <div className="flex justify-center md:justify-start mt-3">
             <div className="w-16 h-0.5 bg-gradient-to-r from-crimson to-transparent rounded-full" />

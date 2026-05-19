@@ -38,7 +38,7 @@ export default function MobileNav() {
         {/* Center Logo Button */}
         <Link
           href="/"
-          className="relative -mt-5 group"
+          className="relative -mt-8 group"
         >
           <div className="relative w-[58px] h-[58px] rounded-full overflow-hidden border-[3px] border-navy-dark shadow-premium ring-2 ring-crimson/15 group-hover:ring-crimson/30 group-active:scale-95 transition-all duration-300 ease-premium">
             <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
