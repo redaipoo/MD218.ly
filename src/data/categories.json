@@ -658,5 +658,16 @@
         "denominations": []
       }
     ]
+  },
+  {
+    "id": "playstation-plus",
+    "name": "بلاستيشن بلس",
+    "nameEn": "Playstation plus",
+    "gradient": "from-blue-600 via-blue-500 to-blue-400",
+    "icon": "🔵",
+    "logoUrl": "/images/products/playstation-plus.png",
+    "productImageUrl": "/images/products/playstation-plus-product.jpg",
+    "bgUrl": "/images/products/playstation-plus-bg.jpg",
+    "subCategories": []
   }
 ]
