@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Category, SubCategory, Denomination } from "@/lib/products";
-import { Lock, Save, Plus, Trash2, Edit3, CheckCircle2, ChevronDown, ChevronUp, AlertCircle, LogOut } from "lucide-react";
+import { Lock, Save, Plus, Trash2, Edit3, CheckCircle2, ChevronDown, ChevronUp, AlertCircle, LogOut, ArrowUp, ArrowDown } from "lucide-react";
 import AdminSharedAccounts from "./AdminSharedAccounts";
 import AdminXboxGames from "./AdminXboxGames";
 import AdminNewCategory from "./AdminNewCategory";
@@ -178,6 +178,44 @@ export default function AdminDashboard() {
     setData(newData);
   };
 
+  // Move category up/down
+  const moveCategory = (catId: string, direction: "up" | "down") => {
+    if (!data) return;
+    const idx = data.findIndex(c => c.id === catId);
+    if (idx === -1) return;
+    if (direction === "up" && idx === 0) return;
+    if (direction === "down" && idx === data.length - 1) return;
+    const newData = [...data];
+    const swapIdx = direction === "up" ? idx - 1 : idx + 1;
+    [newData[idx], newData[swapIdx]] = [newData[swapIdx], newData[idx]];
+    setData(newData);
+  };
+
+  // Delete entire category
+  const deleteCategory = (catId: string) => {
+    if (!data) return;
+    if (!confirm("هل أنت متأكد من حذف هذا القسم بالكامل؟")) return;
+    setData(data.filter(c => c.id !== catId));
+  };
+
+  // Delete sub-category
+  const deleteSubCategory = (catId: string, subId: string) => {
+    if (!data) return;
+    if (!confirm("هل أنت متأكد من حذف هذا الريجن؟")) return;
+    setData(data.map(c => c.id === catId ? { ...c, subCategories: c.subCategories.filter(s => s.id !== subId) } : c));
+  };
+
+  // Add new sub-category (region)
+  const addSubCategory = (catId: string, region: string, currency: string) => {
+    if (!data || !region.trim()) return;
+    const newData = data.map(c => {
+      if (c.id !== catId) return c;
+      const subId = `${catId}-${currency.toLowerCase() || "sub"}-${Date.now()}`;
+      return { ...c, subCategories: [...c.subCategories, { id: subId, region, currency, denominations: [] }] };
+    });
+    setData(newData);
+  };
+
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-navy flex items-center justify-center px-4">
@@ -289,21 +327,25 @@ export default function AdminDashboard() {
         <div className="mb-6">
           <h2 className="text-white/30 text-xs font-bold mb-3 tracking-widest">💳 إدارة البطاقات والأسعار</h2>
           <div className="grid grid-cols-1 gap-4">
-            {data.map((cat) => (
+            {data.map((cat, catIdx) => (
               <div key={cat.id} className="bg-navy-dark border border-white/5 rounded-2xl overflow-hidden shadow-lg">
                 {/* Category Header */}
-                <div 
-                  className="p-4 md:p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors"
-                  onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}
-                >
-                  <div className="flex items-center gap-4">
+                <div className="p-4 md:p-5 flex items-center justify-between hover:bg-white/5 transition-colors">
+                  <div className="flex items-center gap-4 cursor-pointer flex-1" onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}>
                     <div className="text-3xl">{cat.icon}</div>
                     <div>
                       <h2 className="text-white font-bold text-lg">{cat.name}</h2>
                       <span className="text-white/40 text-xs">{cat.subCategories.length} أقسام فرعية</span>
                     </div>
                   </div>
-                  {expandedCat === cat.id ? <ChevronUp className="w-5 h-5 text-white/50" /> : <ChevronDown className="w-5 h-5 text-white/50" />}
+                  <div className="flex items-center gap-1">
+                    <button onClick={() => moveCategory(cat.id, 'up')} disabled={catIdx === 0} className="w-8 h-8 rounded bg-white/5 hover:bg-white/10 disabled:opacity-20 flex items-center justify-center text-white/60 transition-all" title="تحريك لأعلى"><ArrowUp className="w-3.5 h-3.5" /></button>
+                    <button onClick={() => moveCategory(cat.id, 'down')} disabled={catIdx === data.length - 1} className="w-8 h-8 rounded bg-white/5 hover:bg-white/10 disabled:opacity-20 flex items-center justify-center text-white/60 transition-all" title="تحريك لأسفل"><ArrowDown className="w-3.5 h-3.5" /></button>
+                    <button onClick={() => deleteCategory(cat.id)} className="w-8 h-8 rounded bg-red-500/10 hover:bg-red-500/20 flex items-center justify-center text-red-500 transition-all" title="حذف القسم"><Trash2 className="w-3.5 h-3.5" /></button>
+                    <button onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)} className="w-8 h-8 rounded bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/50 transition-all">
+                      {expandedCat === cat.id ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    </button>
+                  </div>
                 </div>
 
                 {/* Category Content */}
@@ -314,15 +356,17 @@ export default function AdminDashboard() {
                         <div key={sub.id} className="bg-navy border border-white/5 rounded-xl overflow-hidden">
                           
                           {/* Subcategory Header */}
-                          <div 
-                            className="p-4 flex items-center justify-between cursor-pointer hover:bg-white/5"
-                            onClick={() => setExpandedSub(expandedSub === sub.id ? null : sub.id)}
-                          >
-                            <div className="flex items-center gap-3">
+                          <div className="p-4 flex items-center justify-between hover:bg-white/5">
+                            <div className="flex items-center gap-3 cursor-pointer flex-1" onClick={() => setExpandedSub(expandedSub === sub.id ? null : sub.id)}>
                               <span className="px-3 py-1 bg-white/10 rounded-md text-white/80 text-sm font-bold">{sub.region}</span>
                               <span className="text-white/50 text-xs">{sub.denominations.length} عناصر</span>
                             </div>
-                            {expandedSub === sub.id ? <ChevronUp className="w-4 h-4 text-white/40" /> : <ChevronDown className="w-4 h-4 text-white/40" />}
+                            <div className="flex items-center gap-1">
+                              <button onClick={() => deleteSubCategory(cat.id, sub.id)} className="w-7 h-7 rounded bg-red-500/10 hover:bg-red-500/20 flex items-center justify-center text-red-500 transition-all" title="حذف الريجن"><Trash2 className="w-3 h-3" /></button>
+                              <button onClick={() => setExpandedSub(expandedSub === sub.id ? null : sub.id)} className="w-7 h-7 rounded bg-white/5 flex items-center justify-center text-white/40">
+                                {expandedSub === sub.id ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                              </button>
+                            </div>
                           </div>
 
                           {/* Denominations List */}
@@ -382,6 +426,9 @@ export default function AdminDashboard() {
                           )}
                         </div>
                       ))}
+
+                      {/* Add new region */}
+                      <AddRegionForm catId={cat.id} onAdd={addSubCategory} />
                     </div>
                   </div>
                 )}
@@ -396,6 +443,40 @@ export default function AdminDashboard() {
           <AdminNewCategory token={password.trim()} categories={data} setCategories={setData as (cats: Category[]) => void} />
         </div>
       </div>
+    </div>
+  );
+}
+
+/* Small inline form for adding a region to a category */
+function AddRegionForm({ catId, onAdd }: { catId: string; onAdd: (catId: string, region: string, currency: string) => void }) {
+  const [show, setShow] = useState(false);
+  const [region, setRegion] = useState("");
+  const [currency, setCurrency] = useState("");
+
+  if (!show) {
+    return (
+      <button onClick={() => setShow(true)}
+        className="w-full py-2.5 border border-dashed border-white/15 hover:border-crimson/40 rounded-lg text-white/40 hover:text-crimson transition-colors flex items-center justify-center gap-2 text-xs font-bold mt-2">
+        <Plus className="w-3.5 h-3.5" /> إضافة ريجن جديد
+      </button>
+    );
+  }
+
+  return (
+    <div className="flex gap-2 items-end mt-2 bg-navy-dark p-3 rounded-lg border border-crimson/20">
+      <div className="flex-1">
+        <label className="block text-[10px] font-bold text-white/50 mb-1">اسم الريجن</label>
+        <input type="text" value={region} onChange={e => setRegion(e.target.value)}
+          className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson" placeholder="مثال: تركي" />
+      </div>
+      <div className="w-24">
+        <label className="block text-[10px] font-bold text-white/50 mb-1">العملة</label>
+        <input type="text" value={currency} onChange={e => setCurrency(e.target.value)}
+          className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-sm text-white focus:border-crimson" placeholder="TRY" />
+      </div>
+      <button onClick={() => { onAdd(catId, region, currency); setRegion(""); setCurrency(""); setShow(false); }}
+        className="px-4 py-2 bg-crimson hover:bg-crimson-dark text-white rounded-md text-xs font-bold transition-colors">إضافة</button>
+      <button onClick={() => setShow(false)} className="px-3 py-2 bg-white/5 hover:bg-white/10 text-white/50 rounded-md text-xs transition-colors">إلغاء</button>
     </div>
   );
 }
