@@ -1,4 +1,16 @@
 {
   "buyOnAccount": [],
-  "fullAccounts": []
+  "fullAccounts": [
+    {
+      "id": "full-1",
+      "title": "لعبة أكشن وتقمص أدوار",
+      "titleAr": "حساب كامل",
+      "image": "/images/xbox-games/full-new-1779202988595.jpg",
+      "games": [
+        "Assassin's creed shadows"
+      ],
+      "priceLYD": 85,
+      "priceLibyana": 110
+    }
+  ]
 }
