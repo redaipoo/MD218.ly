@@ -292,8 +292,9 @@ export default function HeroCarousel() {
     {
       loop: true,
       direction: "rtl",
-      containScroll: "keepSnaps",
-      align: "center",
+      align: "start",
+      containScroll: false,
+      dragFree: false,
     },
     [autoplayRef.current]
   );
@@ -351,19 +352,18 @@ export default function HeroCarousel() {
       <div className="container mx-auto px-3 md:px-4">
         {/* ── Slider Container ── */}
         <div
-          className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/8 bg-navy-dark shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
-          style={{ isolation: "isolate" }}
+          className="relative rounded-2xl md:rounded-3xl border border-white/8 bg-navy-dark shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
+          style={{ isolation: "isolate", overflow: "hidden" }}
         >
           {/* Embla Viewport — strict clipping */}
           <div
-            className="overflow-hidden w-full"
             ref={emblaRef}
             dir="rtl"
-            style={{ position: "relative" }}
+            style={{ overflow: "hidden", width: "100%", position: "relative" }}
           >
             <div
-              className="flex w-full touch-pan-y"
-              style={{ backfaceVisibility: "hidden" }}
+              className="touch-pan-y"
+              style={{ display: "flex", backfaceVisibility: "hidden", willChange: "transform" }}
             >
               {slides.map((slide, index) => {
                 const isActive = index === selectedIndex;
@@ -372,8 +372,8 @@ export default function HeroCarousel() {
                 return (
                   <div
                     key={slide.id}
-                    className="relative w-full h-[220px] md:h-[380px] lg:h-[420px]"
-                    style={{ flex: "0 0 100%", minWidth: 0 }}
+                    className="relative h-[220px] md:h-[380px] lg:h-[420px]"
+                    style={{ flex: "0 0 100%", minWidth: 0, maxWidth: "100%", overflow: "hidden" }}
                   >
                     {/* ── Background Image ── */}
                     <img
