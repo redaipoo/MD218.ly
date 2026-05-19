@@ -7,17 +7,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, ArrowLeft, Users, ShieldCheck, Zap, Headphones, Tag } from "lucide-react";
 import { assetPath } from "@/lib/utils";
 
-// --- Data ---
 const slides = [
   {
     id: 1,
-    headline: "Xbox Libya",
-    subheadline: "وجهتك الأولى لكل ما يخص Xbox في ليبيا",
-    badge: "متجر إلكتروني متخصص في منتجات وخدمات Xbox",
-    stats: "10,000",
+    headline: "انضم إلى أكبر مجموعة",
+    subheadline: "مهتمة بعالم Xbox في ليبيا 🇱🇾",
+    badge: "مجتمع ضخم وموثوق",
+    stats: "10,000+",
     statsLabel: "عضو حقيقي",
-    ctaText: "تصفح المتجر الآن",
+    ctaText: "اضغط هنا للانضمام إلى المجموعة",
     bgImage: "/images/xbox-hero-banner.jpg",
+    linkUrl: "https://www.facebook.com/groups/1529268571110105/?ref=share_group_link&rdid=NWaxup8I4sRQJkJF&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1CNEkTVVC3%2F#",
+    isExternal: true,
+    hideOverlay: true, // Don't darken the ad too much
   },
   {
     id: 2,
@@ -27,7 +29,7 @@ const slides = [
     stats: "24/7",
     statsLabel: "تفعيل فوري",
     ctaText: "استكشف الألعاب",
-    bgImage: "/images/xbox-hero-banner.jpg", // Reusing the premium bg for cohesive aesthetic
+    bgImage: "/images/xbox-hero-banner.jpg",
   },
   {
     id: 3,
@@ -81,7 +83,7 @@ export default function HeroCarousel() {
       <div className="container mx-auto px-2 md:px-4">
         
         {/* Main Slider Container */}
-        <div className="relative overflow-hidden rounded-[24px] md:rounded-[32px] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_0_40px_rgba(139,26,26,0.15)] bg-navy-dark h-[380px] md:h-[500px]">
+        <div className="relative overflow-hidden rounded-[20px] md:rounded-[32px] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_0_40px_rgba(139,26,26,0.15)] bg-navy-dark h-[240px] md:h-[480px]">
           
           {/* Viewport for Embla */}
           <div className="overflow-hidden h-full w-full" ref={emblaRef} dir="rtl">
@@ -106,8 +108,15 @@ export default function HeroCarousel() {
                         }}
                       />
                       {/* Cinematic Gradient Overlays to hide original text and create depth */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/40" />
+                      {!slide.hideOverlay && (
+                        <>
+                          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/40" />
+                        </>
+                      )}
+                      {slide.hideOverlay && (
+                        <div className="absolute inset-0 bg-black/40 md:bg-black/20" />
+                      )}
                       
                       {/* Ambient Grid/Noise Overlay */}
                       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-30" />
@@ -139,7 +148,7 @@ export default function HeroCarousel() {
                               initial={{ opacity: 0, scale: 0.95, y: 20 }}
                               animate={{ opacity: 1, scale: 1, y: 0 }}
                               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                              className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]"
+                              className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]"
                             >
                               {slide.headline}
                             </motion.h1>
@@ -174,19 +183,33 @@ export default function HeroCarousel() {
                             </motion.div>
 
                             {/* Premium CTA Button */}
-                            <motion.button
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-                              onClick={scrollToSection}
-                              className="mt-4 md:mt-6 relative group overflow-hidden bg-crimson text-white px-8 py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black text-sm md:text-base flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(139,26,26,0.4)] hover:shadow-[0_0_40px_rgba(139,26,26,0.6)]"
-                            >
-                              {/* Animated Shine Effect */}
-                              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
-                              
-                              <span className="relative z-10">{slide.ctaText}</span>
-                              <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:-translate-x-1 transition-transform duration-300" />
-                            </motion.button>
+                            {slide.isExternal ? (
+                              <motion.a
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                                href={slide.linkUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-2 md:mt-6 relative group overflow-hidden bg-[#1877F2] text-white px-6 py-2.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-black text-xs md:text-base flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(24,119,242,0.4)] hover:shadow-[0_0_40px_rgba(24,119,242,0.6)]"
+                              >
+                                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+                                <span className="relative z-10">{slide.ctaText}</span>
+                                <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:-translate-x-1 transition-transform duration-300" />
+                              </motion.a>
+                            ) : (
+                              <motion.button
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                                onClick={scrollToSection}
+                                className="mt-2 md:mt-6 relative group overflow-hidden bg-crimson text-white px-6 py-2.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-black text-xs md:text-base flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(139,26,26,0.4)] hover:shadow-[0_0_40px_rgba(139,26,26,0.6)]"
+                              >
+                                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+                                <span className="relative z-10">{slide.ctaText}</span>
+                                <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:-translate-x-1 transition-transform duration-300" />
+                              </motion.button>
+                            )}
 
                           </div>
                         </div>
@@ -199,34 +222,34 @@ export default function HeroCarousel() {
           </div>
 
           {/* Floating Navigation Arrows - Circular Glass Style */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 px-4 flex justify-between pointer-events-none z-20">
+          <div className="absolute top-1/2 -translate-y-1/2 left-2 right-2 md:left-6 md:right-6 flex justify-between pointer-events-none z-20">
             <button
               onClick={scrollPrev}
-              className="pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-crimson/50 hover:bg-crimson/20 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(139,26,26,0.4)] active:scale-95"
+              className="pointer-events-auto w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-crimson/50 hover:bg-crimson/20 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(139,26,26,0.4)] active:scale-95"
               aria-label="السابق"
             >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+              <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
             </button>
             <button
               onClick={scrollNext}
-              className="pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-crimson/50 hover:bg-crimson/20 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(139,26,26,0.4)] active:scale-95"
+              className="pointer-events-auto w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-crimson/50 hover:bg-crimson/20 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(139,26,26,0.4)] active:scale-95"
               aria-label="التالي"
             >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+              <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
             </button>
           </div>
 
           {/* Capsule Pagination (Xbox A,B,X,Y colors logic or premium red glow) */}
-          <div className="absolute bottom-[80px] md:bottom-28 left-0 right-0 flex justify-center z-20">
-            <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 shadow-premium">
+          <div className="absolute bottom-[40px] md:bottom-[90px] left-0 right-0 flex justify-center z-20">
+            <div className="flex items-center gap-2 px-3 py-1.5 md:py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 shadow-premium">
               {slides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full h-2 md:h-2.5 ${
+                  className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full h-1.5 md:h-2.5 ${
                     selectedIndex === index 
-                      ? "w-8 md:w-10 bg-crimson shadow-[0_0_12px_rgba(139,26,26,0.8)]" 
-                      : "w-2 md:w-2.5 bg-white/30 hover:bg-white/60"
+                      ? "w-6 md:w-10 bg-crimson shadow-[0_0_12px_rgba(139,26,26,0.8)]" 
+                      : "w-1.5 md:w-2.5 bg-white/30 hover:bg-white/60"
                   }`}
                   aria-label={`الذهاب للشريحة ${index + 1}`}
                 />
@@ -235,15 +258,15 @@ export default function HeroCarousel() {
           </div>
 
           {/* Very Bottom Bar: 5 Feature Icons (Glassmorphism) */}
-          <div className="absolute bottom-0 left-0 right-0 h-auto md:h-20 bg-black/60 backdrop-blur-2xl border-t border-white/10 z-20 overflow-x-auto custom-scrollbar">
-            <div className="flex items-center justify-between md:justify-around min-w-[600px] h-full px-4 py-3 md:py-0">
+          <div className="absolute bottom-0 left-0 right-0 hidden md:block h-20 bg-black/60 backdrop-blur-2xl border-t border-white/10 z-20 overflow-x-auto custom-scrollbar">
+            <div className="flex items-center justify-around min-w-[600px] h-full px-4">
               {bottomIcons.map((item, idx) => (
                 <React.Fragment key={idx}>
                   <div className="flex items-center gap-3 group cursor-default px-2">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-crimson group-hover:bg-crimson group-hover:text-white transition-all duration-300 shadow-inner-glow group-hover:shadow-[0_0_15px_rgba(139,26,26,0.5)]">
-                      <item.icon className="w-4 h-4 md:w-5 md:h-5" />
+                    <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-crimson group-hover:bg-crimson group-hover:text-white transition-all duration-300 shadow-inner-glow group-hover:shadow-[0_0_15px_rgba(139,26,26,0.5)]">
+                      <item.icon className="w-5 h-5" />
                     </div>
-                    <span className="text-white/60 text-[10px] md:text-xs font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
+                    <span className="text-white/60 text-xs font-bold group-hover:text-white transition-colors duration-300 whitespace-nowrap">
                       {item.label}
                     </span>
                   </div>
