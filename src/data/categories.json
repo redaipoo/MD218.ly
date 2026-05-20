@@ -599,6 +599,37 @@
     ]
   },
   {
+    "id": "razer",
+    "name": "ريزر جولد",
+    "nameEn": "RAZER GOLD",
+    "gradient": "from-green-500 via-lime-500 to-emerald-500",
+    "icon": "💳",
+    "logoUrl": "/images/products/razer.png",
+    "productImageUrl": "/images/products/razer-product.jpg",
+    "bgUrl": "/images/products/razer-bg.jpg",
+    "subCategories": [
+      {
+        "id": "razer-usd",
+        "region": "أمريكي",
+        "currency": "USD",
+        "denominations": [
+          {
+            "value": "5",
+            "label": "5 USD",
+            "priceLYD": 43,
+            "priceLibyana": 55
+          },
+          {
+            "value": "10",
+            "label": "10 USD",
+            "priceLYD": 85,
+            "priceLibyana": 110
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "pubg",
     "name": "شدات ببجي",
     "nameEn": "PUBG",
@@ -692,37 +723,6 @@
             "value": "new",
             "priceLYD": 175,
             "priceLibyana": 235
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "razer",
-    "name": "ريزر جولد",
-    "nameEn": "RAZER GOLD",
-    "gradient": "from-green-500 via-lime-500 to-emerald-500",
-    "icon": "💳",
-    "logoUrl": "/images/products/razer.png",
-    "productImageUrl": "/images/products/razer-product.jpg",
-    "bgUrl": "/images/products/razer-bg.jpg",
-    "subCategories": [
-      {
-        "id": "razer-usd",
-        "region": "أمريكي",
-        "currency": "USD",
-        "denominations": [
-          {
-            "value": "5",
-            "label": "5 USD",
-            "priceLYD": 43,
-            "priceLibyana": 55
-          },
-          {
-            "value": "10",
-            "label": "10 USD",
-            "priceLYD": 85,
-            "priceLibyana": 110
           }
         ]
       }
