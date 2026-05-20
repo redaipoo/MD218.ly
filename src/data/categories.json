@@ -390,7 +390,26 @@
         "id": "playstation-plus-sub-1779266718207",
         "region": "deluxe",
         "currency": "",
-        "denominations": []
+        "denominations": [
+          {
+            "label": "deluxe - شهر",
+            "value": "new",
+            "priceLYD": 135,
+            "priceLibyana": 180
+          },
+          {
+            "label": "deluxe - ثلاث اشهور",
+            "value": "new",
+            "priceLYD": 290,
+            "priceLibyana": 385
+          },
+          {
+            "label": "deluxe - سنه",
+            "value": "new",
+            "priceLYD": 630,
+            "priceLibyana": 840
+          }
+        ]
       }
     ]
   },
