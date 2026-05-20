@@ -705,7 +705,7 @@
     "icon": "🎬",
     "logoUrl": "/images/products/netflix.png",
     "productImageUrl": "/images/products/netflix-product.png",
-    "bgUrl": "/images/products/netflix-bg.png",
+    "bgUrl": "/images/products/netflix-bg.jpg",
     "subCategories": [
       {
         "id": "netflix-usd-1779268104623",
