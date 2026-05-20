@@ -27,8 +27,19 @@ export default function Header({ categories = [] }: { categories?: Category[] })
   const items = useCartStore((s) => s.items);
   const paymentMethod = useCartStore((s) => s.paymentMethod);
   const setPaymentMethod = useCartStore((s) => s.setPaymentMethod);
+  const loadCart = useCartStore((s) => s.loadCart);
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
   const prevTotalRef = useRef(totalItems);
+  const isInitializedRef = useRef(false);
+
+  // Load persisted cart on client-side mount to avoid hydration mismatch
+  useEffect(() => {
+    loadCart();
+    const timer = setTimeout(() => {
+      isInitializedRef.current = true;
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [loadCart]);
 
   // Build unified search index across all site items
   const allItems = useMemo<SearchResult[]>(() => {
@@ -80,7 +91,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
 
   // Show toast notification when items are added to cart
   useEffect(() => {
-    if (totalItems > prevTotalRef.current && totalItems > 0) {
+    if (isInitializedRef.current && totalItems > prevTotalRef.current && totalItems > 0) {
       setCartToast(true);
       const timer = setTimeout(() => setCartToast(false), 4000);
       prevTotalRef.current = totalItems;
