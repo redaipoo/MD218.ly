@@ -335,7 +335,45 @@
     "logoUrl": "/images/products/playstation-plus.jpg",
     "productImageUrl": "/images/products/playstation-plus-product.jpg",
     "bgUrl": "/images/products/playstation-plus-product.jpg",
-    "subCategories": []
+    "subCategories": [
+      {
+        "id": "playstation-plus-شهر-1779266680451",
+        "region": "essentiel",
+        "currency": "شهر",
+        "denominations": [
+          {
+            "label": "essentiel - شهر ",
+            "value": "new",
+            "priceLYD": 90,
+            "priceLibyana": 120
+          },
+          {
+            "label": "essentiel - ثلاث اشهور",
+            "value": "new",
+            "priceLYD": 160,
+            "priceLibyana": 215
+          },
+          {
+            "label": "essentiel - سنه ",
+            "value": "new",
+            "priceLYD": 340,
+            "priceLibyana": 450
+          }
+        ]
+      },
+      {
+        "id": "playstation-plus-sub-1779266712070",
+        "region": "extra",
+        "currency": "",
+        "denominations": []
+      },
+      {
+        "id": "playstation-plus-sub-1779266718207",
+        "region": "deluxe",
+        "currency": "",
+        "denominations": []
+      }
+    ]
   },
   {
     "id": "steam",
