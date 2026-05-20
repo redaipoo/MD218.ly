@@ -673,6 +673,37 @@
     ]
   },
   {
+    "id": "netflix",
+    "name": "نتفلكس",
+    "nameEn": "NETFLIX",
+    "gradient": "from-red-700 via-red-600 to-red-500",
+    "icon": "🎬",
+    "logoUrl": "/images/products/netflix.png",
+    "productImageUrl": "/images/products/netflix-product.jpg",
+    "bgUrl": "/images/products/netflix-bg.jpg",
+    "subCategories": [
+      {
+        "id": "netflix-usd-1779268104623",
+        "region": "أمريكي",
+        "currency": "USD",
+        "denominations": [
+          {
+            "label": "15 USD",
+            "value": "new",
+            "priceLYD": 137,
+            "priceLibyana": 180
+          },
+          {
+            "label": "20 USD",
+            "value": "new",
+            "priceLYD": 175,
+            "priceLibyana": 235
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "shahid",
     "name": "شاهد",
     "nameEn": "SHAHID",
@@ -692,37 +723,6 @@
             "label": "اشتراك 3 أشهر",
             "priceLYD": 92,
             "priceLibyana": 115
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "netflix",
-    "name": "نتفلكس",
-    "nameEn": "NETFLIX",
-    "gradient": "from-red-700 via-red-600 to-red-500",
-    "icon": "🎬",
-    "logoUrl": "/images/products/netflix.png",
-    "productImageUrl": "/images/products/netflix-product.png",
-    "bgUrl": "/images/products/netflix-bg.jpg",
-    "subCategories": [
-      {
-        "id": "netflix-usd-1779268104623",
-        "region": "أمريكي",
-        "currency": "USD",
-        "denominations": [
-          {
-            "label": "15 USD",
-            "value": "new",
-            "priceLYD": 137,
-            "priceLibyana": 180
-          },
-          {
-            "label": "20 USD",
-            "value": "new",
-            "priceLYD": 175,
-            "priceLibyana": 235
           }
         ]
       }
