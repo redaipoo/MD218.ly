@@ -381,8 +381,8 @@ export default function HeroCarousel() {
                       alt=""
                       className="absolute inset-0 w-full h-full object-cover"
                       style={{
-                        transform: isActive ? "scale(1.0)" : "scale(1.03)",
-                        transition: "transform 4s cubic-bezier(0.25,1,0.5,1)",
+                        transform: isActive ? "scale(1.04)" : "scale(1.0)",
+                        transition: "transform 6s cubic-bezier(0.16, 1, 0.3, 1)",
                       }}
                       loading={index === 0 ? "eager" : "lazy"}
                       draggable={false}
@@ -436,15 +436,15 @@ export default function HeroCarousel() {
           </button>
 
           {/* ── Pagination Dots ── */}
-          <div className="absolute bottom-2 md:bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/25 backdrop-blur-sm">
+          <div className="absolute bottom-2.5 md:bottom-3.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/[0.04] shadow-premium">
             {slides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => scrollTo(i)}
-                className={`rounded-full transition-all duration-300 ${
+                className={`rounded-full transition-all duration-500 ease-premium ${
                   selectedIndex === i
-                    ? "w-5 md:w-6 h-1.5 bg-crimson"
-                    : "w-1.5 h-1.5 bg-white/30 hover:bg-white/50"
+                    ? "w-6 md:w-8 h-1.5 bg-crimson shadow-[0_0_8px_rgba(220,38,38,0.6)]"
+                    : "w-1.5 h-1.5 bg-white/30 hover:bg-white/60"
                 }`}
                 aria-label={`شريحة ${i + 1}`}
               />

@@ -162,7 +162,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                     return (
                       <div
                         key={denom.value}
-                        className={`group bg-navy-light/80 rounded-xl border border-white/[0.05] hover:border-crimson/30 overflow-hidden transition-all duration-[400ms] ease-premium hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(139,26,26,0.08)] ${loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+                        className={`group bg-navy-light/80 rounded-xl border border-white/[0.05] hover:border-crimson/30 overflow-hidden transition-all duration-[400ms] ease-premium hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,0,0,0.5),0_0_15px_rgba(139,26,26,0.1)] active:scale-[0.98] ${loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
                         style={{ transitionDelay: `${400 + (subIndex * 4 + denomIndex) * 40}ms` }}
                       >
                         {/* Card Top - Value Display */}
@@ -204,7 +204,7 @@ export default function CategoryPageClient({ category, categories = [] }: Catego
                               )
                             }
                             disabled={isAdded}
-                            className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 ease-premium ${
+                            className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-black text-sm transition-all duration-300 ease-premium ${
                               isAdded
                                 ? "bg-green-600/15 text-green-400 border border-green-500/20"
                                 : "bg-crimson/15 text-crimson-light border border-crimson/20 hover:bg-crimson hover:text-white hover:border-crimson hover:shadow-glow-crimson active:scale-[0.97]"

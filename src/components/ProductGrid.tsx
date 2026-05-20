@@ -32,10 +32,10 @@ export default function ProductGrid({ categories = [] }: { categories: Category[
           <Link
             key={category.id}
             href={`/category/${category.id}`}
-            className="group"
+            className="group block active:scale-[0.98] transition-all duration-[400ms] ease-premium"
           >
             <div
-              className="relative bg-card overflow-hidden border border-white/[0.06] hover:border-crimson/40 transition-all duration-[400ms] ease-premium hover:-translate-y-1.5 hover:shadow-premium-lg"
+              className="relative bg-card overflow-hidden border border-white/[0.06] hover:border-crimson/40 transition-all duration-[400ms] ease-premium hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.5),0_0_20px_rgba(139,26,26,0.12)]"
               style={{
                 borderRadius: "20px",
                 borderTop: `3px solid ${accentColor}`,

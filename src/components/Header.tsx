@@ -145,18 +145,18 @@ export default function Header({ categories = [] }: { categories?: Category[] })
 
         <header className="w-full bg-navy-dark/90 backdrop-blur-2xl border-b border-white/[0.04] overflow-x-clip">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between h-20 md:h-[72px] gap-3">
+            <div className="flex items-center justify-between h-16 md:h-[72px] gap-3">
             {/* Right Side: Logo */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-              <div className="w-14 h-14 md:w-[52px] md:h-[52px] rounded-full overflow-hidden shadow-premium group-hover:shadow-glow-crimson transition-all duration-[400ms] ease-premium group-hover:scale-[1.04] ring-2 ring-crimson/15 group-hover:ring-crimson/35 flex-shrink-0">
+              <div className="w-12 h-12 md:w-[52px] md:h-[52px] rounded-full overflow-hidden shadow-premium group-hover:shadow-glow-crimson transition-all duration-[400ms] ease-premium group-hover:scale-[1.04] ring-2 ring-crimson/15 group-hover:ring-crimson/35 flex-shrink-0">
                 <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
-                <span className="font-black text-xl md:text-2xl leading-tight tracking-wider">
+                <span className="font-black text-lg md:text-2xl leading-tight tracking-wider">
                   <span className="text-white">MD</span>
                   <span className="text-crimson">218</span>
                 </span>
-                <span className="text-white text-[10px] md:text-xs font-bold -mt-0.5 tracking-[0.3em]">LY</span>
+                <span className="text-white text-[9px] md:text-xs font-bold -mt-0.5 tracking-[0.3em]">LY</span>
               </div>
             </Link>
 
@@ -165,7 +165,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
               {/* Search */}
               <div ref={searchRef} className="relative">
                 {showSearch && (
-                  <div className="fixed inset-x-3 top-[140px] md:absolute md:inset-x-auto md:top-full md:left-0 md:mt-3 md:w-96 bg-navy-light/95 backdrop-blur-2xl border border-white/[0.06] rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.5)] p-4 z-50 animate-fade-in-scale">
+                  <div className="fixed inset-x-3 top-[112px] md:absolute md:inset-x-auto md:top-full md:left-0 md:mt-3 md:w-96 bg-navy-light/95 backdrop-blur-2xl border border-white/[0.06] rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.5)] p-4 z-50 animate-fade-in-scale">
                     <input
                       type="text"
                       autoFocus
@@ -249,31 +249,30 @@ export default function Header({ categories = [] }: { categories?: Category[] })
 
                 {/* Cart Toast Notification */}
                 {cartToast && (
-                  <div className="fixed top-[100px] md:top-full left-1/2 -translate-x-1/2 md:mt-4 z-[100] animate-toast-in w-[92%] max-w-[340px] md:w-auto md:max-w-none">
+                  <div className="fixed top-[112px] md:top-full left-1/2 -translate-x-1/2 md:mt-4 z-[100] animate-toast-in w-[88%] max-w-[320px] md:w-auto">
                     <button
                       onClick={() => {
                         setCartToast(false);
                         setShowCart(true);
                       }}
-                      className="group flex flex-col items-center bg-gradient-to-br from-crimson via-red-600 to-crimson-dark text-white p-1 rounded-2xl shadow-glow-crimson-lg transition-all duration-300 ease-premium hover:scale-[1.03] active:scale-[0.97]"
+                      className="group w-full flex items-center justify-between bg-navy-dark/95 border border-crimson/30 px-4 py-3 md:py-3.5 rounded-2xl backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_15px_rgba(220,38,38,0.15)] hover:border-crimson transition-all duration-300 ease-premium active:scale-[0.97]"
                     >
-                      <div className="flex items-center gap-3 px-6 py-3.5 bg-navy-dark/10 rounded-xl w-full">
-                        <div className="relative">
-                          <ShoppingCart className="w-6 h-6 animate-bounce" />
-                          <span className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full animate-ping" />
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-xl bg-crimson/10 border border-crimson/25 flex items-center justify-center relative flex-shrink-0">
+                          <ShoppingCart className="w-5 h-5 text-crimson-light animate-pulse" />
+                          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-crimson-light rounded-full" />
                         </div>
-                        <div className="flex flex-col items-start">
-                          <span className="text-sm font-black tracking-wide">
+                        <div className="flex flex-col items-start text-right">
+                          <span className="text-xs md:text-sm font-black text-white leading-tight">
                             تمت الإضافة بنجاح! 🛍️
                           </span>
-                          <span className="text-[11px] font-bold text-white/80 opacity-90">
+                          <span className="text-[10px] md:text-[11px] text-white/50 font-bold mt-0.5">
                             انقر هنا لإتمام الطلب الآن
                           </span>
                         </div>
-                        <ArrowLeft className="w-5 h-5 mr-1 group-hover:-translate-x-1 transition-transform duration-300" />
                       </div>
+                      <ArrowLeft className="w-4 h-4 text-crimson-light group-hover:-translate-x-1 transition-transform duration-300" />
                     </button>
-                    <div className="absolute inset-0 -z-10 bg-crimson/20 rounded-2xl blur-xl animate-pulse" />
                   </div>
                 )}
               </div>

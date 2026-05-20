@@ -124,7 +124,7 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                 return (
                   <div
                     key={game.id}
-                    className="group bg-navy-light/80 rounded-2xl border border-white/[0.05] hover:border-[#107C10]/40 overflow-hidden transition-all duration-[400ms] ease-premium hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgba(16,124,16,0.15)] flex flex-col"
+                    className="group bg-navy-light/80 rounded-2xl border border-white/[0.05] hover:border-[#107C10]/40 overflow-hidden transition-all duration-[400ms] ease-premium hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.5),0_0_20px_rgba(16,124,16,0.12)] active:scale-[0.98] flex flex-col"
                   >
                     {/* Game Cover */}
                     <div className="relative aspect-[3/4] overflow-hidden bg-black/50">
@@ -156,10 +156,10 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                       <button
                         onClick={() => handleAddToCart(game)}
                         disabled={isAdded}
-                        className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 ease-premium ${
+                        className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-black text-xs md:text-sm transition-all duration-300 ease-premium ${
                           isAdded
                             ? "bg-green-600/15 text-green-400 border border-green-500/20"
-                            : "bg-[#107C10]/15 text-[#00ff00] border border-[#107C10]/20 hover:bg-[#107C10] hover:text-white hover:shadow-glow-green active:scale-[0.97]"
+                            : "bg-[#107C10]/15 text-[#00ff00] border border-[#107C10]/20 hover:bg-[#107C10] hover:text-white hover:shadow-[0_0_15px_rgba(16,124,16,0.45)] active:scale-[0.97]"
                         }`}
                       >
                         {isAdded ? (
@@ -248,7 +248,7 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                   return (
                     <div
                       key={game.id}
-                      className="group bg-navy-light/80 rounded-2xl border border-white/[0.05] hover:border-[#107C10]/40 overflow-hidden transition-all duration-[400ms] ease-premium hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgba(16,124,16,0.15)] flex flex-col"
+                      className="group bg-navy-light/80 rounded-2xl border border-white/[0.05] hover:border-[#107C10]/40 overflow-hidden transition-all duration-[400ms] ease-premium hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.5),0_0_20px_rgba(16,124,16,0.12)] active:scale-[0.98] flex flex-col"
                     >
                       {/* Game Cover */}
                       <div className="relative aspect-[3/4] overflow-hidden bg-black/50">
@@ -300,10 +300,10 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                         <button
                           onClick={() => handleAddToCart(game)}
                           disabled={isAdded}
-                          className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 ease-premium ${
+                          className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-black text-xs md:text-sm transition-all duration-300 ease-premium ${
                             isAdded
                               ? "bg-green-600/15 text-green-400 border border-green-500/20"
-                              : "bg-[#107C10]/15 text-[#00ff00] border border-[#107C10]/20 hover:bg-[#107C10] hover:text-white hover:shadow-glow-green active:scale-[0.97]"
+                              : "bg-[#107C10]/15 text-[#00ff00] border border-[#107C10]/20 hover:bg-[#107C10] hover:text-white hover:shadow-[0_0_15px_rgba(16,124,16,0.45)] active:scale-[0.97]"
                           }`}
                         >
                           {isAdded ? (
