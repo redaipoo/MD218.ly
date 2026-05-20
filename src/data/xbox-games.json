@@ -1,5 +1,17 @@
 {
-  "buyOnAccount": [],
+  "buyOnAccount": [
+    {
+      "id": "buy-2",
+      "title": "Dark souls",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1779311131095.jpg",
+      "priceLYD": 15,
+      "priceLibyana": 20,
+      "platforms": "Series X|S | One",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
+    }
+  ],
   "fullAccounts": [
     {
       "id": "full-1",
