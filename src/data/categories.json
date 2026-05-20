@@ -591,37 +591,6 @@
     ]
   },
   {
-    "id": "razer",
-    "name": "ريزر جولد",
-    "nameEn": "RAZER GOLD",
-    "gradient": "from-green-500 via-lime-500 to-emerald-500",
-    "icon": "💳",
-    "logoUrl": "/images/products/razer.png",
-    "productImageUrl": "/images/products/razer-product.jpg",
-    "bgUrl": "/images/products/razer-bg.jpg",
-    "subCategories": [
-      {
-        "id": "razer-usd",
-        "region": "أمريكي",
-        "currency": "USD",
-        "denominations": [
-          {
-            "value": "5",
-            "label": "5 USD",
-            "priceLYD": 43,
-            "priceLibyana": 55
-          },
-          {
-            "value": "10",
-            "label": "10 USD",
-            "priceLYD": 85,
-            "priceLibyana": 110
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "netflix",
     "name": "نتفلكس",
     "nameEn": "NETFLIX",
@@ -653,20 +622,33 @@
     ]
   },
   {
-    "id": "shein",
-    "name": "شي إن",
-    "nameEn": "SHEIN",
-    "gradient": "from-gray-800 via-gray-700 to-gray-600",
-    "icon": "🛍️",
-    "logoUrl": "/images/products/shein.png",
-    "productImageUrl": "/images/products/shein-product.jpg",
-    "bgUrl": "/images/products/shein-bg.jpg",
+    "id": "razer",
+    "name": "ريزر جولد",
+    "nameEn": "RAZER GOLD",
+    "gradient": "from-green-500 via-lime-500 to-emerald-500",
+    "icon": "💳",
+    "logoUrl": "/images/products/razer.png",
+    "productImageUrl": "/images/products/razer-product.jpg",
+    "bgUrl": "/images/products/razer-bg.jpg",
     "subCategories": [
       {
-        "id": "shein-sar",
-        "region": "سعودي",
-        "currency": "SAR",
-        "denominations": []
+        "id": "razer-usd",
+        "region": "أمريكي",
+        "currency": "USD",
+        "denominations": [
+          {
+            "value": "5",
+            "label": "5 USD",
+            "priceLYD": 43,
+            "priceLibyana": 55
+          },
+          {
+            "value": "10",
+            "label": "10 USD",
+            "priceLYD": 85,
+            "priceLibyana": 110
+          }
+        ]
       }
     ]
   }
