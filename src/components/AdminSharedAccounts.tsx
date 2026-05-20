@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Save, Plus, Trash2, Edit3, ChevronDown, ChevronUp, Image, X } from "lucide-react";
+import { Save, Plus, Trash2, Edit3, ChevronDown, ChevronUp, Image, X, ArrowUp, ArrowDown } from "lucide-react";
 import { assetPath } from "@/lib/utils";
 import ImageUploader from "./ImageUploader";
 
@@ -71,6 +71,22 @@ export default function AdminSharedAccounts({ token }: Props) {
     setAccounts(prev => prev.filter(a => a.id !== id));
   };
 
+  const moveAccount = (index: number, direction: "up" | "down") => {
+    setAccounts(prev => {
+      const list = [...prev];
+      if (direction === "up" && index > 0) {
+        const temp = list[index];
+        list[index] = list[index - 1];
+        list[index - 1] = temp;
+      } else if (direction === "down" && index < list.length - 1) {
+        const temp = list[index];
+        list[index] = list[index + 1];
+        list[index + 1] = temp;
+      }
+      return list;
+    });
+  };
+
   const addAccount = () => {
     if (!newGame.title.trim()) return;
     const nextId = accounts.length > 0 ? Math.max(...accounts.map(a => parseInt(a.id.split("-")[1]) || 0)) + 1 : 1;
@@ -110,10 +126,30 @@ export default function AdminSharedAccounts({ token }: Props) {
             </div>
           )}
 
-          {accounts.map((game) => (
-            <div key={game.id} className="bg-navy border border-white/5 rounded-xl p-3 space-y-2">
+          {accounts.map((game, index) => (
+            <div key={game.id} className="bg-navy border border-white/5 rounded-xl p-3 space-y-2 animate-fade-in-scale">
               <div className="flex items-center gap-3">
-                <img src={assetPath(game.image)} alt={game.title} className="w-12 h-16 object-cover rounded-lg border border-white/10" />
+                {/* Reordering Buttons */}
+                <div className="flex flex-col gap-1 flex-shrink-0">
+                  <button
+                    onClick={() => moveAccount(index, "up")}
+                    disabled={index === 0}
+                    className={`w-7 h-7 rounded bg-white/5 flex items-center justify-center transition-colors ${index === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/10 hover:text-white text-white/50"}`}
+                    title="تحريك لأعلى"
+                  >
+                    <ArrowUp className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => moveAccount(index, "down")}
+                    disabled={index === accounts.length - 1}
+                    className={`w-7 h-7 rounded bg-white/5 flex items-center justify-center transition-colors ${index === accounts.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/10 hover:text-white text-white/50"}`}
+                    title="تحريك لأسفل"
+                  >
+                    <ArrowDown className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                <img src={assetPath(game.image)} alt={game.title} className="w-12 h-16 object-cover rounded-lg border border-white/10 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   {editingId === game.id ? (
                     <div className="space-y-2">

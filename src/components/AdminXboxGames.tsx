@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Save, Plus, Trash2, Edit3, ChevronDown, ChevronUp, X, RefreshCw } from "lucide-react";
+import { Save, Plus, Trash2, Edit3, ChevronDown, ChevronUp, X, RefreshCw, ArrowUp, ArrowDown } from "lucide-react";
 import { assetPath } from "@/lib/utils";
 import ImageUploader from "./ImageUploader";
 
@@ -11,6 +11,12 @@ interface XboxGame {
   image: string;
   priceLYD: number;
   priceLibyana: number;
+  originalPriceLYD?: number;
+  originalPriceLibyana?: number;
+  discountPercent?: number;
+  platforms?: string;
+  rating?: number;
+  durationText?: string;
 }
 
 interface FullAccount {
@@ -45,7 +51,18 @@ export default function AdminXboxGames({ token }: Props) {
   const [showAdd, setShowAdd] = useState(false);
   
   // Form state for buyOnAccount
-  const [newBuyGame, setNewBuyGame] = useState({ title: "", priceLYD: 15, priceLibyana: 20, imageUrl: "" });
+  const [newBuyGame, setNewBuyGame] = useState({
+    title: "",
+    priceLYD: 15,
+    priceLibyana: 20,
+    imageUrl: "",
+    originalPriceLYD: "",
+    originalPriceLibyana: "",
+    discountPercent: "",
+    platforms: "Series X|S | One",
+    rating: "4.5",
+    durationText: "تفعيل فوري"
+  });
   // Form state for fullAccounts
   const [newFullAccount, setNewFullAccount] = useState({ title: "", games: [""], priceLYD: 30, priceLibyana: 40, imageUrl: "" });
 
@@ -116,10 +133,22 @@ export default function AdminXboxGames({ token }: Props) {
   };
 
   // ===== Buy On Account Functions =====
-  const updateBuyGame = (id: string, field: keyof XboxGame, value: string | number) => {
+  const updateBuyGame = (id: string, field: keyof XboxGame, value: string) => {
     setData(prev => ({
       ...prev,
-      buyOnAccount: prev.buyOnAccount.map(a => a.id === id ? { ...a, [field]: field.includes("price") ? Number(value) : value } : a)
+      buyOnAccount: prev.buyOnAccount.map(a => {
+        if (a.id !== id) return a;
+        let finalVal: string | number = value;
+        if (["priceLYD", "priceLibyana", "originalPriceLYD", "originalPriceLibyana", "discountPercent", "rating"].includes(field)) {
+          if (value === "" || value === undefined || value === null) {
+            const updated = { ...a };
+            delete updated[field];
+            return updated;
+          }
+          finalVal = Number(value);
+        }
+        return { ...a, [field]: finalVal };
+      })
     }));
   };
 
@@ -128,23 +157,75 @@ export default function AdminXboxGames({ token }: Props) {
     setData(prev => ({ ...prev, buyOnAccount: prev.buyOnAccount.filter(a => a.id !== id) }));
   };
 
+  const moveBuyGame = (index: number, direction: "up" | "down") => {
+    setData(prev => {
+      const list = [...prev.buyOnAccount];
+      if (direction === "up" && index > 0) {
+        const temp = list[index];
+        list[index] = list[index - 1];
+        list[index - 1] = temp;
+      } else if (direction === "down" && index < list.length - 1) {
+        const temp = list[index];
+        list[index] = list[index + 1];
+        list[index + 1] = temp;
+      }
+      return { ...prev, buyOnAccount: list };
+    });
+  };
+
+  const moveFullAccount = (index: number, direction: "up" | "down") => {
+    setData(prev => {
+      const list = [...prev.fullAccounts];
+      if (direction === "up" && index > 0) {
+        const temp = list[index];
+        list[index] = list[index - 1];
+        list[index - 1] = temp;
+      } else if (direction === "down" && index < list.length - 1) {
+        const temp = list[index];
+        list[index] = list[index + 1];
+        list[index + 1] = temp;
+      }
+      return { ...prev, fullAccounts: list };
+    });
+  };
+
   const addBuyGame = () => {
     if (!newBuyGame.title.trim()) return;
     const allIds = [...data.buyOnAccount, ...data.fullAccounts].map(a => parseInt(a.id.split("-")[1]) || 0);
     const nextId = allIds.length > 0 ? Math.max(...allIds) + 1 : 1;
     
+    const gameToAdd: XboxGame = {
+      id: `buy-${nextId}`,
+      title: newBuyGame.title,
+      titleAr: "شراء في حسابك",
+      image: newBuyGame.imageUrl || `/images/xbox-games/buy-${nextId}.jpg`,
+      priceLYD: Number(newBuyGame.priceLYD),
+      priceLibyana: Number(newBuyGame.priceLibyana)
+    };
+
+    if (newBuyGame.originalPriceLYD) gameToAdd.originalPriceLYD = Number(newBuyGame.originalPriceLYD);
+    if (newBuyGame.originalPriceLibyana) gameToAdd.originalPriceLibyana = Number(newBuyGame.originalPriceLibyana);
+    if (newBuyGame.discountPercent) gameToAdd.discountPercent = Number(newBuyGame.discountPercent);
+    if (newBuyGame.platforms.trim()) gameToAdd.platforms = newBuyGame.platforms.trim();
+    if (newBuyGame.rating) gameToAdd.rating = Number(newBuyGame.rating);
+    if (newBuyGame.durationText.trim()) gameToAdd.durationText = newBuyGame.durationText.trim();
+
     setData(prev => ({
       ...prev,
-      buyOnAccount: [...prev.buyOnAccount, {
-        id: `buy-${nextId}`,
-        title: newBuyGame.title,
-        titleAr: "شراء في حسابك",
-        image: newBuyGame.imageUrl || `/images/xbox-games/buy-${nextId}.jpg`,
-        priceLYD: newBuyGame.priceLYD,
-        priceLibyana: newBuyGame.priceLibyana
-      }]
+      buyOnAccount: [...prev.buyOnAccount, gameToAdd]
     }));
-    setNewBuyGame({ title: "", priceLYD: 15, priceLibyana: 20, imageUrl: "" });
+    setNewBuyGame({
+      title: "",
+      priceLYD: 15,
+      priceLibyana: 20,
+      imageUrl: "",
+      originalPriceLYD: "",
+      originalPriceLibyana: "",
+      discountPercent: "",
+      platforms: "Series X|S | One",
+      rating: "4.5",
+      durationText: "تفعيل فوري"
+    });
     setShowAdd(false);
     setMsg({ text: `✅ تم إضافة "${newBuyGame.title}"! لا تنسى الحفظ.`, type: "success" });
   };
@@ -287,48 +368,121 @@ export default function AdminXboxGames({ token }: Props) {
                 </div>
               )}
 
-              {data.buyOnAccount.map((game) => (
+              {data.buyOnAccount.map((game, index) => (
                 <div key={game.id} className="bg-navy border border-white/5 rounded-xl p-3">
                   <div className="flex items-center gap-3">
-                    <img src={assetPath(game.image)} alt={game.title} className="w-12 h-16 object-cover rounded-lg border border-white/10" />
+                    {/* Reordering Buttons */}
+                    <div className="flex flex-col gap-1 flex-shrink-0">
+                      <button
+                        onClick={() => moveBuyGame(index, "up")}
+                        disabled={index === 0}
+                        className={`w-7 h-7 rounded bg-white/5 flex items-center justify-center transition-colors ${index === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/10 hover:text-white text-white/50"}`}
+                        title="تحريك لأعلى"
+                      >
+                        <ArrowUp className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => moveBuyGame(index, "down")}
+                        disabled={index === data.buyOnAccount.length - 1}
+                        className={`w-7 h-7 rounded bg-white/5 flex items-center justify-center transition-colors ${index === data.buyOnAccount.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/10 hover:text-white text-white/50"}`}
+                        title="تحريك لأسفل"
+                      >
+                        <ArrowDown className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+
+                    <img src={assetPath(game.image)} alt={game.title} className="w-12 h-16 object-cover rounded-lg border border-white/10 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       {editingId === game.id ? (
-                        <div className="space-y-2">
+                        <div className="space-y-3 bg-black/30 p-3 rounded-lg border border-purple-500/10">
+                          {/* Basic Info */}
                           <div>
                             <label className="block text-[10px] font-bold text-white/50 mb-1">اسم اللعبة</label>
                             <input type="text" value={game.title} onChange={e => updateBuyGame(game.id, "title", e.target.value)}
                               className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-white focus:border-crimson outline-none" />
                           </div>
-                          <ImageUploader
-                            token={token}
-                            currentImage={assetPath(game.image)}
-                            uploadPath="public/images/xbox-games"
-                            fileName={game.id}
-                            onUpload={(path) => updateBuyGame(game.id, "image", path)}
-                            label="صورة اللعبة"
-                            accentColor="purple-500"
-                            small
-                          />
-                          <div className="flex gap-2">
-                            <div className="flex-1">
-                              <label className="block text-[10px] font-bold text-green-400/80 mb-1">سعر د.ل</label>
-                              <input type="number" value={game.priceLYD} onChange={e => updateBuyGame(game.id, "priceLYD", e.target.value)}
-                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-green-400 font-bold focus:border-crimson text-left outline-none" />
+
+                          {/* Platforms & Quick Details */}
+                          <div className="grid grid-cols-2 gap-2">
+                            <div>
+                              <label className="block text-[10px] font-bold text-white/50 mb-1">المنصات</label>
+                              <input type="text" value={game.platforms || ""} onChange={e => updateBuyGame(game.id, "platforms", e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white focus:border-crimson outline-none" placeholder="Series X|S | One" />
                             </div>
-                            <div className="flex-1">
-                              <label className="block text-[10px] font-bold text-blue-400/80 mb-1">سعر ليبيانا</label>
-                              <input type="number" value={game.priceLibyana} onChange={e => updateBuyGame(game.id, "priceLibyana", e.target.value)}
-                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-sm text-blue-400 font-bold focus:border-crimson text-left outline-none" />
+                            <div>
+                              <label className="block text-[10px] font-bold text-white/50 mb-1">مدة التسليم / النص المساعد</label>
+                              <input type="text" value={game.durationText || ""} onChange={e => updateBuyGame(game.id, "durationText", e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white focus:border-crimson outline-none" placeholder="تفعيل فوري" />
                             </div>
                           </div>
-                          <button onClick={() => setEditingId(null)} className="w-full py-1.5 bg-white/5 hover:bg-white/10 text-white/60 rounded-md text-xs font-bold transition-colors">✓ تم</button>
+
+                          {/* Rating & Discount */}
+                          <div className="grid grid-cols-2 gap-2">
+                            <div>
+                              <label className="block text-[10px] font-bold text-white/50 mb-1">التقييم (0-5)</label>
+                              <input type="number" step="0.1" min="0" max="5" value={game.rating || ""} onChange={e => updateBuyGame(game.id, "rating", e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white focus:border-crimson outline-none" placeholder="4.5" />
+                            </div>
+                            <div>
+                              <label className="block text-[10px] font-bold text-white/50 mb-1">نسبة الخصم % (مثال: 50)</label>
+                              <input type="number" value={game.discountPercent || ""} onChange={e => updateBuyGame(game.id, "discountPercent", e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white focus:border-crimson outline-none" placeholder="بدون خصم" />
+                            </div>
+                          </div>
+
+                          {/* LYD Price Stack */}
+                          <div className="grid grid-cols-2 gap-2 border-t border-white/5 pt-2">
+                            <div>
+                              <label className="block text-[10px] font-bold text-green-400 mb-1">السعر الحالي د.ل</label>
+                              <input type="number" value={game.priceLYD} onChange={e => updateBuyGame(game.id, "priceLYD", e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-green-400 font-bold focus:border-crimson text-left outline-none" />
+                            </div>
+                            <div>
+                              <label className="block text-[10px] font-bold text-green-400/50 mb-1">السعر الأصلي د.ل (اختياري)</label>
+                              <input type="number" value={game.originalPriceLYD || ""} onChange={e => updateBuyGame(game.id, "originalPriceLYD", e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white/50 focus:border-crimson text-left outline-none" placeholder="قبل الخصم" />
+                            </div>
+                          </div>
+
+                          {/* Libyana Price Stack */}
+                          <div className="grid grid-cols-2 gap-2">
+                            <div>
+                              <label className="block text-[10px] font-bold text-blue-400 mb-1">السعر الحالي ليبيانا</label>
+                              <input type="number" value={game.priceLibyana} onChange={e => updateBuyGame(game.id, "priceLibyana", e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-blue-400 font-bold focus:border-crimson text-left outline-none" />
+                            </div>
+                            <div>
+                              <label className="block text-[10px] font-bold text-blue-400/50 mb-1">السعر الأصلي ليبيانا (اختياري)</label>
+                              <input type="number" value={game.originalPriceLibyana || ""} onChange={e => updateBuyGame(game.id, "originalPriceLibyana", e.target.value)}
+                                className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-1.5 text-xs text-white/50 focus:border-crimson text-left outline-none" placeholder="قبل الخصم" />
+                            </div>
+                          </div>
+
+                          <div className="border-t border-white/5 pt-2">
+                            <ImageUploader
+                              token={token}
+                              currentImage={assetPath(game.image)}
+                              uploadPath="public/images/xbox-games"
+                              fileName={game.id}
+                              onUpload={(path) => updateBuyGame(game.id, "image", path)}
+                              label="صورة اللعبة"
+                              accentColor="purple-500"
+                              small
+                            />
+                          </div>
+
+                          <button onClick={() => setEditingId(null)} className="w-full py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-md text-xs font-bold transition-colors">✓ حفظ التعديل المؤقت</button>
                         </div>
                       ) : (
                         <>
                           <h3 className="text-white font-bold text-sm truncate" dir="ltr">{game.title}</h3>
-                          <div className="flex gap-3 text-xs mt-0.5">
-                            <span className="text-green-400 font-bold">{game.priceLYD} د.ل</span>
-                            <span className="text-blue-400 font-bold">{game.priceLibyana} رصيد</span>
+                          <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-[11px] text-white/40">
+                            <span>المنصات: {game.platforms || "Series X|S | One"}</span>
+                            <span>التقييم: {game.rating || "4.5"}</span>
+                          </div>
+                          <div className="flex gap-3 text-xs mt-1">
+                            <span className="text-green-400 font-bold">{game.priceLYD} د.ل {game.originalPriceLYD ? <span className="line-through text-white/30 text-[10px] ml-1">{game.originalPriceLYD}</span> : null}</span>
+                            <span className="text-blue-400 font-bold">{game.priceLibyana} رصيد {game.originalPriceLibyana ? <span className="line-through text-white/30 text-[10px] ml-1">{game.originalPriceLibyana}</span> : null}</span>
                           </div>
                         </>
                       )}
@@ -349,7 +503,7 @@ export default function AdminXboxGames({ token }: Props) {
 
               {/* Add Buy Game Form */}
               {showAdd ? (
-                <div className="rounded-xl p-4 space-y-3 border bg-purple-500/5 border-purple-500/20">
+                <div className="rounded-xl p-4 space-y-3 border bg-purple-500/5 border-purple-500/20 animate-fade-in-scale">
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="text-purple-400 font-bold text-sm">➕ إضافة لعبة - شراء في حسابك</h3>
                     <button onClick={() => setShowAdd(false)} className="text-white/50 hover:text-white"><X className="w-4 h-4" /></button>
@@ -359,29 +513,73 @@ export default function AdminXboxGames({ token }: Props) {
                     <input type="text" value={newBuyGame.title} onChange={e => setNewBuyGame({ ...newBuyGame, title: e.target.value })}
                       className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2.5 text-sm text-white focus:border-[#107C10] outline-none" placeholder="مثال: GTA V" />
                   </div>
-                  <ImageUploader
-                    token={token}
-                    currentImage={newBuyGame.imageUrl ? assetPath(newBuyGame.imageUrl) : undefined}
-                    uploadPath="public/images/xbox-games"
-                    fileName={`buy-new-${Date.now()}`}
-                    onUpload={(path) => setNewBuyGame({ ...newBuyGame, imageUrl: path })}
-                    label="📷 صورة اللعبة (اختياري)"
-                    accentColor="[#107C10]"
-                  />
-                  <div className="flex gap-2">
-                    <div className="flex-1">
-                      <label className="block text-[10px] font-bold text-green-400/80 mb-1">سعر اللعبة (د.ل)</label>
-                      <input type="number" value={newBuyGame.priceLYD} onChange={e => setNewBuyGame({ ...newBuyGame, priceLYD: Number(e.target.value) })}
-                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2.5 text-sm text-green-400 font-bold focus:border-[#107C10] text-left outline-none" />
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="block text-[10px] font-bold text-white/50 mb-1">المنصات</label>
+                      <input type="text" value={newBuyGame.platforms} onChange={e => setNewBuyGame({ ...newBuyGame, platforms: e.target.value })}
+                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-xs text-white focus:border-[#107C10] outline-none" placeholder="Series X|S | One" />
                     </div>
-                    <div className="flex-1">
-                      <label className="block text-[10px] font-bold text-blue-400/80 mb-1">سعر اللعبة (رصيد)</label>
-                      <input type="number" value={newBuyGame.priceLibyana} onChange={e => setNewBuyGame({ ...newBuyGame, priceLibyana: Number(e.target.value) })}
-                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2.5 text-sm text-blue-400 font-bold focus:border-[#107C10] text-left outline-none" />
+                    <div>
+                      <label className="block text-[10px] font-bold text-white/50 mb-1">مدة التسليم / النص المساعد</label>
+                      <input type="text" value={newBuyGame.durationText} onChange={e => setNewBuyGame({ ...newBuyGame, durationText: e.target.value })}
+                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-xs text-white focus:border-[#107C10] outline-none" placeholder="تفعيل فوري" />
                     </div>
                   </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="block text-[10px] font-bold text-white/50 mb-1">التقييم (0-5)</label>
+                      <input type="number" step="0.1" min="0" max="5" value={newBuyGame.rating} onChange={e => setNewBuyGame({ ...newBuyGame, rating: e.target.value })}
+                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-xs text-white focus:border-[#107C10] outline-none" placeholder="4.5" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-white/50 mb-1">نسبة الخصم % (مثال: 50)</label>
+                      <input type="number" value={newBuyGame.discountPercent} onChange={e => setNewBuyGame({ ...newBuyGame, discountPercent: e.target.value })}
+                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-xs text-white focus:border-[#107C10] outline-none" placeholder="بدون خصم" />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 border-t border-white/5 pt-2">
+                    <div>
+                      <label className="block text-[10px] font-bold text-green-400 mb-1">السعر د.ل *</label>
+                      <input type="number" value={newBuyGame.priceLYD} onChange={e => setNewBuyGame({ ...newBuyGame, priceLYD: Number(e.target.value) })}
+                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-xs text-green-400 font-bold focus:border-[#107C10] text-left outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-green-400/50 mb-1">السعر الأصلي د.ل (اختياري)</label>
+                      <input type="number" value={newBuyGame.originalPriceLYD} onChange={e => setNewBuyGame({ ...newBuyGame, originalPriceLYD: e.target.value })}
+                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-xs text-white/50 focus:border-[#107C10] text-left outline-none" placeholder="قبل الخصم" />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="block text-[10px] font-bold text-blue-400 mb-1">السعر ليبيانا *</label>
+                      <input type="number" value={newBuyGame.priceLibyana} onChange={e => setNewBuyGame({ ...newBuyGame, priceLibyana: Number(e.target.value) })}
+                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-xs text-blue-400 font-bold focus:border-[#107C10] text-left outline-none" />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-blue-400/50 mb-1">السعر الأصلي ليبيانا (اختياري)</label>
+                      <input type="number" value={newBuyGame.originalPriceLibyana} onChange={e => setNewBuyGame({ ...newBuyGame, originalPriceLibyana: e.target.value })}
+                        className="w-full bg-black/50 border border-white/10 rounded-md px-3 py-2 text-xs text-white/50 focus:border-[#107C10] text-left outline-none" placeholder="قبل الخصم" />
+                    </div>
+                  </div>
+
+                  <div className="border-t border-white/5 pt-2">
+                    <ImageUploader
+                      token={token}
+                      currentImage={newBuyGame.imageUrl ? assetPath(newBuyGame.imageUrl) : undefined}
+                      uploadPath="public/images/xbox-games"
+                      fileName={`buy-new-${Date.now()}`}
+                      onUpload={(path) => setNewBuyGame({ ...newBuyGame, imageUrl: path })}
+                      label="📷 صورة اللعبة (اختياري)"
+                      accentColor="[#107C10]"
+                    />
+                  </div>
+
                   <button onClick={addBuyGame} disabled={!newBuyGame.title.trim()}
-                    className={`w-full py-3 font-bold rounded-lg text-sm ${newBuyGame.title.trim() ? "bg-[#107C10] hover:bg-[#0e6b0e] text-white" : "bg-white/10 text-white/30 cursor-not-allowed"}`}>
+                    className={`w-full py-3 font-bold rounded-lg text-sm transition-colors ${newBuyGame.title.trim() ? "bg-[#107C10] hover:bg-[#0e6b0e] text-white shadow-md shadow-[#107C10]/20" : "bg-white/10 text-white/30 cursor-not-allowed"}`}>
                     ✅ إضافة اللعبة
                   </button>
                 </div>
@@ -405,9 +603,29 @@ export default function AdminXboxGames({ token }: Props) {
                 </div>
               )}
 
-              {data.fullAccounts.map((account) => (
+              {data.fullAccounts.map((account, index) => (
                 <div key={account.id} className="bg-navy border border-orange-500/10 rounded-xl p-3">
                   <div className="flex items-start gap-3">
+                    {/* Reordering Buttons */}
+                    <div className="flex flex-col gap-1 flex-shrink-0 mt-1">
+                      <button
+                        onClick={() => moveFullAccount(index, "up")}
+                        disabled={index === 0}
+                        className={`w-7 h-7 rounded bg-white/5 flex items-center justify-center transition-colors ${index === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/10 hover:text-white text-white/50"}`}
+                        title="تحريك لأعلى"
+                      >
+                        <ArrowUp className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => moveFullAccount(index, "down")}
+                        disabled={index === data.fullAccounts.length - 1}
+                        className={`w-7 h-7 rounded bg-white/5 flex items-center justify-center transition-colors ${index === data.fullAccounts.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-white/10 hover:text-white text-white/50"}`}
+                        title="تحريك لأسفل"
+                      >
+                        <ArrowDown className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+
                     <img src={assetPath(account.image)} alt={account.title} className="w-12 h-16 object-cover rounded-lg border border-white/10 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       {editingId === account.id ? (
