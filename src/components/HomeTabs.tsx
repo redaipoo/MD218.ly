@@ -164,6 +164,7 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                         alt={game.title}
                         className="w-full h-full object-cover transition-transform duration-[600ms] ease-premium group-hover:scale-[1.06] opacity-90 group-hover:opacity-100"
                         loading="lazy"
+                        decoding="async"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/20 to-transparent" />
                       
@@ -334,6 +335,7 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                             alt={game.title}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             loading="lazy"
+                            decoding="async"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                         </div>
@@ -446,6 +448,7 @@ export default function HomeTabs({ categories }: { categories: Category[] }) {
                             alt={game.title}
                             className="w-full h-full object-cover transition-transform duration-[600ms] ease-premium group-hover:scale-[1.06] opacity-90 group-hover:opacity-100"
                             loading="lazy"
+                            decoding="async"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/20 to-transparent" />
                           

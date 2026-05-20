@@ -38,7 +38,7 @@ export default function MobileNav() {
           className="relative -mt-9 mb-1 z-20 group"
         >
           <div className="relative w-[60px] h-[60px] rounded-full overflow-hidden border-[3px] border-navy shadow-[0_8px_24px_rgba(0,0,0,0.55),0_0_15px_rgba(220,38,38,0.2)] ring-2 ring-crimson/25 group-active:scale-95 transition-all duration-300 ease-premium animate-logo-pulse flex-shrink-0">
-            <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
+            <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" fetchPriority="high" decoding="async" />
           </div>
           {/* Subtle glow behind logo */}
           <div className="absolute inset-0 -z-10 rounded-full bg-crimson/15 blur-xl scale-125 opacity-100 transition-opacity duration-300" />

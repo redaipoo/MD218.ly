@@ -149,7 +149,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
             {/* Right Side: Logo */}
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
               <div className="w-12 h-12 md:w-[52px] md:h-[52px] rounded-full overflow-hidden shadow-premium group-hover:shadow-glow-crimson transition-all duration-[400ms] ease-premium group-hover:scale-[1.04] ring-2 ring-crimson/15 group-hover:ring-crimson/35 flex-shrink-0">
-                <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" />
+                <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" fetchPriority="high" decoding="async" />
               </div>
               <div className="flex flex-col">
                 <span className="font-black text-lg md:text-2xl leading-tight tracking-wider">
@@ -191,6 +191,8 @@ export default function Header({ categories = [] }: { categories?: Category[] })
                                 src={assetPath(item.image)}
                                 alt=""
                                 className="w-full h-full object-cover"
+                                loading="lazy"
+                                decoding="async"
                               />
                             </div>
                             <div className="flex-1 min-w-0">

@@ -48,6 +48,7 @@ export default function ProductGrid({ categories = [] }: { categories: Category[
                   alt={category.nameEn}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-premium group-hover:scale-[1.08]"
                   loading="lazy"
+                  decoding="async"
                 />
 
                 {/* 3-stop gradient overlay for smooth readability */}

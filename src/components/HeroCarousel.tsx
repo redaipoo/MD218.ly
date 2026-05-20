@@ -237,6 +237,7 @@ function ProductsSlide() {
                 alt={p.name}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               <span className="absolute top-1 right-1 md:top-2 md:right-2 px-1.5 py-0.5 bg-crimson/90 rounded text-white text-[6px] md:text-[9px] font-bold">
@@ -385,6 +386,8 @@ export default function HeroCarousel() {
                         transition: "transform 6s cubic-bezier(0.16, 1, 0.3, 1)",
                       }}
                       loading={index === 0 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : "low"}
+                      decoding="async"
                       draggable={false}
                     />
 
