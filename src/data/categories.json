@@ -679,7 +679,7 @@
     "gradient": "from-red-700 via-red-600 to-red-500",
     "icon": "🎬",
     "logoUrl": "/images/products/netflix.png",
-    "productImageUrl": "/images/products/netflix-product.jpg",
+    "productImageUrl": "/images/products/netflix-product.png",
     "bgUrl": "/images/products/netflix-bg.jpg",
     "subCategories": [
       {
