@@ -708,13 +708,13 @@
     "bgUrl": "/images/products/netflix-bg.jpg",
     "subCategories": [
       {
-        "id": "netflix-4k",
-        "region": "4K",
-        "currency": "",
+        "id": "netflix-usd-1779268104623",
+        "region": "أمريكي",
+        "currency": "USD",
         "denominations": [
           {
-            "value": "4k",
             "label": "15 USD",
+            "value": "new",
             "priceLYD": 137,
             "priceLibyana": 180
           },
