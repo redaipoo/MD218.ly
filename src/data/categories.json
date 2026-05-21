@@ -282,13 +282,13 @@
     "bgUrl": "/images/products/gamepass-bg.jpg",
     "subCategories": [
       {
-        "id": "gamepass-ultimate",
-        "region": "التمت",
-        "currency": "",
+        "id": "gamepass-ultimat-1779358451694",
+        "region": "Xbox game pass ultimate",
+        "currency": "Ultimat",
         "denominations": [
           {
-            "value": "2-months",
             "label": "شهرين التمت - حساب كامل",
+            "value": "new",
             "priceLYD": 115,
             "priceLibyana": 150
           },
@@ -299,7 +299,7 @@
             "priceLibyana": 75
           },
           {
-            "label": "شهرين التمت - نص حساب تسجيل دخول ",
+            "label": "شهرين التمت - نص حساب تسجيل دخول",
             "value": "new",
             "priceLYD": 65,
             "priceLibyana": 85
