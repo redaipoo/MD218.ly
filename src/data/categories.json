@@ -305,6 +305,19 @@
             "priceLibyana": 85
           }
         ]
+      },
+      {
+        "id": "gamepass-premium-1779358578569",
+        "region": "Xbox game pass Premium",
+        "currency": "Premium",
+        "denominations": [
+          {
+            "label": "قيم باس بريميوم 14يوم - حساب كامل",
+            "value": "new",
+            "priceLYD": 10,
+            "priceLibyana": 15
+          }
+        ]
       }
     ]
   },
