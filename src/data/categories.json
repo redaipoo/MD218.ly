@@ -744,7 +744,14 @@
         "id": "crunchyroll-حساب كامل سنه-1779360396830",
         "region": "Crunchyroll - 12 Months Mega Fan Subscription  ",
         "currency": "حساب كامل سنه",
-        "denominations": []
+        "denominations": [
+          {
+            "label": "کرانشی رول - سنه (حساب كامل)",
+            "value": "new",
+            "priceLYD": 80,
+            "priceLibyana": 105
+          }
+        ]
       }
     ]
   }
