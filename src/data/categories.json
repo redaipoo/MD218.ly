@@ -170,15 +170,21 @@
           },
           {
             "value": "25",
-            "label": "25 USD",
-            "priceLYD": 205,
-            "priceLibyana": 225
+            "label": "15 USD",
+            "priceLYD": 130,
+            "priceLibyana": 175
           },
           {
             "value": "50",
-            "label": "50 USD",
-            "priceLYD": 410,
+            "label": "25 USD",
+            "priceLYD": 205,
             "priceLibyana": 450
+          },
+          {
+            "label": "50 USD",
+            "value": "new",
+            "priceLYD": 410,
+            "priceLibyana": 0
           }
         ]
       },
