@@ -729,5 +729,16 @@
         ]
       }
     ]
+  },
+  {
+    "id": "amazon-prime",
+    "name": "أمازون ابريم",
+    "nameEn": "Amazon Prime",
+    "gradient": "from-blue-600 via-blue-500 to-blue-400",
+    "icon": "🍿",
+    "logoUrl": "/images/products/amazon-prime.png",
+    "productImageUrl": "/images/products/amazon-prime-product.jpg",
+    "bgUrl": "/images/products/amazon-prime-bg.jpg",
+    "subCategories": []
   }
 ]
