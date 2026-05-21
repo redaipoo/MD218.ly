@@ -731,14 +731,21 @@
     ]
   },
   {
-    "id": "amazon-prime",
-    "name": "أمازون ابريم",
-    "nameEn": "Amazon Prime",
-    "gradient": "from-blue-600 via-blue-500 to-blue-400",
+    "id": "crunchyroll",
+    "name": "کرانشی رول",
+    "nameEn": "Crunchyroll",
+    "gradient": "from-orange-600 via-orange-500 to-yellow-500",
     "icon": "🍿",
-    "logoUrl": "/images/products/amazon-prime.png",
-    "productImageUrl": "/images/products/amazon-prime-product.jpg",
-    "bgUrl": "/images/products/amazon-prime-bg.jpg",
-    "subCategories": []
+    "logoUrl": "/images/products/crunchyroll.png",
+    "productImageUrl": "/images/products/crunchyroll-product.jpg",
+    "bgUrl": "/images/products/crunchyroll-bg.jpg",
+    "subCategories": [
+      {
+        "id": "crunchyroll-حساب كامل سنه-1779360396830",
+        "region": "Crunchyroll - 12 Months Mega Fan Subscription  ",
+        "currency": "حساب كامل سنه",
+        "denominations": []
+      }
+    ]
   }
 ]
