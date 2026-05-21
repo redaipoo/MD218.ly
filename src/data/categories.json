@@ -318,6 +318,19 @@
             "priceLibyana": 15
           }
         ]
+      },
+      {
+        "id": "gamepass-extension-1779358780927",
+        "region": "Xbox game pass extension",
+        "currency": "extension",
+        "denominations": [
+          {
+            "label": "قيم باس اكستنشن شهر - حساب كامل",
+            "value": "new",
+            "priceLYD": 10,
+            "priceLibyana": 15
+          }
+        ]
       }
     ]
   },
