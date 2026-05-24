@@ -302,5 +302,21 @@
     "image": "/images/shared-accounts/shared-new-1779595784524.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
+  },
+  {
+    "id": "shared-51",
+    "title": "MANHUNT",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-new-1779595842286.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
+    "id": "shared-52",
+    "title": "Dark souls",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-new-1779595897108.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
   }
 ]
