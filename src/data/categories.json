@@ -884,5 +884,16 @@
         ]
       }
     ]
+  },
+  {
+    "id": "gta-",
+    "name": "جي تي اي بلس",
+    "nameEn": "gta+",
+    "gradient": "from-orange-600 via-orange-500 to-yellow-500",
+    "icon": "🌃",
+    "logoUrl": "/images/products/gta-.jpg",
+    "productImageUrl": "/images/products/gta--product.jpg",
+    "bgUrl": "/images/products/gta--bg.jpg",
+    "subCategories": []
   }
 ]
