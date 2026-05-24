@@ -857,6 +857,19 @@
             "priceLibyana": 235
           }
         ]
+      },
+      {
+        "id": "netflix-sub-1779616157974",
+        "region": "نتفلكس - Netflix",
+        "currency": "",
+        "denominations": [
+          {
+            "label": "اشترك نتفلكس - 45 يوم (4k)",
+            "value": "new",
+            "priceLYD": 55,
+            "priceLibyana": 65
+          }
+        ]
       }
     ]
   },
