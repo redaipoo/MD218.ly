@@ -34,6 +34,17 @@
       ],
       "priceLYD": 85,
       "priceLibyana": 110
+    },
+    {
+      "id": "full-4",
+      "title": "Minecraft",
+      "titleAr": "حساب كامل",
+      "image": "/images/xbox-games/full-new-1779604750293.jpg",
+      "games": [
+        "Minecraft"
+      ],
+      "priceLYD": 50,
+      "priceLibyana": 65
     }
   ]
 }
