@@ -345,31 +345,6 @@
     "bgUrl": "/images/products/playstation-plus-bg.jpg",
     "subCategories": [
       {
-        "id": "playstation-plus-sub-1779266718207",
-        "region": "deluxe",
-        "currency": "",
-        "denominations": [
-          {
-            "label": "deluxe - شهر",
-            "value": "new",
-            "priceLYD": 135,
-            "priceLibyana": 180
-          },
-          {
-            "label": "deluxe - ثلاث اشهور",
-            "value": "new",
-            "priceLYD": 290,
-            "priceLibyana": 385
-          },
-          {
-            "label": "deluxe - سنه",
-            "value": "new",
-            "priceLYD": 630,
-            "priceLibyana": 840
-          }
-        ]
-      },
-      {
         "id": "playstation-plus-sub-1779596922381",
         "region": "essentiel",
         "currency": "",
@@ -416,6 +391,31 @@
             "value": "new",
             "priceLYD": 550,
             "priceLibyana": 735
+          }
+        ]
+      },
+      {
+        "id": "playstation-plus-sub-1779597173994",
+        "region": "deluxe",
+        "currency": "",
+        "denominations": [
+          {
+            "label": "deluxe - شهر",
+            "value": "new",
+            "priceLYD": 135,
+            "priceLibyana": 180
+          },
+          {
+            "label": "deluxe - ثلاث اشهور",
+            "value": "new",
+            "priceLYD": 290,
+            "priceLibyana": 385
+          },
+          {
+            "label": "deluxe - سنه",
+            "value": "new",
+            "priceLYD": 630,
+            "priceLibyana": 840
           }
         ]
       }
