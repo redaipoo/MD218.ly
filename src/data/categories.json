@@ -696,7 +696,45 @@
     "logoUrl": "/images/products/marvel-rivals.jpg",
     "productImageUrl": "/images/products/marvel-rivals-product.jpg",
     "bgUrl": "/images/products/marvel-rivals-bg.png",
-    "subCategories": []
+    "subCategories": [
+      {
+        "id": "marvel-rivals-sub-1779598485109",
+        "region": "Marvel Rivals عملة",
+        "currency": "",
+        "denominations": [
+          {
+            "label": "100 عملة - (Xbox)",
+            "value": "new",
+            "priceLYD": 10,
+            "priceLibyana": 12
+          },
+          {
+            "label": "500 عملة - (Xbox)",
+            "value": "new",
+            "priceLYD": 35,
+            "priceLibyana": 42
+          },
+          {
+            "label": "1000 عملة - (Xbox)",
+            "value": "new",
+            "priceLYD": 70,
+            "priceLibyana": 90
+          },
+          {
+            "label": "2180 عملة - (Xbox)",
+            "value": "new",
+            "priceLYD": 140,
+            "priceLibyana": 175
+          },
+          {
+            "label": "5680 عملة - (Xbox)",
+            "value": "new",
+            "priceLYD": 340,
+            "priceLibyana": 425
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pubg",
