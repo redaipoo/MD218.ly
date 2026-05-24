@@ -754,5 +754,16 @@
         ]
       }
     ]
+  },
+  {
+    "id": "marvel-rivals",
+    "name": "مارفل رايفلز",
+    "nameEn": "MARVEL RIVALS",
+    "gradient": "from-purple-600 via-purple-500 to-purple-400",
+    "icon": "🕹",
+    "logoUrl": "/images/products/marvel-rivals.jpg",
+    "productImageUrl": "/images/products/marvel-rivals-product.jpg",
+    "bgUrl": "/images/products/marvel-rivals-bg.png",
+    "subCategories": []
   }
 ]
