@@ -8,6 +8,14 @@
     "priceLibyana": 15
   },
   {
+    "id": "shared-42",
+    "title": "Pragmata",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-42.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
     "id": "shared-10",
     "title": "Black Myth: Wukong",
     "titleAr": "حساب مشترك",
@@ -16,10 +24,10 @@
     "priceLibyana": 15
   },
   {
-    "id": "shared-42",
-    "title": "Pragmata",
+    "id": "shared-59",
+    "title": " قيم باس التمت شهرين حساب (مشترك)",
     "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/shared-42.jpg",
+    "image": "/images/shared-accounts/shared-new-1779602392348.png",
     "priceLYD": 10,
     "priceLibyana": 15
   },
@@ -208,6 +216,14 @@
     "priceLibyana": 15
   },
   {
+    "id": "shared-40",
+    "title": "Resident Evil Triple Pack",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-40.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
     "id": "shared-15",
     "title": "Bleach: Rebirth of Souls",
     "titleAr": "حساب مشترك",
@@ -220,14 +236,6 @@
     "title": "Silent Hill 2",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-38.jpg",
-    "priceLYD": 10,
-    "priceLibyana": 15
-  },
-  {
-    "id": "shared-40",
-    "title": "Resident Evil Triple Pack",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-40.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
   },
