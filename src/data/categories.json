@@ -706,6 +706,56 @@
     ]
   },
   {
+    "id": "gta-",
+    "name": "جي تي اي بلس",
+    "nameEn": "gta+",
+    "gradient": "from-orange-600 via-orange-500 to-yellow-500",
+    "icon": "🌃",
+    "logoUrl": "/images/products/gta-.jpg",
+    "productImageUrl": "/images/products/gta--product.jpg",
+    "bgUrl": "/images/products/gta--bg.jpg",
+    "subCategories": [
+      {
+        "id": "gta--xbox -1779603994646",
+        "region": "gta+ - جي تي اي بلس",
+        "currency": "Xbox ",
+        "denominations": [
+          {
+            "label": "جي تي اي بلس - شهر (Xbox)",
+            "value": "new",
+            "priceLYD": 40,
+            "priceLibyana": 50
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ubisoft-",
+    "name": "يوبي سوفت بلس",
+    "nameEn": "Ubisoft+",
+    "gradient": "from-purple-600 via-purple-500 to-purple-400",
+    "icon": "🚁",
+    "logoUrl": "/images/products/ubisoft-.jpg",
+    "productImageUrl": "/images/products/ubisoft--product.jpg",
+    "bgUrl": "/images/products/ubisoft--bg.jpg",
+    "subCategories": [
+      {
+        "id": "ubisoft--xbox-1779603337718",
+        "region": "يوبي سوفت بلس - Ubisoft+",
+        "currency": "Xbox",
+        "denominations": [
+          {
+            "label": "يوبي سوفت بلس - شهر (Xbox)",
+            "value": "new",
+            "priceLYD": 60,
+            "priceLibyana": 75
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "razer",
     "name": "ريزر جولد",
     "nameEn": "RAZER GOLD",
@@ -855,56 +905,6 @@
             "value": "new",
             "priceLYD": 80,
             "priceLibyana": 105
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "ubisoft-",
-    "name": "يوبي سوفت بلس",
-    "nameEn": "Ubisoft+",
-    "gradient": "from-purple-600 via-purple-500 to-purple-400",
-    "icon": "🚁",
-    "logoUrl": "/images/products/ubisoft-.jpg",
-    "productImageUrl": "/images/products/ubisoft--product.jpg",
-    "bgUrl": "/images/products/ubisoft--bg.jpg",
-    "subCategories": [
-      {
-        "id": "ubisoft--xbox-1779603337718",
-        "region": "يوبي سوفت بلس - Ubisoft+",
-        "currency": "Xbox",
-        "denominations": [
-          {
-            "label": "يوبي سوفت بلس - شهر (Xbox)",
-            "value": "new",
-            "priceLYD": 60,
-            "priceLibyana": 75
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "gta-",
-    "name": "جي تي اي بلس",
-    "nameEn": "gta+",
-    "gradient": "from-orange-600 via-orange-500 to-yellow-500",
-    "icon": "🌃",
-    "logoUrl": "/images/products/gta-.jpg",
-    "productImageUrl": "/images/products/gta--product.jpg",
-    "bgUrl": "/images/products/gta--bg.jpg",
-    "subCategories": [
-      {
-        "id": "gta--xbox -1779603994646",
-        "region": "gta+ - جي تي اي بلس",
-        "currency": "Xbox ",
-        "denominations": [
-          {
-            "label": "جي تي اي بلس - شهر (Xbox)",
-            "value": "new",
-            "priceLYD": 40,
-            "priceLibyana": 50
           }
         ]
       }
