@@ -894,6 +894,20 @@
     "logoUrl": "/images/products/gta-.jpg",
     "productImageUrl": "/images/products/gta--product.jpg",
     "bgUrl": "/images/products/gta--bg.jpg",
-    "subCategories": []
+    "subCategories": [
+      {
+        "id": "gta--xbox -1779603994646",
+        "region": "gta+ - جي تي اي بلس",
+        "currency": "Xbox ",
+        "denominations": [
+          {
+            "label": "جي تي اي بلس - شهر (Xbox)",
+            "value": "new",
+            "priceLYD": 40,
+            "priceLibyana": 50
+          }
+        ]
+      }
+    ]
   }
 ]
