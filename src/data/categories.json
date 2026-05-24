@@ -640,7 +640,21 @@
     "logoUrl": "/images/products/fortnight.jpg",
     "productImageUrl": "/images/products/fortnight-product.jpg",
     "bgUrl": "/images/products/fortnight-bg.jpg",
-    "subCategories": []
+    "subCategories": [
+      {
+        "id": "fortnight-xbox-1779597915978",
+        "region": "Fortnite Crew - کرو فورت نایت",
+        "currency": "Xbox",
+        "denominations": [
+          {
+            "label": "کرو فورت نایت (Xbox)",
+            "value": "new",
+            "priceLYD": 20,
+            "priceLibyana": 25
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "marvel-rivals",
