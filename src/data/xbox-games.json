@@ -45,6 +45,17 @@
       ],
       "priceLYD": 50,
       "priceLibyana": 65
+    },
+    {
+      "id": "full-5",
+      "title": "Red dead 2",
+      "titleAr": "حساب كامل",
+      "image": "/images/xbox-games/full-new-1779604998632.jpg",
+      "games": [
+        "Red dead 2"
+      ],
+      "priceLYD": 95,
+      "priceLibyana": 120
     }
   ]
 }
