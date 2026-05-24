@@ -765,5 +765,16 @@
     "productImageUrl": "/images/products/marvel-rivals-product.jpg",
     "bgUrl": "/images/products/marvel-rivals-bg.png",
     "subCategories": []
+  },
+  {
+    "id": "fortnight",
+    "name": "فورتنایت",
+    "nameEn": "fortnight",
+    "gradient": "from-gray-600 via-gray-500 to-gray-400",
+    "icon": "⚡️",
+    "logoUrl": "/images/products/fortnight.jpg",
+    "productImageUrl": "/images/products/fortnight-product.jpg",
+    "bgUrl": "/images/products/fortnight-bg.jpg",
+    "subCategories": []
   }
 ]
