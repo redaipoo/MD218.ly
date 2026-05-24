@@ -1,6 +1,17 @@
 {
   "buyOnAccount": [
     {
+      "id": "buy-3",
+      "title": "Poppy Playtime: Chapter 1",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1779599649757.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "rating": 4.6,
+      "durationText": "تفعيل فوري"
+    },
+    {
       "id": "buy-2",
       "title": "Dark souls",
       "titleAr": "شراء في حسابك",
