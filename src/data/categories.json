@@ -418,6 +418,31 @@
             "priceLibyana": 450
           }
         ]
+      },
+      {
+        "id": "playstation-plus-sub-1779597045070",
+        "region": "extra",
+        "currency": "",
+        "denominations": [
+          {
+            "label": "extra - شهر",
+            "value": "new",
+            "priceLYD": 125,
+            "priceLibyana": 170
+          },
+          {
+            "label": "extra - ثلاث شهور",
+            "value": "new",
+            "priceLYD": 250,
+            "priceLibyana": 335
+          },
+          {
+            "label": "extra - سنه",
+            "value": "new",
+            "priceLYD": 550,
+            "priceLibyana": 735
+          }
+        ]
       }
     ]
   },
