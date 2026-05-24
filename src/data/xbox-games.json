@@ -67,6 +67,17 @@
       ],
       "priceLYD": 65,
       "priceLibyana": 85
+    },
+    {
+      "id": "full-7",
+      "title": "Warhammer 40,000",
+      "titleAr": "حساب كامل",
+      "image": "/images/xbox-games/full-new-1779605872404.jpg",
+      "games": [
+        "Warhammer 40,000"
+      ],
+      "priceLYD": 95,
+      "priceLibyana": 120
     }
   ]
 }
