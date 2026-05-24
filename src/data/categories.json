@@ -859,5 +859,30 @@
         ]
       }
     ]
+  },
+  {
+    "id": "ubisoft-",
+    "name": "يوبي سوفت بلس",
+    "nameEn": "Ubisoft+",
+    "gradient": "from-purple-600 via-purple-500 to-purple-400",
+    "icon": "🚁",
+    "logoUrl": "/images/products/ubisoft-.jpg",
+    "productImageUrl": "/images/products/ubisoft--product.jpg",
+    "bgUrl": "/images/products/ubisoft--bg.jpg",
+    "subCategories": [
+      {
+        "id": "ubisoft--xbox-1779603337718",
+        "region": "يوبي سوفت بلس - Ubisoft+",
+        "currency": "Xbox",
+        "denominations": [
+          {
+            "label": "يوبي سوفت بلس - شهر (حساب كامل)",
+            "value": "new",
+            "priceLYD": 60,
+            "priceLibyana": 75
+          }
+        ]
+      }
+    ]
   }
 ]
