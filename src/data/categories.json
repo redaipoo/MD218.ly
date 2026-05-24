@@ -653,6 +653,37 @@
             "priceLibyana": 25
           }
         ]
+      },
+      {
+        "id": "fortnight-xbox-1779598068049",
+        "region": "V-Bucks - فيبوكس",
+        "currency": "Xbox",
+        "denominations": [
+          {
+            "label": "800 فيبوكس - (Xbox)",
+            "value": "new",
+            "priceLYD": 40,
+            "priceLibyana": 50
+          },
+          {
+            "label": "2400 فيبوكس - (Xbox)",
+            "value": "new",
+            "priceLYD": 100,
+            "priceLibyana": 125
+          },
+          {
+            "label": "4500 فيبوكس - (Xbox)",
+            "value": "new",
+            "priceLYD": 160,
+            "priceLibyana": 200
+          },
+          {
+            "label": "12500 فيبوكس - (Xbox)",
+            "value": "new",
+            "priceLYD": 380,
+            "priceLibyana": 475
+          }
+        ]
       }
     ]
   },
