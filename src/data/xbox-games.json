@@ -122,6 +122,26 @@
       "priceLibyana": 6,
       "platforms": "Series X|S | One",
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-19",
+      "title": "Insanely Twisted Shadow Planet",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780221878766.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-20",
+      "title": "Street Fighter IV",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780221995646.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
