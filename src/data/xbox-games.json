@@ -162,6 +162,26 @@
       "priceLibyana": 6,
       "platforms": "Series X|S | One",
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-23",
+      "title": "AeternoBlade II: Infinity",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780222178916.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-24",
+      "title": " Sleeping Dogs: Definitive Edition",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780222286336.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
