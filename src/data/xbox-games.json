@@ -202,6 +202,28 @@
       "priceLibyana": 6,
       "platforms": "Series X|S | One",
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-27",
+      "title": "KILLING FLOOR 2",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780222462575.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-28",
+      "title": "LEGO Jurassic World",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780222505800.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
