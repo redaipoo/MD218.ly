@@ -82,6 +82,26 @@
       "priceLibyana": 6,
       "platforms": "Series X|S | One",
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-15",
+      "title": " Metro 2033 Redux ",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780221478683.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-16",
+      "title": " Murdered: Soul Suspect",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780221565692.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
