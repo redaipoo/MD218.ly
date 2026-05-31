@@ -41,6 +41,26 @@
       "priceLibyana": 6,
       "platforms": "Series X|S | One",
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-11",
+      "title": "Alan Wake's American Nightmare",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780220884176.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-12",
+      "title": "Fobia St. Dinfna Hotel",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780221023243.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
