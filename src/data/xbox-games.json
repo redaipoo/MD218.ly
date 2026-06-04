@@ -334,6 +334,38 @@
       "platforms": "Series X|S | One",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-39",
+      "title": "MudRunner",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780548765503.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-40",
+      "title": "LEGO Worlds",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780548844524.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-41",
+      "title": "Lords of the Fallen",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1780548904311.jpg",
+      "priceLYD": 5,
+      "priceLibyana": 6,
+      "platforms": "Series X|S | One",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
