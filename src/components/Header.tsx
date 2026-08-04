@@ -151,13 +151,7 @@ export default function Header({ categories = [] }: { categories?: Category[] })
               <div className="w-12 h-12 md:w-[52px] md:h-[52px] rounded-full overflow-hidden shadow-premium group-hover:shadow-glow-crimson transition-all duration-[400ms] ease-premium group-hover:scale-[1.04] ring-2 ring-crimson/15 group-hover:ring-crimson/35 flex-shrink-0">
                 <img src={assetPath("/logo.png")} alt="MD218.LY" className="w-full h-full object-cover" fetchPriority="high" decoding="async" />
               </div>
-              <div className="flex flex-col">
-                <span className="font-black text-lg md:text-2xl leading-tight tracking-wider">
-                  <span className="text-white">MD</span>
-                  <span className="text-crimson">218</span>
-                </span>
-                <span className="text-white text-[9px] md:text-xs font-bold -mt-0.5 tracking-[0.3em]">LY</span>
-              </div>
+              <span className="text-white font-black text-lg md:text-2xl leading-tight tracking-wider whitespace-nowrap">LY MD 218</span>
             </Link>
 
             {/* Center / Right: Nav Items */}
