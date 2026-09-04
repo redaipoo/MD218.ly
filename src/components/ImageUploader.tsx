@@ -88,7 +88,7 @@ export default function ImageUploader({
         const getRes = await fetch(
           `https://api.github.com/repos/${owner}/${repo}/contents/${githubPath}?ref=${branch}&t=${Date.now()}`,
           {
-            headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" },
+            headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" },
             cache: "no-store",
           }
         );
@@ -113,7 +113,7 @@ export default function ImageUploader({
         {
           method: "PUT",
           headers: {
-            Authorization: `token ${token}`,
+            Authorization: `Bearer ${token}`,
             Accept: "application/vnd.github.v3+json",
             "Content-Type": "application/json",
           },

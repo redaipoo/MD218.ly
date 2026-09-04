@@ -23,7 +23,7 @@ export async function uploadImageToGitHub(
       `https://api.github.com/repos/${OWNER}/${REPO}/contents/${destPath}?ref=${BRANCH}&t=${Date.now()}`,
       {
         headers: {
-          Authorization: `token ${token}`,
+          Authorization: `Bearer ${token}`,
           Accept: "application/vnd.github.v3+json",
         },
         cache: "no-store",
@@ -50,7 +50,7 @@ export async function uploadImageToGitHub(
     {
       method: "PUT",
       headers: {
-        Authorization: `token ${token}`,
+        Authorization: `Bearer ${token}`,
         Accept: "application/vnd.github.v3+json",
         "Content-Type": "application/json",
       },

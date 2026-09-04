@@ -108,7 +108,7 @@ export default function AdminXboxGames({ token }: Props) {
     setSaving(true); setMsg(null);
     try {
       const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
-        headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" }, cache: "no-store"
+        headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" }, cache: "no-store"
       });
       
       const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
@@ -121,10 +121,14 @@ export default function AdminXboxGames({ token }: Props) {
       
       const putRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
         method: "PUT",
-        headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
+        headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
-      if (!putRes.ok) throw new Error(`Failed to save: ${putRes.status}`);
+      if (!putRes.ok) {
+        let detail = "";
+        try { const j = await putRes.json(); detail = j.message || ""; } catch {}
+        throw new Error(`Failed to save: ${putRes.status} ${detail}`);
+      }
       setMsg({ text: "✅ تم حفظ ألعاب Xbox بنجاح!", type: "success" });
     } catch (e) {
       setMsg({ text: `❌ خطأ: ${e instanceof Error ? e.message : String(e)}`, type: "error" });

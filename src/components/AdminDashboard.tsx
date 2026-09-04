@@ -82,14 +82,16 @@ export default function AdminDashboard() {
 
       const getResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
         headers: {
-          'Authorization': `token ${githubToken}`,
+          'Authorization': `Bearer ${githubToken}`,
           'Accept': 'application/vnd.github.v3+json'
         },
         cache: 'no-store'
       });
 
       if (!getResponse.ok) {
-        throw new Error(`Failed to fetch file: ${getResponse.status}`);
+        let detail = "";
+        try { const j = await getResponse.json(); detail = j.message || ""; } catch {}
+        throw new Error(`فشل قراءة الملف (${getResponse.status}) ${detail}`);
       }
 
       const fileData = await getResponse.json();
@@ -101,7 +103,7 @@ export default function AdminDashboard() {
       const updateResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
         method: 'PUT',
         headers: {
-          'Authorization': `token ${githubToken}`,
+          'Authorization': `Bearer ${githubToken}`,
           'Accept': 'application/vnd.github.v3+json',
           'Content-Type': 'application/json'
         },
@@ -114,7 +116,9 @@ export default function AdminDashboard() {
       });
 
       if (!updateResponse.ok) {
-        throw new Error(`Failed to update file: ${updateResponse.status}`);
+        let detail = "";
+        try { const j = await updateResponse.json(); detail = j.message || ""; } catch {}
+        throw new Error(`فشل تحديث الملف (${updateResponse.status}) ${detail}`);
       }
 
       setMessage({ text: "✅ تم تحديث الأسعار بنجاح!", type: "success" });

@@ -44,17 +44,21 @@ export default function AdminSharedAccounts({ token }: Props) {
     setSaving(true); setMsg(null);
     try {
       const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}&t=${Date.now()}`, {
-        headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" }, cache: "no-store"
+        headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" }, cache: "no-store"
       });
       if (!getRes.ok) throw new Error("Failed to fetch");
       const { sha } = await getRes.json();
       const content = btoa(unescape(encodeURIComponent(JSON.stringify(accounts, null, 2))));
       const putRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
         method: "PUT",
-        headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
+        headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
         body: JSON.stringify({ message: "Update shared accounts via Admin", content, sha, branch })
       });
-      if (!putRes.ok) throw new Error("Failed to save");
+      if (!putRes.ok) {
+        let detail = "";
+        try { const j = await putRes.json(); detail = j.message || ""; } catch {}
+        throw new Error(`Failed to save (${putRes.status}) ${detail}`);
+      }
       setMsg({ text: "✅ تم حفظ الحسابات المشتركة بنجاح!", type: "success" });
     } catch (e) {
       setMsg({ text: `❌ خطأ: ${e instanceof Error ? e.message : String(e)}`, type: "error" });
