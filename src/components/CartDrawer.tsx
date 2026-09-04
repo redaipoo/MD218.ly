@@ -8,7 +8,7 @@ interface CartDrawerProps {
   onClose: () => void;
 }
 
-const FACEBOOK_LINK = "https://www.facebook.com/share/197Su7xqng/";
+const MESSENGER_PAGE_ID = "61574215798589";
 
 export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const { items, paymentMethod, removeItem, updateQuantity, clearCart } = useCartStore();
@@ -20,9 +20,33 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     return sum + (itemPrice * item.quantity);
   }, 0);
 
-  const sendToFacebook = () => {
+  const sendToMessenger = () => {
     if (items.length === 0) return;
-    window.open(FACEBOOK_LINK, "_blank");
+
+    // Build the invoice message
+    let message = `🧾 فاتورة طلب جديد\n`;
+    message += `━━━━━━━━━━━━━━━━━━━\n`;
+
+    items.forEach((item, index) => {
+      const itemPrice = paymentMethod === 'lyd' ? item.priceLYD : item.priceLibyana;
+      message += `${index + 1}. ${item.name}`;
+      if (item.region) message += ` (${item.region})`;
+      message += `\n`;
+      message += `   📦 الفئة: ${item.value}\n`;
+      message += `   🔢 الكمية: ${item.quantity}\n`;
+      message += `   💰 السعر: ${itemPrice * item.quantity} ${currencyLabel}\n`;
+      if (index < items.length - 1) message += `───────────────────\n`;
+    });
+
+    message += `━━━━━━━━━━━━━━━━━━━\n`;
+    message += `💵 الإجمالي: ${totalPrice} ${currencyLabel}\n`;
+    message += `💳 طريقة الدفع: ${paymentMethod === 'lyd' ? 'دينار ليبي' : 'رصيد ليبيانا'}\n`;
+    message += `━━━━━━━━━━━━━━━━━━━\n`;
+    message += `📱 MD 218 LY`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const messengerUrl = `https://m.me/${MESSENGER_PAGE_ID}?text=${encodedMessage}`;
+    window.open(messengerUrl, "_blank");
   };
 
   return (
@@ -128,11 +152,11 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
               مسح السلة
             </button>
             <button
-              onClick={sendToFacebook}
+              onClick={sendToMessenger}
               className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-black py-4 px-6 rounded-xl transition-all duration-300 ease-premium shadow-[0_4px_20px_rgba(59,130,246,0.2)] hover:shadow-[0_6px_28px_rgba(59,130,246,0.3)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] text-lg"
             >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              أطلب عبر فيسبوك
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.17 7.21V22l2.93-1.63c.84.23 1.72.36 2.63.36.2 0 .4 0 .6-.02-.13-.5-.2-1.02-.2-1.56 0-4.82 4.17-8.73 9.31-8.73.32 0 .63.02.94.05C20.94 5.94 16.89 2 12 2zm1.07 6.81L10.93 11.5 6.5 8.81l4.87 5.19 2.07-2.63 4.43 2.63-4.8-5.19z"/></svg>
+              أطلب عبر ماسنجر
             </button>
           </div>
         )}
