@@ -224,6 +224,25 @@
             "priceLibyana": 15
           }
         ]
+      },
+      {
+        "id": "gamepass-pc-1788599229630",
+        "region": "Xbox game pass pc",
+        "currency": "PC",
+        "denominations": [
+          {
+            "label": "شهر قيم باس pc - حساب كامل",
+            "value": "new",
+            "priceLYD": 65,
+            "priceLibyana": 85
+          },
+          {
+            "label": "اربع اشهور قيم باس pc - حساب كامل",
+            "value": "new",
+            "priceLYD": 135,
+            "priceLibyana": 165
+          }
+        ]
       }
     ]
   },
