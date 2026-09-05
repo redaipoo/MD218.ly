@@ -519,19 +519,19 @@
             "value": "25",
             "label": "25 TRY",
             "priceLYD": 5,
-            "priceLibyana": 7
+            "priceLibyana": 6
           },
           {
             "value": "50",
             "label": "50 TRY",
             "priceLYD": 10,
-            "priceLibyana": 13
+            "priceLibyana": 12
           },
           {
             "value": "100",
             "label": "100 TRY",
             "priceLYD": 20,
-            "priceLibyana": 26
+            "priceLibyana": 25
           },
           {
             "value": "250",
