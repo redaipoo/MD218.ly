@@ -543,13 +543,13 @@
             "value": "500",
             "label": "500 TRY",
             "priceLYD": 100,
-            "priceLibyana": 135
+            "priceLibyana": 125
           },
           {
             "value": "1000",
             "label": "1000 TRY",
             "priceLYD": 200,
-            "priceLibyana": 265
+            "priceLibyana": 250
           }
         ]
       },
