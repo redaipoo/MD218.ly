@@ -319,14 +319,14 @@
           {
             "value": "750",
             "label": "750 TRY",
-            "priceLYD": 145,
-            "priceLibyana": 195
+            "priceLYD": 150,
+            "priceLibyana": 190
           },
           {
             "value": "1000",
             "label": "1000 TRY",
-            "priceLYD": 195,
-            "priceLibyana": 260
+            "priceLYD": 200,
+            "priceLibyana": 250
           }
         ]
       },
