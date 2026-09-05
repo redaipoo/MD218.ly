@@ -41,37 +41,6 @@
         ]
       },
       {
-        "id": "xbox-sar",
-        "region": "سعودي",
-        "currency": "SAR",
-        "denominations": [
-          {
-            "value": "50",
-            "label": "50 SAR",
-            "priceLYD": 129,
-            "priceLibyana": 155
-          },
-          {
-            "value": "100",
-            "label": "100 SAR",
-            "priceLYD": 258,
-            "priceLibyana": 310
-          },
-          {
-            "value": "200",
-            "label": "200 SAR",
-            "priceLYD": 516,
-            "priceLibyana": 0
-          },
-          {
-            "value": "300",
-            "label": "300 SAR",
-            "priceLYD": 774,
-            "priceLibyana": 0
-          }
-        ]
-      },
-      {
         "id": "xbox-usd",
         "region": "أمريكي",
         "currency": "USD",
