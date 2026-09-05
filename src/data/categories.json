@@ -784,23 +784,17 @@
     "bgUrl": "/images/products/crunchyroll-bg.jpg",
     "subCategories": [
       {
-        "id": "crunchyroll-حساب كامل سنه-1779360396830",
-        "region": "Crunchyroll - 12 Months Mega Fan Subscription  ",
-        "currency": "حساب كامل سنه",
+        "id": "crunchyroll-sub-1788596074794",
+        "region": "crunchyroll",
+        "currency": "",
         "denominations": [
           {
-            "label": "کرانشی رول - سنه (حساب كامل)",
+            "label": "اشترك كرانشي رول - 30 يوم",
             "value": "new",
-            "priceLYD": 80,
-            "priceLibyana": 105
+            "priceLYD": 33,
+            "priceLibyana": 38
           }
         ]
-      },
-      {
-        "id": "crunchyroll-sub-1788595958666",
-        "region": "اشترك كرانشي رول - 30 يوم",
-        "currency": "",
-        "denominations": []
       }
     ]
   }
