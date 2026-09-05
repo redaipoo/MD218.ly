@@ -295,20 +295,20 @@
           {
             "label": "شهرين التمت - حساب كامل",
             "value": "new",
-            "priceLYD": 115,
-            "priceLibyana": 150
+            "priceLYD": 110,
+            "priceLibyana": 130
           },
           {
             "label": "شهرين التمت - نص حساب رئيسي",
             "value": "new",
-            "priceLYD": 55,
-            "priceLibyana": 75
+            "priceLYD": 45,
+            "priceLibyana": 55
           },
           {
             "label": "شهرين التمت - نص حساب تسجيل دخول",
             "value": "new",
             "priceLYD": 65,
-            "priceLibyana": 85
+            "priceLibyana": 80
           }
         ]
       },
@@ -319,19 +319,6 @@
         "denominations": [
           {
             "label": "قيم باس بريميوم 14يوم - حساب كامل",
-            "value": "new",
-            "priceLYD": 10,
-            "priceLibyana": 15
-          }
-        ]
-      },
-      {
-        "id": "gamepass-extension-1779358780927",
-        "region": "Xbox game pass extension",
-        "currency": "extension",
-        "denominations": [
-          {
-            "label": "قيم باس اكستنشن شهر - حساب كامل",
             "value": "new",
             "priceLYD": 10,
             "priceLibyana": 15
