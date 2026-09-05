@@ -179,6 +179,36 @@
             "value": "new",
             "priceLYD": 65,
             "priceLibyana": 80
+          },
+          {
+            "label": "اربع اشهور التمت - حساب كامل",
+            "value": "new",
+            "priceLYD": 235,
+            "priceLibyana": 285
+          },
+          {
+            "label": "ستة اشهور التمت - حساب كامل",
+            "value": "new",
+            "priceLYD": 330,
+            "priceLibyana": 410
+          },
+          {
+            "label": "ثمانية اشهور التمت - حساب كامل",
+            "value": "new",
+            "priceLYD": 435,
+            "priceLibyana": 0
+          },
+          {
+            "label": "عشر اشهور التمت - حساب كامل",
+            "value": "new",
+            "priceLYD": 580,
+            "priceLibyana": 0
+          },
+          {
+            "label": "سنة التمت - حساب كامل",
+            "value": "new",
+            "priceLYD": 710,
+            "priceLibyana": 0
           }
         ]
       },
