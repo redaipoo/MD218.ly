@@ -343,12 +343,6 @@
         "currency": "",
         "denominations": [
           {
-            "label": "essentiel - شهر ",
-            "value": "new",
-            "priceLYD": 90,
-            "priceLibyana": 120
-          },
-          {
             "label": "essentiel - ثلاث اشهور",
             "value": "new",
             "priceLYD": 160,
