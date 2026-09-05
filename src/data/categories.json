@@ -432,38 +432,38 @@
           {
             "value": "5",
             "label": "5 USD",
-            "priceLYD": 47,
+            "priceLYD": 49,
             "priceLibyana": 62
           },
           {
             "value": "10",
             "label": "10 USD",
-            "priceLYD": 94,
+            "priceLYD": 98,
             "priceLibyana": 125
           },
           {
             "value": "15",
             "label": "15 USD",
-            "priceLYD": 105,
+            "priceLYD": 147,
             "priceLibyana": 135
           },
           {
             "value": "20",
             "label": "20 USD",
-            "priceLYD": 185,
+            "priceLYD": 196,
             "priceLibyana": 250
           },
           {
             "value": "25",
             "label": "25 USD",
-            "priceLYD": 230,
+            "priceLYD": 245,
             "priceLibyana": 312
           },
           {
             "value": "50",
             "label": "50 USD",
-            "priceLYD": 470,
-            "priceLibyana": 600
+            "priceLYD": 490,
+            "priceLibyana": 0
           }
         ]
       }
