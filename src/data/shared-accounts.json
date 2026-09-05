@@ -4,7 +4,7 @@
     "title": "Resident Evil: Requiem",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-18.jpg",
-    "priceLYD": 9,
+    "priceLYD": 10,
     "priceLibyana": 15
   },
   {
@@ -100,16 +100,16 @@
     "title": "Red Dead Redemption",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-12.jpg",
-    "priceLYD": 8,
-    "priceLibyana": 10
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-22",
     "title": "Red Dead Redemption 2",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-22.jpg",
-    "priceLYD": 8,
-    "priceLibyana": 10
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-11",
@@ -164,8 +164,8 @@
     "title": "Resident Evil 7: Biohazard Gold Edition",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/game-20.jpg",
-    "priceLYD": 8,
-    "priceLibyana": 10
+    "priceLYD": 10,
+    "priceLibyana": 15
   },
   {
     "id": "shared-23",
@@ -222,14 +222,6 @@
     "image": "/images/shared-accounts/game-40.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
-  },
-  {
-    "id": "shared-15",
-    "title": "Bleach: Rebirth of Souls",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-15.jpg",
-    "priceLYD": 8,
-    "priceLibyana": 10
   },
   {
     "id": "shared-38",
@@ -364,14 +356,6 @@
     "title": "Forza horizon 5",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/shared-new-1779602309991.jpg",
-    "priceLYD": 10,
-    "priceLibyana": 15
-  },
-  {
-    "id": "shared-58",
-    "title": "Crash 3+4",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/shared-new-1779602341927.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
   }
