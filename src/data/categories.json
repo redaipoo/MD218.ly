@@ -780,49 +780,6 @@
     ]
   },
   {
-    "id": "pubg",
-    "name": "شدات ببجي",
-    "nameEn": "PUBG",
-    "gradient": "from-yellow-600 via-amber-600 to-orange-500",
-    "icon": "🔫",
-    "logoUrl": "/images/products/pubg.png",
-    "productImageUrl": "/images/products/pubg-product.jpg",
-    "bgUrl": "",
-    "subCategories": [
-      {
-        "id": "pubg-uc",
-        "region": "شدات",
-        "currency": "UC",
-        "denominations": [
-          {
-            "value": "60",
-            "label": "60 UC",
-            "priceLYD": 8,
-            "priceLibyana": 10
-          },
-          {
-            "value": "325",
-            "label": "325 UC",
-            "priceLYD": 40,
-            "priceLibyana": 53
-          },
-          {
-            "value": "660",
-            "label": "660 UC",
-            "priceLYD": 80,
-            "priceLibyana": 105
-          },
-          {
-            "value": "1800",
-            "label": "1800 UC",
-            "priceLYD": 200,
-            "priceLibyana": 260
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "netflix",
     "name": "نتفلكس",
     "nameEn": "NETFLIX",
@@ -861,31 +818,6 @@
             "value": "new",
             "priceLYD": 55,
             "priceLibyana": 65
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "shahid",
-    "name": "شاهد",
-    "nameEn": "SHAHID",
-    "gradient": "from-green-600 via-emerald-600 to-teal-500",
-    "icon": "📺",
-    "logoUrl": "/images/products/shahid.png",
-    "productImageUrl": "/images/products/shahid-product.jpg",
-    "bgUrl": "/images/products/shahid-bg.jpg",
-    "subCategories": [
-      {
-        "id": "shahid-sub",
-        "region": "اشتراك",
-        "currency": "",
-        "denominations": [
-          {
-            "value": "3-months",
-            "label": "اشتراك 3 أشهر",
-            "priceLYD": 92,
-            "priceLibyana": 115
           }
         ]
       }
