@@ -148,6 +148,56 @@
     ]
   },
   {
+    "id": "gamepass",
+    "name": "قيم باس",
+    "nameEn": "GAME PASS",
+    "gradient": "from-green-700 via-emerald-700 to-teal-600",
+    "icon": "🏆",
+    "logoUrl": "/images/products/gamepass.jpg",
+    "productImageUrl": "/images/products/gamepass-product.jpg",
+    "bgUrl": "/images/products/gamepass-bg.jpg",
+    "subCategories": [
+      {
+        "id": "gamepass-ultimat-1779358451694",
+        "region": "Xbox game pass ultimate",
+        "currency": "Ultimat",
+        "denominations": [
+          {
+            "label": "شهرين التمت - حساب كامل",
+            "value": "new",
+            "priceLYD": 110,
+            "priceLibyana": 130
+          },
+          {
+            "label": "شهرين التمت - نص حساب رئيسي",
+            "value": "new",
+            "priceLYD": 45,
+            "priceLibyana": 55
+          },
+          {
+            "label": "شهرين التمت - نص حساب تسجيل دخول",
+            "value": "new",
+            "priceLYD": 65,
+            "priceLibyana": 80
+          }
+        ]
+      },
+      {
+        "id": "gamepass-premium-1779358578569",
+        "region": "Xbox game pass Premium",
+        "currency": "Premium",
+        "denominations": [
+          {
+            "label": "قيم باس بريميوم 14يوم - حساب كامل",
+            "value": "new",
+            "priceLYD": 10,
+            "priceLibyana": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "playstation",
     "name": "بلايستيشن",
     "nameEn": "PLAYSTATION",
@@ -272,56 +322,6 @@
             "label": "UAE 50 USD",
             "priceLYD": 420,
             "priceLibyana": 515
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "gamepass",
-    "name": "قيم باس",
-    "nameEn": "GAME PASS",
-    "gradient": "from-green-700 via-emerald-700 to-teal-600",
-    "icon": "🏆",
-    "logoUrl": "/images/products/gamepass.jpg",
-    "productImageUrl": "/images/products/gamepass-product.jpg",
-    "bgUrl": "/images/products/gamepass-bg.jpg",
-    "subCategories": [
-      {
-        "id": "gamepass-ultimat-1779358451694",
-        "region": "Xbox game pass ultimate",
-        "currency": "Ultimat",
-        "denominations": [
-          {
-            "label": "شهرين التمت - حساب كامل",
-            "value": "new",
-            "priceLYD": 110,
-            "priceLibyana": 130
-          },
-          {
-            "label": "شهرين التمت - نص حساب رئيسي",
-            "value": "new",
-            "priceLYD": 45,
-            "priceLibyana": 55
-          },
-          {
-            "label": "شهرين التمت - نص حساب تسجيل دخول",
-            "value": "new",
-            "priceLYD": 65,
-            "priceLibyana": 80
-          }
-        ]
-      },
-      {
-        "id": "gamepass-premium-1779358578569",
-        "region": "Xbox game pass Premium",
-        "currency": "Premium",
-        "denominations": [
-          {
-            "label": "قيم باس بريميوم 14يوم - حساب كامل",
-            "value": "new",
-            "priceLYD": 10,
-            "priceLibyana": 15
           }
         ]
       }
