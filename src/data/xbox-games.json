@@ -67,28 +67,6 @@
       ],
       "priceLYD": 65,
       "priceLibyana": 85
-    },
-    {
-      "id": "full-7",
-      "title": "Warhammer 40,000",
-      "titleAr": "حساب كامل",
-      "image": "/images/xbox-games/full-new-1779605872404.jpg",
-      "games": [
-        "Warhammer 40,000"
-      ],
-      "priceLYD": 95,
-      "priceLibyana": 120
-    },
-    {
-      "id": "full-8",
-      "title": "Resident evil 5",
-      "titleAr": "حساب كامل",
-      "image": "/images/xbox-games/full-new-1779613545123.jpg",
-      "games": [
-        "0923842315"
-      ],
-      "priceLYD": 40,
-      "priceLibyana": 50
     }
   ]
 }
