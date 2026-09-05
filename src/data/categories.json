@@ -780,50 +780,6 @@
     ]
   },
   {
-    "id": "netflix",
-    "name": "نتفلكس",
-    "nameEn": "NETFLIX",
-    "gradient": "from-red-700 via-red-600 to-red-500",
-    "icon": "🎬",
-    "logoUrl": "/images/products/netflix.png",
-    "productImageUrl": "/images/products/netflix-product.png",
-    "bgUrl": "/images/products/netflix-bg.jpg",
-    "subCategories": [
-      {
-        "id": "netflix-usd-1779268104623",
-        "region": "أمريكي",
-        "currency": "USD",
-        "denominations": [
-          {
-            "label": "15 USD",
-            "value": "new",
-            "priceLYD": 137,
-            "priceLibyana": 180
-          },
-          {
-            "label": "20 USD",
-            "value": "new",
-            "priceLYD": 175,
-            "priceLibyana": 235
-          }
-        ]
-      },
-      {
-        "id": "netflix-sub-1779616724161",
-        "region": "Netflix",
-        "currency": "",
-        "denominations": [
-          {
-            "label": "اشترك نتفلكس - 45 يوم (4k)",
-            "value": "new",
-            "priceLYD": 55,
-            "priceLibyana": 65
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "crunchyroll",
     "name": "کرانشی رول",
     "nameEn": "Crunchyroll",
@@ -843,6 +799,31 @@
             "value": "new",
             "priceLYD": 80,
             "priceLibyana": 105
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "netflix",
+    "name": "نتفلكس",
+    "nameEn": "NETFLIX",
+    "gradient": "from-red-700 via-red-600 to-red-500",
+    "icon": "🎬",
+    "logoUrl": "/images/products/netflix.png",
+    "productImageUrl": "/images/products/netflix-product.png",
+    "bgUrl": "/images/products/netflix-bg.jpg",
+    "subCategories": [
+      {
+        "id": "netflix-sub-1779616724161",
+        "region": "Netflix",
+        "currency": "",
+        "denominations": [
+          {
+            "label": "اشترك نتفلكس - 30 يوم (4k)",
+            "value": "new",
+            "priceLYD": 33,
+            "priceLibyana": 38
           }
         ]
       }
