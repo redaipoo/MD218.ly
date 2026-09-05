@@ -780,31 +780,6 @@
     ]
   },
   {
-    "id": "crunchyroll",
-    "name": "کرانشی رول",
-    "nameEn": "Crunchyroll",
-    "gradient": "from-orange-600 via-orange-500 to-yellow-500",
-    "icon": "🍿",
-    "logoUrl": "/images/products/crunchyroll.jpg",
-    "productImageUrl": "/images/products/crunchyroll-product.jpg",
-    "bgUrl": "/images/products/crunchyroll-bg.jpg",
-    "subCategories": [
-      {
-        "id": "crunchyroll-حساب كامل سنه-1779360396830",
-        "region": "Crunchyroll - 12 Months Mega Fan Subscription  ",
-        "currency": "حساب كامل سنه",
-        "denominations": [
-          {
-            "label": "کرانشی رول - سنه (حساب كامل)",
-            "value": "new",
-            "priceLYD": 80,
-            "priceLibyana": 105
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "netflix",
     "name": "نتفلكس",
     "nameEn": "NETFLIX",
@@ -824,6 +799,31 @@
             "value": "new",
             "priceLYD": 33,
             "priceLibyana": 38
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crunchyroll",
+    "name": "کرانشی رول",
+    "nameEn": "Crunchyroll",
+    "gradient": "from-orange-600 via-orange-500 to-yellow-500",
+    "icon": "🍿",
+    "logoUrl": "/images/products/crunchyroll.jpg",
+    "productImageUrl": "/images/products/crunchyroll-product.jpg",
+    "bgUrl": "/images/products/crunchyroll-bg.jpg",
+    "subCategories": [
+      {
+        "id": "crunchyroll-حساب كامل سنه-1779360396830",
+        "region": "Crunchyroll - 12 Months Mega Fan Subscription  ",
+        "currency": "حساب كامل سنه",
+        "denominations": [
+          {
+            "label": "کرانشی رول - سنه (حساب كامل)",
+            "value": "new",
+            "priceLYD": 80,
+            "priceLibyana": 105
           }
         ]
       }
