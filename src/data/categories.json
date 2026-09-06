@@ -374,12 +374,6 @@
         "currency": "",
         "denominations": [
           {
-            "label": "essentiel - ثلاث اشهور",
-            "value": "new",
-            "priceLYD": 160,
-            "priceLibyana": 215
-          },
-          {
             "label": "essentiel - سنه ",
             "value": "new",
             "priceLYD": 340,
@@ -393,18 +387,6 @@
         "currency": "",
         "denominations": [
           {
-            "label": "extra - شهر",
-            "value": "new",
-            "priceLYD": 125,
-            "priceLibyana": 170
-          },
-          {
-            "label": "extra - ثلاث شهور",
-            "value": "new",
-            "priceLYD": 250,
-            "priceLibyana": 335
-          },
-          {
             "label": "extra - سنه",
             "value": "new",
             "priceLYD": 550,
@@ -417,18 +399,6 @@
         "region": "deluxe",
         "currency": "",
         "denominations": [
-          {
-            "label": "deluxe - شهر",
-            "value": "new",
-            "priceLYD": 135,
-            "priceLibyana": 180
-          },
-          {
-            "label": "deluxe - ثلاث اشهور",
-            "value": "new",
-            "priceLYD": 290,
-            "priceLibyana": 385
-          },
           {
             "label": "deluxe - سنه",
             "value": "new",
