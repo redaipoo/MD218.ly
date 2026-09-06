@@ -374,7 +374,7 @@
         "currency": "",
         "denominations": [
           {
-            "label": "essentiel - سنه ",
+            "label": "essentiel سنة - حساب كامل أوكرانيا",
             "value": "new",
             "priceLYD": 390,
             "priceLibyana": 0
@@ -387,7 +387,7 @@
         "currency": "",
         "denominations": [
           {
-            "label": "extra - سنه",
+            "label": "extra سنة - حساب كامل أوكرانيا",
             "value": "new",
             "priceLYD": 590,
             "priceLibyana": 0
@@ -400,7 +400,7 @@
         "currency": "",
         "denominations": [
           {
-            "label": "deluxe - سنه",
+            "label": "deluxe سنة - حساب كامل أوكرانيا ",
             "value": "new",
             "priceLYD": 690,
             "priceLibyana": 0
