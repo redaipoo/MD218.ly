@@ -358,5 +358,29 @@
     "image": "/images/shared-accounts/shared-new-1779602309991.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
+  },
+  {
+    "id": "shared-60",
+    "title": "Fifa 18",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-new-1789147856815.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
+    "id": "shared-61",
+    "title": "Fifa 15",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-new-1789147924867.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
+    "id": "shared-62",
+    "title": "Gta v XBOX ONE & XBOX SERIES",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-new-1789147980222.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
   }
 ]
