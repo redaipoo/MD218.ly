@@ -347,6 +347,12 @@
             "label": "UAE 50 USD",
             "priceLYD": 420,
             "priceLibyana": 515
+          },
+          {
+            "label": "UAE 100 USD",
+            "value": "new",
+            "priceLYD": 660,
+            "priceLibyana": 0
           }
         ]
       }
