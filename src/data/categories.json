@@ -333,25 +333,25 @@
           {
             "value": "10",
             "label": "UAE 10 USD",
-            "priceLYD": 85,
+            "priceLYD": 88,
             "priceLibyana": 105
           },
           {
             "value": "15",
             "label": "UAE 20 USD",
-            "priceLYD": 170,
+            "priceLYD": 180,
             "priceLibyana": 205
           },
           {
             "value": "50",
             "label": "UAE 50 USD",
-            "priceLYD": 420,
+            "priceLYD": 445,
             "priceLibyana": 0
           },
           {
             "label": "UAE 100 USD",
             "value": "new",
-            "priceLYD": 660,
+            "priceLYD": 885,
             "priceLibyana": 0
           }
         ]
