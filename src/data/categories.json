@@ -742,55 +742,5 @@
         ]
       }
     ]
-  },
-  {
-    "id": "netflix",
-    "name": "نتفلكس",
-    "nameEn": "NETFLIX",
-    "gradient": "from-red-700 via-red-600 to-red-500",
-    "icon": "🎬",
-    "logoUrl": "/images/products/netflix.png",
-    "productImageUrl": "/images/products/netflix-product.png",
-    "bgUrl": "/images/products/netflix-bg.jpg",
-    "subCategories": [
-      {
-        "id": "netflix-sub-1779616724161",
-        "region": "Netflix",
-        "currency": "",
-        "denominations": [
-          {
-            "label": "اشترك نتفلكس - 30 يوم (4k)",
-            "value": "new",
-            "priceLYD": 33,
-            "priceLibyana": 38
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "crunchyroll",
-    "name": "کرانشی رول",
-    "nameEn": "Crunchyroll",
-    "gradient": "from-orange-600 via-orange-500 to-yellow-500",
-    "icon": "🍿",
-    "logoUrl": "/images/products/crunchyroll.jpg",
-    "productImageUrl": "/images/products/crunchyroll-product.jpg",
-    "bgUrl": "/images/products/crunchyroll-bg.jpg",
-    "subCategories": [
-      {
-        "id": "crunchyroll-sub-1788596074794",
-        "region": "crunchyroll",
-        "currency": "",
-        "denominations": [
-          {
-            "label": "اشترك كرانشي رول - 30 يوم",
-            "value": "new",
-            "priceLYD": 33,
-            "priceLibyana": 38
-          }
-        ]
-      }
-    ]
   }
 ]
