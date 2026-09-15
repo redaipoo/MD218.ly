@@ -1,39 +1,6 @@
 {
   "buyOnAccount": [
     {
-      "id": "buy-7",
-      "title": "Gta vi",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789191015896.jpg",
-      "priceLYD": 635,
-      "priceLibyana": 0,
-      "platforms": "Series X|S",
-      "rating": 5,
-      "durationText": "تفعيل فوري"
-    },
-    {
-      "id": "buy-8",
-      "title": "Gta vi ultimate",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789191392883.jpg",
-      "priceLYD": 775,
-      "priceLibyana": 0,
-      "platforms": "Series X|S",
-      "rating": 5,
-      "durationText": "تفعيل فوري"
-    },
-    {
-      "id": "buy-9",
-      "title": "Fc27 Standard Edition",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789191465017.jpg",
-      "priceLYD": 530,
-      "priceLibyana": 0,
-      "platforms": "Series X|S | One",
-      "rating": 5,
-      "durationText": "تفعيل فوري"
-    },
-    {
       "id": "buy-3",
       "title": "Poppy Playtime: Chapter 1",
       "titleAr": "شراء في حسابك",
