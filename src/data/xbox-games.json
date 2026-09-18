@@ -45,23 +45,23 @@
       "durationText": "تفعيل فوري"
     },
     {
-      "id": "buy-2",
-      "title": "Dark souls",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1779311131095.jpg",
-      "priceLYD": 45,
-      "priceLibyana": 50,
-      "platforms": "Series X|S | One",
-      "rating": 4.5,
-      "durationText": "تفعيل فوري"
-    },
-    {
       "id": "buy-11",
       "title": "Fc27 ultimate",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789745636520.jpg",
       "priceLYD": 775,
       "priceLibyana": 0,
+      "platforms": "Series X|S | One",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-2",
+      "title": "Dark souls",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1779311131095.jpg",
+      "priceLYD": 45,
+      "priceLibyana": 50,
       "platforms": "Series X|S | One",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
