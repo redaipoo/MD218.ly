@@ -42,6 +42,28 @@
       "platforms": "Series X|S",
       "rating": 0,
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-8",
+      "title": "Grand Theft Auto VI: Ultimate Edition",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1789745000157.jpg",
+      "priceLYD": 820,
+      "priceLibyana": 0,
+      "platforms": "Series X|S",
+      "rating": 0,
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-9",
+      "title": "Call of Duty®: Modern Warfare® 4",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1789745048366.jpg",
+      "priceLYD": 585,
+      "priceLibyana": 0,
+      "platforms": "Series X|S",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
