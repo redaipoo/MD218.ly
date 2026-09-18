@@ -31,6 +31,17 @@
       "platforms": "Series X|S | One",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-7",
+      "title": "Grand Theft Auto VI",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1789744909452.jpg",
+      "priceLYD": 640,
+      "priceLibyana": 0,
+      "platforms": "Series X|S",
+      "rating": 0,
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
