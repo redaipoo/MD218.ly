@@ -5,7 +5,7 @@
       "title": "Grand Theft Auto VI",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789744909452.jpg",
-      "priceLYD": 640,
+      "priceLYD": 635,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 0,
@@ -27,7 +27,7 @@
       "title": "Grand Theft Auto VI: Ultimate Edition",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789745000157.jpg",
-      "priceLYD": 820,
+      "priceLYD": 800,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 0,
@@ -56,17 +56,6 @@
       "priceLYD": 765
     },
     {
-      "id": "buy-2",
-      "title": "Dark souls",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1779311131095.jpg",
-      "priceLYD": 45,
-      "priceLibyana": 50,
-      "platforms": "Series X|S | One",
-      "rating": 4.5,
-      "durationText": "تفعيل فوري"
-    },
-    {
       "id": "buy-12",
       "title": "Onimusha: Way of the Sword",
       "titleAr": "شراء في حسابك",
@@ -85,6 +74,17 @@
       "priceLYD": 575,
       "priceLibyana": 0,
       "platforms": "Series X|S",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-2",
+      "title": "Dark souls",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1779311131095.jpg",
+      "priceLYD": 45,
+      "priceLibyana": 50,
+      "platforms": "Series X|S | One",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
     }
