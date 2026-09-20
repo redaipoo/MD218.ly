@@ -34,33 +34,22 @@
       "durationText": "تفعيل فوري"
     },
     {
-      "id": "buy-9",
-      "title": "Call of Duty®: Modern Warfare® 4",
+      "id": "buy-12",
+      "title": "Onimusha: Way of the Sword",
       "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789745048366.jpg",
-      "priceLYD": 585,
+      "image": "/images/xbox-games/buy-new-1789900232736.jpg",
+      "priceLYD": 550,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
     },
     {
-      "id": "buy-11",
-      "title": "Fc27 ultimate",
+      "id": "buy-9",
+      "title": "Call of Duty®: Modern Warfare® 4",
       "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789745636520.jpg",
-      "priceLibyana": 0,
-      "platforms": "Series X|S | One",
-      "rating": 4.5,
-      "durationText": "تفعيل فوري",
-      "priceLYD": 765
-    },
-    {
-      "id": "buy-12",
-      "title": "Onimusha: Way of the Sword",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789900232736.jpg",
-      "priceLYD": 550,
+      "image": "/images/xbox-games/buy-new-1789745048366.jpg",
+      "priceLYD": 585,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 4.5,
@@ -76,6 +65,17 @@
       "platforms": "Series X|S",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-11",
+      "title": "Fc27 ultimate",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1789745636520.jpg",
+      "priceLibyana": 0,
+      "platforms": "Series X|S | One",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري",
+      "priceLYD": 765
     },
     {
       "id": "buy-2",
