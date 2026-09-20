@@ -65,6 +65,28 @@
       "platforms": "Series X|S | One",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-12",
+      "title": "Onimusha: Way of the Sword",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1789900232736.jpg",
+      "priceLYD": 550,
+      "priceLibyana": 0,
+      "platforms": "Series X|S",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-13",
+      "title": "The Blood of Dawnwalker",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1789900276652.jpg",
+      "priceLYD": 575,
+      "priceLibyana": 0,
+      "platforms": "Series X|S",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
     }
   ],
   "fullAccounts": [
