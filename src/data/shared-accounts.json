@@ -144,46 +144,6 @@
     "priceLibyana": 15
   },
   {
-    "id": "shared-16",
-    "title": "The First Berserker: Khazan",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-16.jpg",
-    "priceLYD": 10,
-    "priceLibyana": 15
-  },
-  {
-    "id": "shared-14",
-    "title": "Death Stranding Director's Cut",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-14.jpg",
-    "priceLYD": 10,
-    "priceLibyana": 15
-  },
-  {
-    "id": "shared-36",
-    "title": "Dark Souls II: Scholar of the First Sin",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-36.jpg",
-    "priceLYD": 10,
-    "priceLibyana": 15
-  },
-  {
-    "id": "shared-35",
-    "title": "Dark Souls III Deluxe Edition",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-35.jpg",
-    "priceLYD": 10,
-    "priceLibyana": 15
-  },
-  {
-    "id": "shared-20",
-    "title": "Resident Evil 7: Biohazard Gold Edition",
-    "titleAr": "حساب مشترك",
-    "image": "/images/shared-accounts/game-20.jpg",
-    "priceLYD": 10,
-    "priceLibyana": 15
-  },
-  {
     "id": "shared-43",
     "title": "Fc 26",
     "titleAr": "حساب مشترك",
@@ -209,7 +169,7 @@
   },
   {
     "id": "shared-60",
-    "title": "Fifa 18",
+    "title": "FIFA 18",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/shared-new-1789147856815.jpg",
     "priceLYD": 10,
@@ -225,9 +185,49 @@
   },
   {
     "id": "shared-61",
-    "title": "Fifa 15",
+    "title": "FIFA 15",
     "titleAr": "حساب مشترك",
     "image": "/images/shared-accounts/shared-new-1789147924867.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
+    "id": "shared-36",
+    "title": "Dark Souls II: Scholar of the First Sin",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-36.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
+    "id": "shared-16",
+    "title": "The First Berserker: Khazan",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-16.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
+    "id": "shared-14",
+    "title": "Death Stranding Director's Cut",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-14.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
+    "id": "shared-35",
+    "title": "Dark Souls III Deluxe Edition",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-35.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
+    "id": "shared-20",
+    "title": "Resident Evil 7: Biohazard Gold Edition",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/game-20.jpg",
     "priceLYD": 10,
     "priceLibyana": 15
   },
