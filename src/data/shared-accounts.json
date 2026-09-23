@@ -192,6 +192,22 @@
     "priceLibyana": 15
   },
   {
+    "id": "shared-64",
+    "title": "FIFA 20",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-new-1790136503026.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 18
+  },
+  {
+    "id": "shared-63",
+    "title": "FIFA 19",
+    "titleAr": "حساب مشترك",
+    "image": "/images/shared-accounts/shared-new-1790136470690.jpg",
+    "priceLYD": 10,
+    "priceLibyana": 15
+  },
+  {
     "id": "shared-60",
     "title": "Fifa 18",
     "titleAr": "حساب مشترك",
