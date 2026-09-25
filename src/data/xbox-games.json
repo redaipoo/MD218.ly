@@ -5,7 +5,7 @@
       "title": "Grand Theft Auto VI",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789744909452.jpg",
-      "priceLYD": 635,
+      "priceLYD": 630,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 0,
@@ -16,7 +16,7 @@
       "title": "Fc27 ",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789745319426.jpg",
-      "priceLYD": 565,
+      "priceLYD": 535,
       "priceLibyana": 0,
       "platforms": "Series X|S | One",
       "rating": 4.5,
@@ -27,11 +27,11 @@
       "title": "Grand Theft Auto VI: Ultimate Edition",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789745000157.jpg",
-      "priceLYD": 800,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 0,
-      "durationText": "تفعيل فوري"
+      "durationText": "تفعيل فوري",
+      "priceLYD": 790
     },
     {
       "id": "buy-12",
@@ -63,28 +63,6 @@
       "priceLYD": 575,
       "priceLibyana": 0,
       "platforms": "Series X|S",
-      "rating": 4.5,
-      "durationText": "تفعيل فوري"
-    },
-    {
-      "id": "buy-11",
-      "title": "Fc27 ultimate",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789745636520.jpg",
-      "priceLibyana": 0,
-      "platforms": "Series X|S | One",
-      "rating": 4.5,
-      "durationText": "تفعيل فوري",
-      "priceLYD": 765
-    },
-    {
-      "id": "buy-2",
-      "title": "Dark souls",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1779311131095.jpg",
-      "priceLYD": 45,
-      "priceLibyana": 50,
-      "platforms": "Series X|S | One",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
     }
