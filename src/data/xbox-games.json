@@ -12,17 +12,6 @@
       "durationText": "تفعيل فوري"
     },
     {
-      "id": "buy-10",
-      "title": "Fc27 ",
-      "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789745319426.jpg",
-      "priceLYD": 535,
-      "priceLibyana": 0,
-      "platforms": "Series X|S | One",
-      "rating": 4.5,
-      "durationText": "تفعيل فوري"
-    },
-    {
       "id": "buy-8",
       "title": "Grand Theft Auto VI: Ultimate Edition",
       "titleAr": "شراء في حسابك",
@@ -34,13 +23,13 @@
       "priceLYD": 820
     },
     {
-      "id": "buy-12",
-      "title": "Onimusha: Way of the Sword",
+      "id": "buy-10",
+      "title": "Fc27 ",
       "titleAr": "شراء في حسابك",
-      "image": "/images/xbox-games/buy-new-1789900232736.jpg",
-      "priceLYD": 550,
+      "image": "/images/xbox-games/buy-new-1789745319426.jpg",
+      "priceLYD": 535,
       "priceLibyana": 0,
-      "platforms": "Series X|S",
+      "platforms": "Series X|S | One",
       "rating": 4.5,
       "durationText": "تفعيل فوري"
     },
@@ -50,6 +39,17 @@
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789745048366.jpg",
       "priceLYD": 585,
+      "priceLibyana": 0,
+      "platforms": "Series X|S",
+      "rating": 4.5,
+      "durationText": "تفعيل فوري"
+    },
+    {
+      "id": "buy-12",
+      "title": "Onimusha: Way of the Sword",
+      "titleAr": "شراء في حسابك",
+      "image": "/images/xbox-games/buy-new-1789900232736.jpg",
+      "priceLYD": 550,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 4.5,
