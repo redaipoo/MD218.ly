@@ -17,25 +17,25 @@
           {
             "value": "25",
             "label": "25 TRY",
-            "priceLYD": 5,
-            "priceLibyana": 6
+            "priceLYD": 5.5,
+            "priceLibyana": 7
           },
           {
             "value": "50",
             "label": "50 TRY",
-            "priceLYD": 10,
-            "priceLibyana": 12
+            "priceLYD": 11,
+            "priceLibyana": 13
           },
           {
             "value": "100",
             "label": "100 TRY",
-            "priceLYD": 20,
+            "priceLYD": 22,
             "priceLibyana": 25
           },
           {
             "value": "300",
             "label": "300 TRY",
-            "priceLYD": 60,
+            "priceLYD": 65,
             "priceLibyana": 75
           }
         ]
