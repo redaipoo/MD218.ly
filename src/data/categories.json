@@ -191,7 +191,7 @@
             "label": "قيم باس بريميوم 14يوم - حساب كامل",
             "value": "new",
             "priceLYD": 13,
-            "priceLibyana": 15
+            "priceLibyana": 18
           }
         ]
       },
@@ -203,13 +203,13 @@
           {
             "label": "شهر قيم باس pc - حساب كامل",
             "value": "new",
-            "priceLYD": 65,
+            "priceLYD": 70,
             "priceLibyana": 85
           },
           {
             "label": "اربع اشهور قيم باس pc - حساب كامل",
             "value": "new",
-            "priceLYD": 135,
+            "priceLYD": 140,
             "priceLibyana": 165
           }
         ]
