@@ -165,20 +165,20 @@
           {
             "label": "شهرين التمت - حساب كامل",
             "value": "new",
-            "priceLYD": 110,
-            "priceLibyana": 130
+            "priceLYD": 115,
+            "priceLibyana": 140
           },
           {
             "label": "شهرين التمت - نص حساب رئيسي",
             "value": "new",
-            "priceLYD": 45,
-            "priceLibyana": 55
+            "priceLYD": 55,
+            "priceLibyana": 60
           },
           {
             "label": "شهرين التمت - نص حساب تسجيل دخول",
             "value": "new",
-            "priceLYD": 65,
-            "priceLibyana": 80
+            "priceLYD": 70,
+            "priceLibyana": 85
           }
         ]
       },
