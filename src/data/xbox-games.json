@@ -27,22 +27,22 @@
       "title": "Fc27 ",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789745319426.jpg",
-      "priceLYD": 535,
       "priceLibyana": 0,
       "platforms": "Series X|S | One",
       "rating": 4.5,
-      "durationText": "تفعيل فوري"
+      "durationText": "تفعيل فوري",
+      "priceLYD": 365
     },
     {
       "id": "buy-9",
       "title": "Call of Duty®: Modern Warfare® 4",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789745048366.jpg",
-      "priceLYD": 585,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 4.5,
-      "durationText": "تفعيل فوري"
+      "durationText": "تفعيل فوري",
+      "priceLYD": 525
     },
     {
       "id": "buy-12",
@@ -60,7 +60,7 @@
       "title": "The Blood of Dawnwalker",
       "titleAr": "شراء في حسابك",
       "image": "/images/xbox-games/buy-new-1789900276652.jpg",
-      "priceLYD": 575,
+      "priceLYD": 550,
       "priceLibyana": 0,
       "platforms": "Series X|S",
       "rating": 4.5,
